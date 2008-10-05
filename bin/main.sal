@@ -1,0 +1,703 @@
+@HEADER_SECTION
+	#DEFINE PLAYERVER	4
+	#DEFINE LCDCLASS	255
+	#DEFINE IMAGETYPE	255
+	#DEFINE AUDIOTYPE	255
+	#DEFINE APPTYPE		1
+	#DEFINE APPCPID		60000
+	#DEFINE APPID		1
+	#DEFINE APPNAME		"integral GNEX App"
+	#DEFINE COMPTYPE	0
+	#DEFINE AGENTTYPE	0
+	#DEFINE VALIDCOUNT	255
+	#DEFINE VALIDTERM	255
+	#DEFINE DIRECTRUN	0
+	#DEFINE APPVER		1
+@DATA_SECTION
+@GLOBAL_INTSYMBOL_TABLE
+.sym 	&swData 	    0     1
+.sym 	&swData2 	    1     1
+.sym 	&swData3 	    2     1
+.sym 	&swData4 	    3     1
+.sym 	&swWidth 	    4     1
+.sym 	&swHeight 	    5     1
+.sym 	&swFrame 	    6     1
+.sym 	&swFrame2 	    7     1
+.sym 	&swFrame3 	    8     1
+.sym 	&swFrame6 	    9     1
+.syma 	&swVMver 	   10     3     0
+.syma 	&swModel 	   11     8     0
+.syma 	&swSmsRcvBuf 	   12    41     0
+.syma 	&swRsRcvBuf 	   13   128     0
+.syma 	&swRcvBuf 	   14   256     0
+.sym 	&swReserved1 	   15     1
+.sym 	&swReserved2 	   16     1
+.sym 	&swReserved3 	   17     1
+.sym 	&swReserved4 	   18     1
+.sym 	&swSbuf 	   19     1
+.syma 	&Me 	   20     2     0
+.syma 	&Now 	   21     7     0
+.syma 	&They 	   22     6     0
+.syma 	&Background 	   23     2     2
+     0     0
+.syma 	&BackChara 	   24     3     3
+     0     0     0
+.equa 	&Names 	   25     5
+ %%2 %%3 %%4 %%5 %%6
+.equa 	&Messages 	   26     6
+ %%7 %%8 %%9 %%10 %%11 %%12
+.equa 	&SelectMessages 	   27     4
+ %%13 %%14 %%15 %%16
+.equa 	&EventLine 	   28    60
+     1     0     0     1     2     3     3     0     0     4     2     0     0     0     3
+     1     0     4     2     1     0     1     3     2     0     4     2     2     0     2
+     3     3     0     4     2     3     0     3     2    -1     0     4     0     5     5
+     0     1     5     1     2     6     0     1     6     1     2     6     2     3    -1
+.sym 	&NextKey 	   29     1
+.equ 	&SelectedAnswer 	   30     0     0
+.equ 	&EventPointer 	   31     0     0
+.equ 	&CurrentName 	   32     0     0
+.syma 	&Variable 	   33    50     0
+.equ 	&TestCount 	   34     0     0
+.sym 	DrawBackground&i 	   35     1
+.equ 	DrawBackground&temp 	   36   %%20     1
+.sym 	DrawMessages&MessageNumber 	   37     1
+.equ 	DrawMessages&TempString 	   38   %%21     1
+.sym 	DrawMessages&Length 	   39     1
+.sym 	DrawMessages&i 	   40     1
+.sym 	DrawQuestion&Value 	   41     1
+.sym 	DrawQuestion&Select1 	   42     1
+.sym 	DrawQuestion&Select2 	   43     1
+.sym 	DrawQuestion&Select3 	   44     1
+.sym 	DrawQuestion&Select4 	   45     1
+.sym 	SetCurrentName&NameNumber 	   46     1
+.sym 	IfEqual&Value1 	   47     1
+.sym 	IfEqual&Value2 	   48     1
+.sym 	IfEqual&ElseCount 	   49     1
+.sym 	ElseEqual&Value1 	   50     1
+.sym 	ElseEqual&Value2 	   51     1
+.sym 	ElseEqual&IfCount 	   52     1
+.sym 	SetBackground&Layer 	   53     1
+.sym 	SetBackground&ImageNumber 	   54     1
+.sym 	SetChara&Layer 	   55     1
+.sym 	SetChara&ImageNumber 	   56     1
+.equ 	TEST&temp 	   57   %%22     1
+@EXTERN_INTSYMBOL_TABLE
+@STATIC_FUNC_TABLE
+.func     InitEvent 	0	
+.func     DrawBackground 	0	
+.func     RunEventLine 	0	
+.func     DrawMessages 	1	
+.func     DrawQuestion 	5	
+.func     SetCurrentName 	1	
+.func     IfEqual 	3	
+.func     ElseEqual 	3	
+.func     SetBackground 	2	
+.func     SetChara 	2	
+.func     TEST 	0	
+.func     EVENT_TIMEOUT 	0	
+.func     EVENT_KEYPRESS 	0	
+@EXTERN_FUNC_TABLE
+@IMPORT_FUNC_TABLE
+@EXPORT_FUNC_TABLE
+@MEDIA_SYMBOL_TABLE
+.equm 	%%0 	    0     0    19
+// string form = "BackImageNumber=%d"
+    0x42 0x61 0x63 0x6b 0x49 0x6d 0x61 0x67 0x65 0x4e 0x75 0x6d 
+    0x62 0x65 0x72 0x3d 0x25 0x64 0x00
+.equm 	%%1 	    1     0    20
+// string form = "CharaImageNumber=%d"
+    0x43 0x68 0x61 0x72 0x61 0x49 0x6d 0x61 0x67 0x65 0x4e 0x75 
+    0x6d 0x62 0x65 0x72 0x3d 0x25 0x64 0x00
+.equm 	%%2 	    2     0     7
+// string form = "그사람"
+    0xb1 0xd7 0xbb 0xe7 0xb6 0xf7 0x00
+.equm 	%%3 	    3     0     7
+// string form = "저사람"
+    0xc0 0xfa 0xbb 0xe7 0xb6 0xf7 0x00
+.equm 	%%4 	    4     0     5
+// string form = "체리"
+    0xc3 0xbc 0xb8 0xae 0x00
+.equm 	%%5 	    5     0     9
+// string form = "가브리엘"
+    0xb0 0xa1 0xba 0xea 0xb8 0xae 0xbf 0xa4 0x00
+.equm 	%%6 	    6     0     7
+// string form = "도리스"
+    0xb5 0xb5 0xb8 0xae 0xbd 0xba 0x00
+.equm 	%%7 	    7     0    17
+// string form = "학교가서 뭐하게?"
+    0xc7 0xd0 0xb1 0xb3 0xb0 0xa1 0xbc 0xad 0x20 0xb9 0xb9 0xc7 
+    0xcf 0xb0 0xd4 0x3f 0x00
+.equm 	%%8 	    8     0    11
+// string form = "어 심심해."
+    0xbe 0xee 0x20 0xbd 0xc9 0xbd 0xc9 0xc7 0xd8 0x2e 0x00
+.equm 	%%9 	    9     0    36
+// string form = "밥먹은지 얼마나 됐다고 또 먹을라고?"
+    0xb9 0xe4 0xb8 0xd4 0xc0 0xba 0xc1 0xf6 0x20 0xbe 0xf3 0xb8 
+    0xb6 0xb3 0xaa 0x20 0xb5 0xc6 0xb4 0xd9 0xb0 0xed 0x20 0xb6 
+    0xc7 0x20 0xb8 0xd4 0xc0 0xbb 0xb6 0xf3 0xb0 0xed 0x3f 0x00
+.equm 	%%10 	   10     0    20
+// string form = "피곤하면 집에나 가."
+    0xc7 0xc7 0xb0 0xef 0xc7 0xcf 0xb8 0xe9 0x20 0xc1 0xfd 0xbf 
+    0xa1 0xb3 0xaa 0x20 0xb0 0xa1 0x2e 0x00
+.equm 	%%11 	   11     0    12
+// string form = "반드시 출력"
+    0xb9 0xdd 0xb5 0xe5 0xbd 0xc3 0x20 0xc3 0xe2 0xb7 0xc2 0x00
+.equm 	%%12 	   12     0    14
+// string form = "대화테스트 끝"
+    0xb4 0xeb 0xc8 0xad 0xc5 0xd7 0xbd 0xba 0xc6 0xae 0x20 0xb3 
+    0xa1 0x00
+.equm 	%%13 	   13     0     9
+// string form = "학교가자"
+    0xc7 0xd0 0xb1 0xb3 0xb0 0xa1 0xc0 0xda 0x00
+.equm 	%%14 	   14     0     9
+// string form = "심심하냐"
+    0xbd 0xc9 0xbd 0xc9 0xc7 0xcf 0xb3 0xc4 0x00
+.equm 	%%15 	   15     0    14
+// string form = "밥먹으러 가자"
+    0xb9 0xe4 0xb8 0xd4 0xc0 0xb8 0xb7 0xaf 0x20 0xb0 0xa1 0xc0 
+    0xda 0x00
+.equm 	%%16 	   16     0     7
+// string form = "피곤해"
+    0xc7 0xc7 0xb0 0xef 0xc7 0xd8 0x00
+.equm 	%%17 	   17     0    36
+// string form = "Timer=%3d  Key=%3d  EventPointer=%d"
+    0x54 0x69 0x6d 0x65 0x72 0x3d 0x25 0x33 0x64 0x20 0x20 0x4b 
+    0x65 0x79 0x3d 0x25 0x33 0x64 0x20 0x20 0x45 0x76 0x65 0x6e 
+    0x74 0x50 0x6f 0x69 0x6e 0x74 0x65 0x72 0x3d 0x25 0x64 0x00
+.equm 	%%18 	   18     0    34
+// string form = "SelectedAnswer=%d  Variable[0]=%d"
+    0x53 0x65 0x6c 0x65 0x63 0x74 0x65 0x64 0x41 0x6e 0x73 0x77 
+    0x65 0x72 0x3d 0x25 0x64 0x20 0x20 0x56 0x61 0x72 0x69 0x61 
+    0x62 0x6c 0x65 0x5b 0x30 0x5d 0x3d 0x25 0x64 0x00
+.equm 	%%19 	   19     0    11
+// string form = "B=%d  F=%d"
+    0x42 0x3d 0x25 0x64 0x20 0x20 0x46 0x3d 0x25 0x64 0x00
+.symm 	%%20 	   20     0     0
+.symm 	%%21 	   21     0     0
+.symm 	%%22 	   22     0     0
+@CODE_SECTION
+$init:     zsetc    &NextKey   -1   
+           ret      
+InitEvent: nop      
+           nsetc    &They   0   0   
+           nsetc    &They   2   1   
+           nsetc    &They   4   2   
+           ldric    &They   0   
+           inc      
+           pushc    50   
+           sta      
+           ldric    &They   2   
+           inc      
+           pushc    0   
+           sta      
+           ldric    &They   4   
+           inc      
+           pushc    -50   
+           sta      
+           ret      
+DrawBackground: nop 
+           zsetc    DrawBackground&i   0   
+$$0:       pushz    DrawBackground&i   
+           gejp     2   $$1:
+           pushz    DrawBackground&temp   
+           pushmi   %%0   
+           pushi    &Background   DrawBackground&i   
+           calls    MakeStr1
+           pushc    5   
+           pushc    200   
+           pushz    DrawBackground&i   
+           pushc    18   
+           mult     
+           add      
+           pushz    DrawBackground&temp   
+           calls    DrawStr
+           incz     DrawBackground&i   1   
+           ujp      $$0:
+$$1:       zsetc    DrawBackground&i   0   
+$$3:       pushz    DrawBackground&i   
+           gejp     3   $$4:
+           pushz    DrawBackground&temp   
+           pushmi   %%1   
+           pushi    &BackChara   DrawBackground&i   
+           calls    MakeStr1
+           pushc    125   
+           pushc    200   
+           pushz    DrawBackground&i   
+           pushc    18   
+           mult     
+           add      
+           pushz    DrawBackground&temp   
+           calls    DrawStr
+           incz     DrawBackground&i   1   
+           ujp      $$3:
+$$4:       ret      
+RunEventLine: nop   
+           ssp      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           dup      
+           eqjp     -1   $$7:
+           dup      
+           eqjp     0   $$8:
+           dup      
+           eqjp     1   $$9:
+           dup      
+           eqjp     2   $$10:
+           dup      
+           eqjp     3   $$11:
+           dup      
+           eqjp     4   $$12:
+           dup      
+           eqjp     5   $$13:
+           dup      
+           eqjp     6   $$14:
+           dup      
+           eqjp     7   $$15:
+           ujp      $$16:
+$$7:       rsp      
+           zsetc    &EventPointer   0   
+           ujp      $$6:
+$$8:       rsp      
+           pushz    &NextKey   
+           nejp     20   $$17:
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     DrawMessages:
+           ujp      $$18:
+$$17:      pushz    &EventPointer   
+           incz     &EventPointer   -1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     DrawMessages:
+$$18:      zsetc    &NextKey   -1   
+           ujp      $$6:
+$$9:       rsp      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     DrawQuestion:
+           pushz    &NextKey   
+           eqjp     20   $$19:
+           incz     &EventPointer   -6   
+$$19:      zsetc    &NextKey   -1   
+           ujp      $$6:
+$$10:      rsp      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     SetCurrentName:
+           ujp      $$6:
+$$11:      rsp      
+           pushz    &EventPointer   
+           pushc    3   
+           pushi    &EventLine   &EventPointer   
+           pushz    &EventPointer   
+           inc      
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           pushc    2   
+           add      
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     IfEqual:
+           add      
+           add      
+           popz     &EventPointer   
+           ujp      $$6:
+$$12:      rsp      
+           pushz    &EventPointer   
+           pushc    3   
+           pushi    &EventLine   &EventPointer   
+           pushz    &EventPointer   
+           inc      
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           pushc    2   
+           add      
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     ElseEqual:
+           add      
+           add      
+           popz     &EventPointer   
+           ujp      $$6:
+$$13:      rsp      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     SetBackground:
+           ujp      $$6:
+$$14:      rsp      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           pushz    &EventPointer   
+           incz     &EventPointer   1   
+           ldrz     &EventLine   
+           add      
+           ixa      
+           call     SetChara:
+           ujp      $$6:
+$$15:      rsp      
+           ujp      $$6:
+$$16:      rsp      
+           zsetc    &EventPointer   0   
+$$6:       ret      
+DrawMessages: nop   
+           stnz     DrawMessages&MessageNumber   
+           ldrz     &Messages   
+           add      
+           ixa      
+           calls    StrLen
+           pushc    36   
+           div      
+           popz     DrawMessages&Length   
+           pushz    &CurrentName   
+           lejp     -1   $$20:
+           pushc    3   
+           pushc    114   
+           calls    SetShadeColor
+           pushc    4   
+           pushc    4   
+           pushc    235   
+           pushc    25   
+           pushc    3   
+           pushc    1   
+           calls    ShadeRect
+           pushc    79   
+           calls    SetColor
+           pushc    3   
+           pushc    3   
+           pushc    236   
+           pushc    26   
+           calls    DrawRect
+           pushc    2   
+           pushc    0   
+           pushc    3   
+           pushc    0   
+           calls    SetFontType
+           pushc    9   
+           pushc    9   
+           pushi    &Names   &CurrentName   
+           calls    DrawStr
+$$20:      pushc    3   
+           pushc    114   
+           calls    SetShadeColor
+           pushc    4   
+           pushc    30   
+           pushc    235   
+           pushc    51   
+           pushz    DrawMessages&Length   
+           pushc    15   
+           mult     
+           add      
+           pushc    15   
+           add      
+           pushc    3   
+           pushc    1   
+           calls    ShadeRect
+           pushc    79   
+           calls    SetColor
+           pushc    3   
+           pushc    29   
+           pushc    236   
+           pushc    52   
+           pushz    DrawMessages&Length   
+           pushc    15   
+           mult     
+           add      
+           pushc    15   
+           add      
+           calls    DrawRect
+           pushc    2   
+           pushc    0   
+           pushc    3   
+           pushc    0   
+           calls    SetFontType
+           zsetc    DrawMessages&i   0   
+$$21:      pushz    DrawMessages&i   
+           pushz    DrawMessages&Length   
+           inc      
+           lt       
+           fjp      $$22:
+           pushz    DrawMessages&TempString   
+           pushi    &Messages   DrawMessages&MessageNumber   
+           pushz    DrawMessages&i   
+           pushc    36   
+           mult     
+           pushc    36   
+           calls    StrSub
+           pushc    9   
+           pushc    35   
+           pushz    DrawMessages&i   
+           pushc    15   
+           mult     
+           add      
+           pushz    DrawMessages&TempString   
+           calls    DrawStr
+           incz     DrawMessages&i   1   
+           ujp      $$21:
+$$22:      ret      
+DrawQuestion: nop   
+           popz     DrawQuestion&Select4   
+           popz     DrawQuestion&Select3   
+           popz     DrawQuestion&Select2   
+           popz     DrawQuestion&Select1   
+           popz     DrawQuestion&Value   
+           pushc    3   
+           pushc    114   
+           calls    SetShadeColor
+           pushc    4   
+           pushc    4   
+           pushc    235   
+           pushc    25   
+           pushc    45   
+           add      
+           pushc    3   
+           pushc    1   
+           calls    ShadeRect
+           pushc    79   
+           calls    SetColor
+           pushc    3   
+           pushc    3   
+           pushc    236   
+           pushc    26   
+           pushc    45   
+           add      
+           calls    DrawRect
+           pushc    2   
+           pushc    0   
+           pushc    3   
+           pushc    1   
+           calls    SetFontType
+           pushc    120   
+           pushc    9   
+           pushi    &SelectMessages   DrawQuestion&Select1   
+           calls    DrawStr
+           pushc    120   
+           pushc    24   
+           pushi    &SelectMessages   DrawQuestion&Select2   
+           calls    DrawStr
+           pushc    120   
+           pushc    39   
+           pushi    &SelectMessages   DrawQuestion&Select3   
+           calls    DrawStr
+           pushc    120   
+           pushc    54   
+           pushi    &SelectMessages   DrawQuestion&Select4   
+           calls    DrawStr
+           pushz    &NextKey   
+           nejp     19   $$24:
+           pushz    &SelectedAnswer   
+           inc      
+           pushc    4   
+           mod      
+           popz     &SelectedAnswer   
+           ujp      $$25:
+$$24:      pushz    &NextKey   
+           nejp     18   $$26:
+           pushz    &SelectedAnswer   
+           pushc    3   
+           add      
+           pushc    4   
+           mod      
+           popz     &SelectedAnswer   
+           ujp      $$25:
+$$26:      pushz    &NextKey   
+           nejp     20   $$25:
+           isetz    &Variable   DrawQuestion&Value   &SelectedAnswer   
+           zsetc    &SelectedAnswer   0   
+           ret      
+$$25:      pushc    0   
+           calls    SetColor
+           pushc    6   
+           pushc    7   
+           pushz    &SelectedAnswer   
+           pushc    15   
+           mult     
+           add      
+           pushc    233   
+           pushc    21   
+           pushz    &SelectedAnswer   
+           pushc    15   
+           mult     
+           add      
+           pushc    3   
+           calls    FillRectEx
+           pushc    0   
+           calls    SetColor
+           pushc    6   
+           pushc    7   
+           pushz    &SelectedAnswer   
+           pushc    15   
+           mult     
+           add      
+           pushc    233   
+           pushc    21   
+           pushz    &SelectedAnswer   
+           pushc    15   
+           mult     
+           add      
+           calls    DrawRect
+           ret      
+SetCurrentName: nop 
+           stnz     SetCurrentName&NameNumber   
+           popz     &CurrentName   
+           ret      
+IfEqual:   nop      
+           popz     IfEqual&ElseCount   
+           popz     IfEqual&Value2   
+           stnz     IfEqual&Value1   
+           pushi    &Variable   IfEqual&Value2   
+           eq       
+           fjp      $$29:
+           pushc    0   
+           ret      
+$$29:      pushz    IfEqual&ElseCount   
+           ret      
+ElseEqual: nop      
+           popz     ElseEqual&IfCount   
+           popz     ElseEqual&Value2   
+           stnz     ElseEqual&Value1   
+           pushi    &Variable   ElseEqual&Value2   
+           ne       
+           fjp      $$31:
+           pushc    0   
+           ret      
+$$31:      pushz    ElseEqual&IfCount   
+           ret      
+SetBackground: nop  
+           popz     SetBackground&ImageNumber   
+           stnz     SetBackground&Layer   
+           ldrz     &Background   
+           add      
+           pushz    SetBackground&ImageNumber   
+           sta      
+           ret      
+SetChara:  nop      
+           popz     SetChara&ImageNumber   
+           stnz     SetChara&Layer   
+           ldrz     &BackChara   
+           add      
+           pushz    SetChara&ImageNumber   
+           sta      
+           ret      
+main:      nop      
+           call     $init:
+           calls    ClearBlack
+           pushc    50   
+           pushc    1   
+           calls    SetTimer
+           pushc    10   
+           pushc    1   
+           calls    SetTimer1
+           end      
+TEST:      nop      
+           pushz    &TestCount   
+           lejp     999   $$33:
+           zsetc    &TestCount   0   
+$$33:      pushc    2   
+           pushc    0   
+           pushc    3   
+           pushc    0   
+           calls    SetFontType
+           pushz    TEST&temp   
+           pushmi   %%17   
+           pushz    &TestCount   
+           incz     &TestCount   1   
+           pushz    &NextKey   
+           pushz    &EventPointer   
+           calls    MakeStr3
+           pushc    2   
+           pushc    150   
+           pushz    TEST&temp   
+           calls    DrawStr
+           pushz    TEST&temp   
+           pushmi   %%18   
+           pushz    &SelectedAnswer   
+           pushic   &Variable   0   
+           calls    MakeStr2
+           pushc    2   
+           pushc    170   
+           pushz    TEST&temp   
+           calls    DrawStr
+           pushz    TEST&temp   
+           pushmi   %%19   
+           pushc    79   
+           pushc    79   
+           calls    MakeStr2
+           pushc    2   
+           pushc    300   
+           pushz    TEST&temp   
+           calls    DrawStr
+           ret      
+EVENT_TIMEOUT: nop  
+           calls    ClearBlack
+           call     TEST:
+           ssp      
+           pushz    &swData   
+           dup      
+           eqjp     0   $$35:
+           dup      
+           eqjp     1   $$35:
+           dup      
+           eqjp     2   $$36:
+           rsp      
+           ujp      $$34:
+$$35:      rsp      
+           call     DrawBackground:
+           call     RunEventLine:
+           ujp      $$34:
+$$36:      rsp      
+$$34:      calls    Flush
+           end      
+EVENT_KEYPRESS: nop 
+           zsetz    &NextKey   &swData   
+           end      

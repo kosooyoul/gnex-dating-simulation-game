@@ -1,0 +1,804 @@
+STATIC VAR.	swData           of SYSTEM          0       1       
+STATIC VAR.	swData2          of SYSTEM          1       1       
+STATIC VAR.	swData3          of SYSTEM          2       1       
+STATIC VAR.	swData4          of SYSTEM          3       1       
+STATIC VAR.	swWidth          of SYSTEM          4       1       
+STATIC VAR.	swHeight         of SYSTEM          5       1       
+STATIC VAR.	swFrame          of SYSTEM          6       1       
+STATIC VAR.	swFrame2         of SYSTEM          7       1       
+STATIC VAR.	swFrame3         of SYSTEM          8       1       
+STATIC VAR.	swFrame6         of SYSTEM          9       1       
+STATIC VAR.	swVMver          of SYSTEM          10      3       0       
+STATIC VAR.	swModel          of SYSTEM          11      8       0       
+STATIC VAR.	swSmsRcvBuf      of SYSTEM          12      41      0       
+STATIC VAR.	swRsRcvBuf       of SYSTEM          13      128     0       
+STATIC VAR.	swRcvBuf         of SYSTEM          14      256     0       
+STATIC VAR.	swReserved1      of SYSTEM          15      1       
+STATIC VAR.	swReserved2      of SYSTEM          16      1       
+STATIC VAR.	swReserved3      of SYSTEM          17      1       
+STATIC VAR.	swReserved4      of SYSTEM          18      1       
+STATIC VAR.	swSbuf           of SYSTEM          19      1       
+STATIC VAR.	Me               of SYSTEM          20      2       0       
+STATIC VAR.	Now              of SYSTEM          21      7       0       
+STATIC VAR.	They             of SYSTEM          22      6       0       
+STATIC VAR.	Names            of SYSTEM          23      5       
+0            1           2           3           4          
+STATIC VAR.	Messages         of SYSTEM          24      6       
+ 5           6           7           8           9           10         
+STATIC VAR.	SelectMessages   of SYSTEM          25      4       
+ 11          12          13          14         
+STATIC VAR.	EventLine        of SYSTEM          26      45      
+ 1          0           0            1           2           3           3          0           
+0            4           2          0           0           0            3           1          
+0            4           2           1          0            1           3           2          
+0            4           2           2          0            2           3           3          
+0            4           2           3          0            3           2          -1          
+0            4          0            5          -1          
+STATIC VAR.	NextKey          of SYSTEM          27      1       
+STATIC VAR.	SelectedAnswer   of SYSTEM          28      0       0       
+STATIC VAR.	EventPointer     of SYSTEM          29      0       0       
+STATIC VAR.	CurrentName      of SYSTEM          30      0       0       
+STATIC VAR.	Variable         of SYSTEM          31      50      0       
+STATIC VAR.	TestCount        of SYSTEM          32      0       0       
+STATIC VAR.	MessageNumber    of DrawMessages                    33      1       
+STATIC VAR.	TempString       of DrawMessages                    34      17      1       
+STATIC VAR.	Length           of DrawMessages                    35      1       
+STATIC VAR.	i                of DrawMessages                    36      1       
+STATIC VAR.	Value            of DrawQuestion                    37      1       
+STATIC VAR.	Select1          of DrawQuestion                    38      1       
+STATIC VAR.	Select2          of DrawQuestion                    39      1       
+STATIC VAR.	Select3          of DrawQuestion                    40      1       
+STATIC VAR.	Select4          of DrawQuestion                    41      1       
+STATIC VAR.	NameNumber       of SetCurrentName                  42      1       
+STATIC VAR.	Value1           of IfEqual                         43      1       
+STATIC VAR.	Value2           of IfEqual                         44      1       
+STATIC VAR.	ElseCount        of IfEqual                         45      1       
+STATIC VAR.	Value1           of ElseEqual                       46      1       
+STATIC VAR.	Value2           of ElseEqual                       47      1       
+STATIC VAR.	IfCount          of ElseEqual                       48      1       
+STATIC VAR.	temp             of TEST                            49      18      1       
+FUNCTION	InitEvent        has 0     args.
+FUNCTION	RunEventLine     has 0     args.
+FUNCTION	DrawMessages     has 1     args.
+FUNCTION	DrawQuestion     has 5     args.
+FUNCTION	SetCurrentName   has 1     args.
+FUNCTION	IfEqual          has 3     args.
+FUNCTION	ElseEqual        has 3     args.
+FUNCTION	TEST             has 0     args.
+FUNCTION	EVENT_TIMEOUT    has 0     args.
+FUNCTION	EVENT_KEYPRESS   has 0     args.
+MEDIA		%%0     has [ 0 0 0 7 ].
+MEDIA		%%1     has [ 1 1 0 7 ].
+MEDIA		%%2     has [ 2 2 0 5 ].
+MEDIA		%%3     has [ 3 3 0 9 ].
+MEDIA		%%4     has [ 4 4 0 7 ].
+MEDIA		%%5     has [ 5 5 0 17 ].
+MEDIA		%%6     has [ 6 6 0 11 ].
+MEDIA		%%7     has [ 7 7 0 36 ].
+MEDIA		%%8     has [ 8 8 0 20 ].
+MEDIA		%%9     has [ 9 9 0 12 ].
+MEDIA		%%10    has [ 10 10 0 14 ].
+MEDIA		%%11    has [ 11 11 0 9 ].
+MEDIA		%%12    has [ 12 12 0 9 ].
+MEDIA		%%13    has [ 13 13 0 14 ].
+MEDIA		%%14    has [ 14 14 0 7 ].
+MEDIA		%%15    has [ 15 15 0 36 ].
+MEDIA		%%16    has [ 16 16 0 34 ].
+MEDIA		%%17    has [ 17 17 0 0 ].
+MEDIA		%%18    has [ 18 18 0 0 ].
+CODESIZE	8        Bytes in $init           
+CODESIZE	70       Bytes in InitEvent       
+LABEL		$$1              of RunEventLine    
+LABEL		$$2              of RunEventLine    
+LABEL		$$11             of RunEventLine    
+LABEL		$$12             of RunEventLine    
+LABEL		$$3              of RunEventLine    
+LABEL		$$13             of RunEventLine    
+LABEL		$$4              of RunEventLine    
+LABEL		$$5              of RunEventLine    
+LABEL		$$6              of RunEventLine    
+LABEL		$$7              of RunEventLine    
+LABEL		$$8              of RunEventLine    
+LABEL		$$9              of RunEventLine    
+LABEL		$$10             of RunEventLine    
+LABEL		$$0              of RunEventLine    
+CODESIZE	542      Bytes in RunEventLine    
+LABEL		$$14             of DrawMessages    
+LABEL		$$15             of DrawMessages    
+LABEL		$$16             of DrawMessages    
+CODESIZE	368      Bytes in DrawMessages    
+LABEL		$$18             of DrawQuestion    
+LABEL		$$20             of DrawQuestion    
+LABEL		$$19             of DrawQuestion    
+CODESIZE	364      Bytes in DrawQuestion    
+CODESIZE	12       Bytes in SetCurrentName  
+LABEL		$$23             of IfEqual         
+CODESIZE	40       Bytes in IfEqual         
+LABEL		$$25             of ElseEqual       
+CODESIZE	40       Bytes in ElseEqual       
+CODESIZE	26       Bytes in main            
+CODESIZE	108      Bytes in TEST            
+LABEL		$$28             of EVENT_TIMEOUT   
+LABEL		$$29             of EVENT_TIMEOUT   
+LABEL		$$30             of EVENT_TIMEOUT   
+LABEL		$$27             of EVENT_TIMEOUT   
+CODESIZE	86       Bytes in EVENT_TIMEOUT   
+CODESIZE	10       Bytes in EVENT_KEYPRESS  
+000th Func is '$init'
+001th Func is 'DrawMessages'
+002th Func is 'DrawQuestion'
+003th Func is 'EVENT_KEYPRESS'
+004th Func is 'EVENT_TIMEOUT'
+005th Func is 'ElseEqual'
+006th Func is 'IfEqual'
+007th Func is 'InitEvent'
+008th Func is 'RunEventLine'
+009th Func is 'SetCurrentName'
+010th Func is 'TEST'
+011th Func is 'main'
+-------------------------------------------------
+Optimize Function '$init()'
+		Code Length : 8 Byte(s).
+		Final Optimized Code Length : 8 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'InitEvent()'
+		Code Length : 70 Byte(s).
+		Final Optimized Code Length : 70 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'RunEventLine()'
+		Code Length : 542 Byte(s).
+		Final Optimized Code Length : 542 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'DrawMessages()'
+		Code Length : 368 Byte(s).
+		Final Optimized Code Length : 368 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'DrawQuestion()'
+		Code Length : 364 Byte(s).
+		Final Optimized Code Length : 364 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'SetCurrentName()'
+		Code Length : 12 Byte(s).
+		Final Optimized Code Length : 12 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'IfEqual()'
+		Code Length : 40 Byte(s).
+		Final Optimized Code Length : 40 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'ElseEqual()'
+		Code Length : 40 Byte(s).
+		Final Optimized Code Length : 40 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'main()'
+		Code Length : 26 Byte(s).
+		Final Optimized Code Length : 26 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'TEST()'
+		Code Length : 108 Byte(s).
+		Final Optimized Code Length : 108 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'EVENT_TIMEOUT()'
+		Code Length : 86 Byte(s).
+		Final Optimized Code Length : 86 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'EVENT_KEYPRESS()'
+		Code Length : 10 Byte(s).
+		Final Optimized Code Length : 10 Byte(s).
+-------------------------------------------------
+FUNC COUNT: 12
+Set FUNC ADDRESS : $init [0x00000080]
+Set FUNC ADDRESS : DrawMessages [0x00000088]
+Set FUNC ADDRESS : DrawQuestion [0x000001F8]
+Set FUNC ADDRESS : EVENT_KEYPRESS [0x00000364]
+Set FUNC ADDRESS : EVENT_TIMEOUT [0x0000036E]
+Set FUNC ADDRESS : ElseEqual [0x000003C4]
+Set FUNC ADDRESS : IfEqual [0x000003EC]
+Set FUNC ADDRESS : InitEvent [0x00000414]
+Set FUNC ADDRESS : RunEventLine [0x0000045A]
+Set FUNC ADDRESS : SetCurrentName [0x00000678]
+Set FUNC ADDRESS : TEST [0x00000684]
+Set FUNC ADDRESS : main [0x000006F0]
+
+FUNCTION : $init()
+{
+	0x00000080 : zsetc		27 ( NextKey )		-1	// , $init, -1 - SAL : 154
+	0x00000086 : ret	// , $init, -1 - SAL : 155
+}
+
+
+FUNCTION : DrawMessages()
+{
+	0x00000088 : nop	// , DrawMessages, -1 - SAL : 309
+	0x0000008A : stnz		33 ( MessageNumber of Function DrawMessages )	// , DrawMessages, -1 - SAL : 310
+	0x0000008E : ldrz		24 ( Messages )	// , DrawMessages, -1 - SAL : 311
+	0x00000092 : add	// , DrawMessages, -1 - SAL : 312
+	0x00000094 : ixa	// , DrawMessages, -1 - SAL : 313
+	0x00000096 : calls		StrLen(160)	// , DrawMessages, -1 - SAL : 314
+	0x0000009A : pushc		36	// , DrawMessages, -1 - SAL : 315
+	0x0000009E : div	// , DrawMessages, -1 - SAL : 316
+	0x000000A0 : popz		35 ( Length of Function DrawMessages )	// , DrawMessages, -1 - SAL : 317
+	0x000000A4 : pushz		30 ( CurrentName )	// , DrawMessages, -1 - SAL : 318
+	0x000000A8 : lejp		-1		0x00000122	// , DrawMessages, -1 - SAL : 319
+	0x000000B0 : pushc		0	// , DrawMessages, -1 - SAL : 320
+	0x000000B4 : pushc		30	// , DrawMessages, -1 - SAL : 321
+	0x000000B8 : pushc		100	// , DrawMessages, -1 - SAL : 322
+	0x000000BC : calls		SetColorRGB(39)	// , DrawMessages, -1 - SAL : 323
+	0x000000C0 : pushc		4	// , DrawMessages, -1 - SAL : 324
+	0x000000C4 : pushc		4	// , DrawMessages, -1 - SAL : 325
+	0x000000C8 : pushc		235	// , DrawMessages, -1 - SAL : 326
+	0x000000CC : pushc		25	// , DrawMessages, -1 - SAL : 327
+	0x000000D0 : pushc		2	// , DrawMessages, -1 - SAL : 328
+	0x000000D4 : calls		FillRectEx(71)	// , DrawMessages, -1 - SAL : 329
+	0x000000D8 : pushc		0	// , DrawMessages, -1 - SAL : 330
+	0x000000DC : pushc		20	// , DrawMessages, -1 - SAL : 331
+	0x000000E0 : pushc		70	// , DrawMessages, -1 - SAL : 332
+	0x000000E4 : calls		SetColorRGB(39)	// , DrawMessages, -1 - SAL : 333
+	0x000000E8 : pushc		3	// , DrawMessages, -1 - SAL : 334
+	0x000000EC : pushc		3	// , DrawMessages, -1 - SAL : 335
+	0x000000F0 : pushc		236	// , DrawMessages, -1 - SAL : 336
+	0x000000F4 : pushc		26	// , DrawMessages, -1 - SAL : 337
+	0x000000F8 : calls		DrawRect(69)	// , DrawMessages, -1 - SAL : 338
+	0x000000FC : pushc		2	// , DrawMessages, -1 - SAL : 339
+	0x00000100 : pushc		0	// , DrawMessages, -1 - SAL : 340
+	0x00000104 : pushc		3	// , DrawMessages, -1 - SAL : 341
+	0x00000108 : pushc		0	// , DrawMessages, -1 - SAL : 342
+	0x0000010C : calls		SetFontType(40)	// , DrawMessages, -1 - SAL : 343
+	0x00000110 : pushc		9	// , DrawMessages, -1 - SAL : 344
+	0x00000114 : pushc		9	// , DrawMessages, -1 - SAL : 345
+	0x00000118 : pushi		23 ( Names )		30 ( CurrentName )	// , DrawMessages, -1 - SAL : 346
+	0x0000011E : calls		DrawStr(85)	// , DrawMessages, -1 - SAL : 347
+	0x00000122 : pushc		0	// , DrawMessages, -1 - SAL : 348
+	0x00000126 : pushc		30	// , DrawMessages, -1 - SAL : 349
+	0x0000012A : pushc		100	// , DrawMessages, -1 - SAL : 350
+	0x0000012E : calls		SetColorRGB(39)	// , DrawMessages, -1 - SAL : 351
+	0x00000132 : pushc		4	// , DrawMessages, -1 - SAL : 352
+	0x00000136 : pushc		30	// , DrawMessages, -1 - SAL : 353
+	0x0000013A : pushc		235	// , DrawMessages, -1 - SAL : 354
+	0x0000013E : pushc		51	// , DrawMessages, -1 - SAL : 355
+	0x00000142 : pushz		35 ( Length of Function DrawMessages )	// , DrawMessages, -1 - SAL : 356
+	0x00000146 : pushc		15	// , DrawMessages, -1 - SAL : 357
+	0x0000014A : mult	// , DrawMessages, -1 - SAL : 358
+	0x0000014C : add	// , DrawMessages, -1 - SAL : 359
+	0x0000014E : pushc		2	// , DrawMessages, -1 - SAL : 360
+	0x00000152 : calls		FillRectEx(71)	// , DrawMessages, -1 - SAL : 361
+	0x00000156 : pushc		0	// , DrawMessages, -1 - SAL : 362
+	0x0000015A : pushc		20	// , DrawMessages, -1 - SAL : 363
+	0x0000015E : pushc		70	// , DrawMessages, -1 - SAL : 364
+	0x00000162 : calls		SetColorRGB(39)	// , DrawMessages, -1 - SAL : 365
+	0x00000166 : pushc		3	// , DrawMessages, -1 - SAL : 366
+	0x0000016A : pushc		29	// , DrawMessages, -1 - SAL : 367
+	0x0000016E : pushc		236	// , DrawMessages, -1 - SAL : 368
+	0x00000172 : pushc		52	// , DrawMessages, -1 - SAL : 369
+	0x00000176 : pushz		35 ( Length of Function DrawMessages )	// , DrawMessages, -1 - SAL : 370
+	0x0000017A : pushc		15	// , DrawMessages, -1 - SAL : 371
+	0x0000017E : mult	// , DrawMessages, -1 - SAL : 372
+	0x00000180 : add	// , DrawMessages, -1 - SAL : 373
+	0x00000182 : calls		DrawRect(69)	// , DrawMessages, -1 - SAL : 374
+	0x00000186 : pushc		2	// , DrawMessages, -1 - SAL : 375
+	0x0000018A : pushc		0	// , DrawMessages, -1 - SAL : 376
+	0x0000018E : pushc		3	// , DrawMessages, -1 - SAL : 377
+	0x00000192 : pushc		0	// , DrawMessages, -1 - SAL : 378
+	0x00000196 : calls		SetFontType(40)	// , DrawMessages, -1 - SAL : 379
+	0x0000019A : zsetc		36 ( i of Function DrawMessages )		0	// , DrawMessages, -1 - SAL : 380
+	0x000001A0 : pushz		36 ( i of Function DrawMessages )	// , DrawMessages, -1 - SAL : 381
+	0x000001A4 : pushz		35 ( Length of Function DrawMessages )	// , DrawMessages, -1 - SAL : 382
+	0x000001A8 : inc	// , DrawMessages, -1 - SAL : 383
+	0x000001AA : lt	// , DrawMessages, -1 - SAL : 384
+	0x000001AC : fjp		0x000001F6	// , DrawMessages, -1 - SAL : 385
+	0x000001B2 : pushz		34 ( TempString of Function DrawMessages )	// , DrawMessages, -1 - SAL : 386
+	0x000001B6 : pushi		24 ( Messages )		33 ( MessageNumber of Function DrawMessages )	// , DrawMessages, -1 - SAL : 387
+	0x000001BC : pushz		36 ( i of Function DrawMessages )	// , DrawMessages, -1 - SAL : 388
+	0x000001C0 : pushc		36	// , DrawMessages, -1 - SAL : 389
+	0x000001C4 : mult	// , DrawMessages, -1 - SAL : 390
+	0x000001C6 : pushc		36	// , DrawMessages, -1 - SAL : 391
+	0x000001CA : calls		StrSub(162)	// , DrawMessages, -1 - SAL : 392
+	0x000001CE : pushc		9	// , DrawMessages, -1 - SAL : 393
+	0x000001D2 : pushc		35	// , DrawMessages, -1 - SAL : 394
+	0x000001D6 : pushz		36 ( i of Function DrawMessages )	// , DrawMessages, -1 - SAL : 395
+	0x000001DA : pushc		15	// , DrawMessages, -1 - SAL : 396
+	0x000001DE : mult	// , DrawMessages, -1 - SAL : 397
+	0x000001E0 : add	// , DrawMessages, -1 - SAL : 398
+	0x000001E2 : pushz		34 ( TempString of Function DrawMessages )	// , DrawMessages, -1 - SAL : 399
+	0x000001E6 : calls		DrawStr(85)	// , DrawMessages, -1 - SAL : 400
+	0x000001EA : incz		36 ( i of Function DrawMessages )		1	// , DrawMessages, -1 - SAL : 401
+	0x000001F0 : ujp		0x000001A0	// , DrawMessages, -1 - SAL : 402
+	0x000001F6 : ret	// , DrawMessages, -1 - SAL : 403
+}
+
+
+FUNCTION : DrawQuestion()
+{
+	0x000001F8 : nop	// , DrawQuestion, -1 - SAL : 404
+	0x000001FA : popz		41 ( Select4 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 405
+	0x000001FE : popz		40 ( Select3 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 406
+	0x00000202 : popz		39 ( Select2 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 407
+	0x00000206 : popz		38 ( Select1 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 408
+	0x0000020A : popz		37 ( Value of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 409
+	0x0000020E : pushc		0	// , DrawQuestion, -1 - SAL : 410
+	0x00000212 : pushc		30	// , DrawQuestion, -1 - SAL : 411
+	0x00000216 : pushc		100	// , DrawQuestion, -1 - SAL : 412
+	0x0000021A : calls		SetColorRGB(39)	// , DrawQuestion, -1 - SAL : 413
+	0x0000021E : pushc		4	// , DrawQuestion, -1 - SAL : 414
+	0x00000222 : pushc		4	// , DrawQuestion, -1 - SAL : 415
+	0x00000226 : pushc		235	// , DrawQuestion, -1 - SAL : 416
+	0x0000022A : pushc		25	// , DrawQuestion, -1 - SAL : 417
+	0x0000022E : pushc		45	// , DrawQuestion, -1 - SAL : 418
+	0x00000232 : add	// , DrawQuestion, -1 - SAL : 419
+	0x00000234 : pushc		2	// , DrawQuestion, -1 - SAL : 420
+	0x00000238 : calls		FillRectEx(71)	// , DrawQuestion, -1 - SAL : 421
+	0x0000023C : pushc		0	// , DrawQuestion, -1 - SAL : 422
+	0x00000240 : pushc		20	// , DrawQuestion, -1 - SAL : 423
+	0x00000244 : pushc		70	// , DrawQuestion, -1 - SAL : 424
+	0x00000248 : calls		SetColorRGB(39)	// , DrawQuestion, -1 - SAL : 425
+	0x0000024C : pushc		3	// , DrawQuestion, -1 - SAL : 426
+	0x00000250 : pushc		3	// , DrawQuestion, -1 - SAL : 427
+	0x00000254 : pushc		236	// , DrawQuestion, -1 - SAL : 428
+	0x00000258 : pushc		26	// , DrawQuestion, -1 - SAL : 429
+	0x0000025C : pushc		45	// , DrawQuestion, -1 - SAL : 430
+	0x00000260 : add	// , DrawQuestion, -1 - SAL : 431
+	0x00000262 : calls		DrawRect(69)	// , DrawQuestion, -1 - SAL : 432
+	0x00000266 : pushc		2	// , DrawQuestion, -1 - SAL : 433
+	0x0000026A : pushc		0	// , DrawQuestion, -1 - SAL : 434
+	0x0000026E : pushc		3	// , DrawQuestion, -1 - SAL : 435
+	0x00000272 : pushc		1	// , DrawQuestion, -1 - SAL : 436
+	0x00000276 : calls		SetFontType(40)	// , DrawQuestion, -1 - SAL : 437
+	0x0000027A : pushc		120	// , DrawQuestion, -1 - SAL : 438
+	0x0000027E : pushc		9	// , DrawQuestion, -1 - SAL : 439
+	0x00000282 : pushi		25 ( SelectMessages )		38 ( Select1 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 440
+	0x00000288 : calls		DrawStr(85)	// , DrawQuestion, -1 - SAL : 441
+	0x0000028C : pushc		120	// , DrawQuestion, -1 - SAL : 442
+	0x00000290 : pushc		24	// , DrawQuestion, -1 - SAL : 443
+	0x00000294 : pushi		25 ( SelectMessages )		39 ( Select2 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 444
+	0x0000029A : calls		DrawStr(85)	// , DrawQuestion, -1 - SAL : 445
+	0x0000029E : pushc		120	// , DrawQuestion, -1 - SAL : 446
+	0x000002A2 : pushc		39	// , DrawQuestion, -1 - SAL : 447
+	0x000002A6 : pushi		25 ( SelectMessages )		40 ( Select3 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 448
+	0x000002AC : calls		DrawStr(85)	// , DrawQuestion, -1 - SAL : 449
+	0x000002B0 : pushc		120	// , DrawQuestion, -1 - SAL : 450
+	0x000002B4 : pushc		54	// , DrawQuestion, -1 - SAL : 451
+	0x000002B8 : pushi		25 ( SelectMessages )		41 ( Select4 of Function DrawQuestion )	// , DrawQuestion, -1 - SAL : 452
+	0x000002BE : calls		DrawStr(85)	// , DrawQuestion, -1 - SAL : 453
+	0x000002C2 : pushz		27 ( NextKey )	// , DrawQuestion, -1 - SAL : 454
+	0x000002C6 : nejp		19		0x000002E4	// , DrawQuestion, -1 - SAL : 455
+	0x000002CE : pushz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 456
+	0x000002D2 : inc	// , DrawQuestion, -1 - SAL : 457
+	0x000002D4 : pushc		4	// , DrawQuestion, -1 - SAL : 458
+	0x000002D8 : mod	// , DrawQuestion, -1 - SAL : 459
+	0x000002DA : popz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 460
+	0x000002DE : ujp		0x00000326	// , DrawQuestion, -1 - SAL : 461
+	0x000002E4 : pushz		27 ( NextKey )	// , DrawQuestion, -1 - SAL : 462
+	0x000002E8 : nejp		18		0x0000030A	// , DrawQuestion, -1 - SAL : 463
+	0x000002F0 : pushz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 464
+	0x000002F4 : pushc		3	// , DrawQuestion, -1 - SAL : 465
+	0x000002F8 : add	// , DrawQuestion, -1 - SAL : 466
+	0x000002FA : pushc		4	// , DrawQuestion, -1 - SAL : 467
+	0x000002FE : mod	// , DrawQuestion, -1 - SAL : 468
+	0x00000300 : popz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 469
+	0x00000304 : ujp		0x00000326	// , DrawQuestion, -1 - SAL : 470
+	0x0000030A : pushz		27 ( NextKey )	// , DrawQuestion, -1 - SAL : 471
+	0x0000030E : nejp		20		0x00000326	// , DrawQuestion, -1 - SAL : 472
+	0x00000316 : isetz		31 ( Variable )		37 ( Value of Function DrawQuestion )		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 473
+	0x0000031E : zsetc		28 ( SelectedAnswer )		0	// , DrawQuestion, -1 - SAL : 474
+	0x00000324 : ret	// , DrawQuestion, -1 - SAL : 475
+	0x00000326 : pushc		255	// , DrawQuestion, -1 - SAL : 476
+	0x0000032A : pushc		255	// , DrawQuestion, -1 - SAL : 477
+	0x0000032E : pushc		255	// , DrawQuestion, -1 - SAL : 478
+	0x00000332 : calls		SetColorRGB(39)	// , DrawQuestion, -1 - SAL : 479
+	0x00000336 : pushc		6	// , DrawQuestion, -1 - SAL : 480
+	0x0000033A : pushc		7	// , DrawQuestion, -1 - SAL : 481
+	0x0000033E : pushz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 482
+	0x00000342 : pushc		15	// , DrawQuestion, -1 - SAL : 483
+	0x00000346 : mult	// , DrawQuestion, -1 - SAL : 484
+	0x00000348 : add	// , DrawQuestion, -1 - SAL : 485
+	0x0000034A : pushc		233	// , DrawQuestion, -1 - SAL : 486
+	0x0000034E : pushc		21	// , DrawQuestion, -1 - SAL : 487
+	0x00000352 : pushz		28 ( SelectedAnswer )	// , DrawQuestion, -1 - SAL : 488
+	0x00000356 : pushc		15	// , DrawQuestion, -1 - SAL : 489
+	0x0000035A : mult	// , DrawQuestion, -1 - SAL : 490
+	0x0000035C : add	// , DrawQuestion, -1 - SAL : 491
+	0x0000035E : calls		DrawRect(69)	// , DrawQuestion, -1 - SAL : 492
+	0x00000362 : ret	// , DrawQuestion, -1 - SAL : 493
+}
+
+
+FUNCTION : EVENT_KEYPRESS()
+{
+	0x00000364 : nop	// , EVENT_KEYPRESS, -1 - SAL : 575
+	0x00000366 : zsetz		27 ( NextKey )		0 ( swData )	// , EVENT_KEYPRESS, -1 - SAL : 576
+	0x0000036C : end	// , EVENT_KEYPRESS, -1 - SAL : 577
+}
+
+
+FUNCTION : EVENT_TIMEOUT()
+{
+	0x0000036E : nop	// , EVENT_TIMEOUT, -1 - SAL : 554
+	0x00000370 : calls		ClearWhite(58)	// , EVENT_TIMEOUT, -1 - SAL : 555
+	0x00000374 : call		0x00000684	// , EVENT_TIMEOUT, -1 - SAL : 556
+	0x0000037A : ssp	// , EVENT_TIMEOUT, -1 - SAL : 557
+	0x0000037C : pushz		0 ( swData )	// , EVENT_TIMEOUT, -1 - SAL : 558
+	0x00000380 : dup	// , EVENT_TIMEOUT, -1 - SAL : 559
+	0x00000382 : eqjp		0		0x000003A6	// , EVENT_TIMEOUT, -1 - SAL : 560
+	0x0000038A : dup	// , EVENT_TIMEOUT, -1 - SAL : 561
+	0x0000038C : eqjp		1		0x000003AE	// , EVENT_TIMEOUT, -1 - SAL : 562
+	0x00000394 : dup	// , EVENT_TIMEOUT, -1 - SAL : 563
+	0x00000396 : eqjp		2		0x000003BC	// , EVENT_TIMEOUT, -1 - SAL : 564
+	0x0000039E : rsp	// , EVENT_TIMEOUT, -1 - SAL : 565
+	0x000003A0 : ujp		0x000003BE	// , EVENT_TIMEOUT, -1 - SAL : 566
+	0x000003A6 : rsp	// , EVENT_TIMEOUT, -1 - SAL : 567
+	0x000003A8 : ujp		0x000003BE	// , EVENT_TIMEOUT, -1 - SAL : 568
+	0x000003AE : rsp	// , EVENT_TIMEOUT, -1 - SAL : 569
+	0x000003B0 : call		0x0000045A	// , EVENT_TIMEOUT, -1 - SAL : 570
+	0x000003B6 : ujp		0x000003BE	// , EVENT_TIMEOUT, -1 - SAL : 571
+	0x000003BC : rsp	// , EVENT_TIMEOUT, -1 - SAL : 572
+	0x000003BE : calls		Flush(95)	// , EVENT_TIMEOUT, -1 - SAL : 573
+	0x000003C2 : end	// , EVENT_TIMEOUT, -1 - SAL : 574
+}
+
+
+FUNCTION : ElseEqual()
+{
+	0x000003C4 : nop	// , ElseEqual, -1 - SAL : 509
+	0x000003C6 : popz		48 ( IfCount of Function ElseEqual )	// , ElseEqual, -1 - SAL : 510
+	0x000003CA : popz		47 ( Value2 of Function ElseEqual )	// , ElseEqual, -1 - SAL : 511
+	0x000003CE : stnz		46 ( Value1 of Function ElseEqual )	// , ElseEqual, -1 - SAL : 512
+	0x000003D2 : pushi		31 ( Variable )		47 ( Value2 of Function ElseEqual )	// , ElseEqual, -1 - SAL : 513
+	0x000003D8 : ne	// , ElseEqual, -1 - SAL : 514
+	0x000003DA : fjp		0x000003E6	// , ElseEqual, -1 - SAL : 515
+	0x000003E0 : pushc		0	// , ElseEqual, -1 - SAL : 516
+	0x000003E4 : ret	// , ElseEqual, -1 - SAL : 517
+	0x000003E6 : pushz		48 ( IfCount of Function ElseEqual )	// , ElseEqual, -1 - SAL : 518
+	0x000003EA : ret	// , ElseEqual, -1 - SAL : 519
+}
+
+
+FUNCTION : IfEqual()
+{
+	0x000003EC : nop	// , IfEqual, -1 - SAL : 498
+	0x000003EE : popz		45 ( ElseCount of Function IfEqual )	// , IfEqual, -1 - SAL : 499
+	0x000003F2 : popz		44 ( Value2 of Function IfEqual )	// , IfEqual, -1 - SAL : 500
+	0x000003F6 : stnz		43 ( Value1 of Function IfEqual )	// , IfEqual, -1 - SAL : 501
+	0x000003FA : pushi		31 ( Variable )		44 ( Value2 of Function IfEqual )	// , IfEqual, -1 - SAL : 502
+	0x00000400 : eq	// , IfEqual, -1 - SAL : 503
+	0x00000402 : fjp		0x0000040E	// , IfEqual, -1 - SAL : 504
+	0x00000408 : pushc		0	// , IfEqual, -1 - SAL : 505
+	0x0000040C : ret	// , IfEqual, -1 - SAL : 506
+	0x0000040E : pushz		45 ( ElseCount of Function IfEqual )	// , IfEqual, -1 - SAL : 507
+	0x00000412 : ret	// , IfEqual, -1 - SAL : 508
+}
+
+
+FUNCTION : InitEvent()
+{
+	0x00000414 : nop	// , InitEvent, -1 - SAL : 156
+	0x00000416 : nsetc		22 ( They )		0		0	// , InitEvent, -1 - SAL : 157
+	0x0000041E : nsetc		22 ( They )		2		1	// , InitEvent, -1 - SAL : 158
+	0x00000426 : nsetc		22 ( They )		4		2	// , InitEvent, -1 - SAL : 159
+	0x0000042E : ldric		22 ( They )		0	// , InitEvent, -1 - SAL : 160
+	0x00000434 : inc	// , InitEvent, -1 - SAL : 161
+	0x00000436 : pushc		50	// , InitEvent, -1 - SAL : 162
+	0x0000043A : sta	// , InitEvent, -1 - SAL : 163
+	0x0000043C : ldric		22 ( They )		2	// , InitEvent, -1 - SAL : 164
+	0x00000442 : inc	// , InitEvent, -1 - SAL : 165
+	0x00000444 : pushc		0	// , InitEvent, -1 - SAL : 166
+	0x00000448 : sta	// , InitEvent, -1 - SAL : 167
+	0x0000044A : ldric		22 ( They )		4	// , InitEvent, -1 - SAL : 168
+	0x00000450 : inc	// , InitEvent, -1 - SAL : 169
+	0x00000452 : pushc		-50	// , InitEvent, -1 - SAL : 170
+	0x00000456 : sta	// , InitEvent, -1 - SAL : 171
+	0x00000458 : ret	// , InitEvent, -1 - SAL : 172
+}
+
+
+FUNCTION : RunEventLine()
+{
+	0x0000045A : nop	// , RunEventLine, -1 - SAL : 173
+	0x0000045C : ssp	// , RunEventLine, -1 - SAL : 174
+	0x0000045E : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 175
+	0x00000462 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 176
+	0x00000468 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 177
+	0x0000046C : add	// , RunEventLine, -1 - SAL : 178
+	0x0000046E : ixa	// , RunEventLine, -1 - SAL : 179
+	0x00000470 : dup	// , RunEventLine, -1 - SAL : 180
+	0x00000472 : eqjp		-1		0x000004D0	// , RunEventLine, -1 - SAL : 181
+	0x0000047A : dup	// , RunEventLine, -1 - SAL : 182
+	0x0000047C : eqjp		0		0x000004DE	// , RunEventLine, -1 - SAL : 183
+	0x00000484 : dup	// , RunEventLine, -1 - SAL : 184
+	0x00000486 : eqjp		1		0x0000052E	// , RunEventLine, -1 - SAL : 185
+	0x0000048E : dup	// , RunEventLine, -1 - SAL : 186
+	0x00000490 : eqjp		2		0x000005AE	// , RunEventLine, -1 - SAL : 187
+	0x00000498 : dup	// , RunEventLine, -1 - SAL : 188
+	0x0000049A : eqjp		3		0x000005CE	// , RunEventLine, -1 - SAL : 189
+	0x000004A2 : dup	// , RunEventLine, -1 - SAL : 190
+	0x000004A4 : eqjp		4		0x00000612	// , RunEventLine, -1 - SAL : 191
+	0x000004AC : dup	// , RunEventLine, -1 - SAL : 192
+	0x000004AE : eqjp		5		0x00000656	// , RunEventLine, -1 - SAL : 193
+	0x000004B6 : dup	// , RunEventLine, -1 - SAL : 194
+	0x000004B8 : eqjp		6		0x0000065E	// , RunEventLine, -1 - SAL : 195
+	0x000004C0 : dup	// , RunEventLine, -1 - SAL : 196
+	0x000004C2 : eqjp		7		0x00000666	// , RunEventLine, -1 - SAL : 197
+	0x000004CA : ujp		0x0000066E	// , RunEventLine, -1 - SAL : 198
+	0x000004D0 : rsp	// , RunEventLine, -1 - SAL : 199
+	0x000004D2 : zsetc		29 ( EventPointer )		0	// , RunEventLine, -1 - SAL : 200
+	0x000004D8 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 201
+	0x000004DE : rsp	// , RunEventLine, -1 - SAL : 202
+	0x000004E0 : pushz		27 ( NextKey )	// , RunEventLine, -1 - SAL : 203
+	0x000004E4 : nejp		20		0x0000050A	// , RunEventLine, -1 - SAL : 204
+	0x000004EC : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 205
+	0x000004F0 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 206
+	0x000004F6 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 207
+	0x000004FA : add	// , RunEventLine, -1 - SAL : 208
+	0x000004FC : ixa	// , RunEventLine, -1 - SAL : 209
+	0x000004FE : call		0x00000088	// , RunEventLine, -1 - SAL : 210
+	0x00000504 : ujp		0x00000522	// , RunEventLine, -1 - SAL : 211
+	0x0000050A : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 212
+	0x0000050E : incz		29 ( EventPointer )		-1	// , RunEventLine, -1 - SAL : 213
+	0x00000514 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 214
+	0x00000518 : add	// , RunEventLine, -1 - SAL : 215
+	0x0000051A : ixa	// , RunEventLine, -1 - SAL : 216
+	0x0000051C : call		0x00000088	// , RunEventLine, -1 - SAL : 217
+	0x00000522 : zsetc		27 ( NextKey )		-1	// , RunEventLine, -1 - SAL : 218
+	0x00000528 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 219
+	0x0000052E : rsp	// , RunEventLine, -1 - SAL : 220
+	0x00000530 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 221
+	0x00000534 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 222
+	0x0000053A : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 223
+	0x0000053E : add	// , RunEventLine, -1 - SAL : 224
+	0x00000540 : ixa	// , RunEventLine, -1 - SAL : 225
+	0x00000542 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 226
+	0x00000546 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 227
+	0x0000054C : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 228
+	0x00000550 : add	// , RunEventLine, -1 - SAL : 229
+	0x00000552 : ixa	// , RunEventLine, -1 - SAL : 230
+	0x00000554 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 231
+	0x00000558 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 232
+	0x0000055E : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 233
+	0x00000562 : add	// , RunEventLine, -1 - SAL : 234
+	0x00000564 : ixa	// , RunEventLine, -1 - SAL : 235
+	0x00000566 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 236
+	0x0000056A : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 237
+	0x00000570 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 238
+	0x00000574 : add	// , RunEventLine, -1 - SAL : 239
+	0x00000576 : ixa	// , RunEventLine, -1 - SAL : 240
+	0x00000578 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 241
+	0x0000057C : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 242
+	0x00000582 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 243
+	0x00000586 : add	// , RunEventLine, -1 - SAL : 244
+	0x00000588 : ixa	// , RunEventLine, -1 - SAL : 245
+	0x0000058A : call		0x000001F8	// , RunEventLine, -1 - SAL : 246
+	0x00000590 : pushz		27 ( NextKey )	// , RunEventLine, -1 - SAL : 247
+	0x00000594 : eqjp		20		0x000005A2	// , RunEventLine, -1 - SAL : 248
+	0x0000059C : incz		29 ( EventPointer )		-6	// , RunEventLine, -1 - SAL : 249
+	0x000005A2 : zsetc		27 ( NextKey )		-1	// , RunEventLine, -1 - SAL : 250
+	0x000005A8 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 251
+	0x000005AE : rsp	// , RunEventLine, -1 - SAL : 252
+	0x000005B0 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 253
+	0x000005B4 : incz		29 ( EventPointer )		1	// , RunEventLine, -1 - SAL : 254
+	0x000005BA : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 255
+	0x000005BE : add	// , RunEventLine, -1 - SAL : 256
+	0x000005C0 : ixa	// , RunEventLine, -1 - SAL : 257
+	0x000005C2 : call		0x00000678	// , RunEventLine, -1 - SAL : 258
+	0x000005C8 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 259
+	0x000005CE : rsp	// , RunEventLine, -1 - SAL : 260
+	0x000005D0 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 261
+	0x000005D4 : pushc		3	// , RunEventLine, -1 - SAL : 262
+	0x000005D8 : pushi		26 ( EventLine )		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 263
+	0x000005DE : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 264
+	0x000005E2 : inc	// , RunEventLine, -1 - SAL : 265
+	0x000005E4 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 266
+	0x000005E8 : add	// , RunEventLine, -1 - SAL : 267
+	0x000005EA : ixa	// , RunEventLine, -1 - SAL : 268
+	0x000005EC : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 269
+	0x000005F0 : pushc		2	// , RunEventLine, -1 - SAL : 270
+	0x000005F4 : add	// , RunEventLine, -1 - SAL : 271
+	0x000005F6 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 272
+	0x000005FA : add	// , RunEventLine, -1 - SAL : 273
+	0x000005FC : ixa	// , RunEventLine, -1 - SAL : 274
+	0x000005FE : call		0x000003EC	// , RunEventLine, -1 - SAL : 275
+	0x00000604 : add	// , RunEventLine, -1 - SAL : 276
+	0x00000606 : add	// , RunEventLine, -1 - SAL : 277
+	0x00000608 : popz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 278
+	0x0000060C : ujp		0x00000676	// , RunEventLine, -1 - SAL : 279
+	0x00000612 : rsp	// , RunEventLine, -1 - SAL : 280
+	0x00000614 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 281
+	0x00000618 : pushc		3	// , RunEventLine, -1 - SAL : 282
+	0x0000061C : pushi		26 ( EventLine )		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 283
+	0x00000622 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 284
+	0x00000626 : inc	// , RunEventLine, -1 - SAL : 285
+	0x00000628 : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 286
+	0x0000062C : add	// , RunEventLine, -1 - SAL : 287
+	0x0000062E : ixa	// , RunEventLine, -1 - SAL : 288
+	0x00000630 : pushz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 289
+	0x00000634 : pushc		2	// , RunEventLine, -1 - SAL : 290
+	0x00000638 : add	// , RunEventLine, -1 - SAL : 291
+	0x0000063A : ldrz		26 ( EventLine )	// , RunEventLine, -1 - SAL : 292
+	0x0000063E : add	// , RunEventLine, -1 - SAL : 293
+	0x00000640 : ixa	// , RunEventLine, -1 - SAL : 294
+	0x00000642 : call		0x000003C4	// , RunEventLine, -1 - SAL : 295
+	0x00000648 : add	// , RunEventLine, -1 - SAL : 296
+	0x0000064A : add	// , RunEventLine, -1 - SAL : 297
+	0x0000064C : popz		29 ( EventPointer )	// , RunEventLine, -1 - SAL : 298
+	0x00000650 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 299
+	0x00000656 : rsp	// , RunEventLine, -1 - SAL : 300
+	0x00000658 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 301
+	0x0000065E : rsp	// , RunEventLine, -1 - SAL : 302
+	0x00000660 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 303
+	0x00000666 : rsp	// , RunEventLine, -1 - SAL : 304
+	0x00000668 : ujp		0x00000676	// , RunEventLine, -1 - SAL : 305
+	0x0000066E : rsp	// , RunEventLine, -1 - SAL : 306
+	0x00000670 : zsetc		29 ( EventPointer )		0	// , RunEventLine, -1 - SAL : 307
+	0x00000676 : ret	// , RunEventLine, -1 - SAL : 308
+}
+
+
+FUNCTION : SetCurrentName()
+{
+	0x00000678 : nop	// , SetCurrentName, -1 - SAL : 494
+	0x0000067A : stnz		42 ( NameNumber of Function SetCurrentName )	// , SetCurrentName, -1 - SAL : 495
+	0x0000067E : popz		30 ( CurrentName )	// , SetCurrentName, -1 - SAL : 496
+	0x00000682 : ret	// , SetCurrentName, -1 - SAL : 497
+}
+
+
+FUNCTION : TEST()
+{
+	0x00000684 : nop	// , TEST, -1 - SAL : 527
+	0x00000686 : pushc		2	// , TEST, -1 - SAL : 528
+	0x0000068A : pushc		3	// , TEST, -1 - SAL : 529
+	0x0000068E : pushc		3	// , TEST, -1 - SAL : 530
+	0x00000692 : pushc		0	// , TEST, -1 - SAL : 531
+	0x00000696 : calls		SetFontType(40)	// , TEST, -1 - SAL : 532
+	0x0000069A : pushz		49 ( temp of Function TEST )	// , TEST, -1 - SAL : 533
+	0x0000069E : pushmi		%%15	// , TEST, -1 - SAL : 534
+	0x000006A2 : pushz		32 ( TestCount )	// , TEST, -1 - SAL : 535
+	0x000006A6 : incz		32 ( TestCount )		1	// , TEST, -1 - SAL : 536
+	0x000006AC : pushz		27 ( NextKey )	// , TEST, -1 - SAL : 537
+	0x000006B0 : pushz		29 ( EventPointer )	// , TEST, -1 - SAL : 538
+	0x000006B4 : calls		MakeStr3(176)	// , TEST, -1 - SAL : 539
+	0x000006B8 : pushc		2	// , TEST, -1 - SAL : 540
+	0x000006BC : pushc		150	// , TEST, -1 - SAL : 541
+	0x000006C0 : pushz		49 ( temp of Function TEST )	// , TEST, -1 - SAL : 542
+	0x000006C4 : calls		DrawStr(85)	// , TEST, -1 - SAL : 543
+	0x000006C8 : pushz		49 ( temp of Function TEST )	// , TEST, -1 - SAL : 544
+	0x000006CC : pushmi		%%16	// , TEST, -1 - SAL : 545
+	0x000006D0 : pushz		28 ( SelectedAnswer )	// , TEST, -1 - SAL : 546
+	0x000006D4 : pushic		31 ( Variable )		0	// , TEST, -1 - SAL : 547
+	0x000006DA : calls		MakeStr2(175)	// , TEST, -1 - SAL : 548
+	0x000006DE : pushc		2	// , TEST, -1 - SAL : 549
+	0x000006E2 : pushc		170	// , TEST, -1 - SAL : 550
+	0x000006E6 : pushz		49 ( temp of Function TEST )	// , TEST, -1 - SAL : 551
+	0x000006EA : calls		DrawStr(85)	// , TEST, -1 - SAL : 552
+	0x000006EE : ret	// , TEST, -1 - SAL : 553
+}
+
+
+FUNCTION : main()
+{
+	0x000006F0 : nop	// , main, -1 - SAL : 520
+	0x000006F2 : call		0x00000080	// , main, -1 - SAL : 521
+	0x000006F8 : calls		ClearBlack(59)	// , main, -1 - SAL : 522
+	0x000006FC : pushc		10	// , main, -1 - SAL : 523
+	0x00000700 : pushc		1	// , main, -1 - SAL : 524
+	0x00000704 : calls		SetTimer1(150)	// , main, -1 - SAL : 525
+	0x00000708 : end	// , main, -1 - SAL : 526
+}
+
+====================== SYMBOL TABLE =====================
+
+========================================================
+			SYMBOL TABLE
+
+--------------------------------------------------------
+	  VALID VAR(STATIC) : 0 - ().swData
+	  VALID VAR(STATIC) : 1 - ().swData2
+	  VALID VAR(STATIC) : 2 - ().swData3
+	  VALID VAR(STATIC) : 3 - ().swData4
+	  VALID VAR(STATIC) : 4 - ().swWidth
+	  VALID VAR(STATIC) : 5 - ().swHeight
+	  VALID VAR(STATIC) : 6 - ().swFrame
+	  VALID VAR(STATIC) : 7 - ().swFrame2
+	  VALID VAR(STATIC) : 8 - ().swFrame3
+	  VALID VAR(STATIC) : 9 - ().swFrame6
+	  VALID VAR(STATIC) : 10 - ().swVMver
+	  VALID VAR(STATIC) : 11 - ().swModel
+	  VALID VAR(STATIC) : 12 - ().swSmsRcvBuf
+	  VALID VAR(STATIC) : 13 - ().swRsRcvBuf
+	  VALID VAR(STATIC) : 14 - ().swRcvBuf
+	  VALID VAR(STATIC) : 15 - ().swReserved1
+	  VALID VAR(STATIC) : 16 - ().swReserved2
+	  VALID VAR(STATIC) : 17 - ().swReserved3
+	  VALID VAR(STATIC) : 18 - ().swReserved4
+	  VALID VAR(STATIC) : 19 - ().swSbuf
+	  VALID VAR(STATIC) : 20 - ().Me
+	  VALID VAR(STATIC) : 21 - ().Now
+	  VALID VAR(STATIC) : 22 - ().They
+	  VALID VAR(STATIC) : 23 - ().Names
+	  VALID VAR(STATIC) : 24 - ().Messages
+	  VALID VAR(STATIC) : 25 - ().SelectMessages
+	  VALID VAR(STATIC) : 26 - ().EventLine
+	  VALID VAR(STATIC) : 27 - ().NextKey
+	  VALID VAR(STATIC) : 28 - ().SelectedAnswer
+	  VALID VAR(STATIC) : 29 - ().EventPointer
+	  VALID VAR(STATIC) : 30 - ().CurrentName
+	  VALID VAR(STATIC) : 31 - ().Variable
+	  VALID VAR(STATIC) : 32 - ().TestCount
+	  VALID VAR(STATIC) : 33 - DrawMessages().MessageNumber
+	  VALID VAR(STATIC) : 34 - DrawMessages().TempString
+	  VALID VAR(STATIC) : 35 - DrawMessages().Length
+	  VALID VAR(STATIC) : 36 - DrawMessages().i
+	  VALID VAR(STATIC) : 37 - DrawQuestion().Value
+	  VALID VAR(STATIC) : 38 - DrawQuestion().Select1
+	  VALID VAR(STATIC) : 39 - DrawQuestion().Select2
+	  VALID VAR(STATIC) : 40 - DrawQuestion().Select3
+	  VALID VAR(STATIC) : 41 - DrawQuestion().Select4
+	  VALID VAR(STATIC) : 42 - SetCurrentName().NameNumber
+	  VALID VAR(STATIC) : 43 - IfEqual().Value1
+	  VALID VAR(STATIC) : 44 - IfEqual().Value2
+	  VALID VAR(STATIC) : 45 - IfEqual().ElseCount
+	  VALID VAR(STATIC) : 46 - ElseEqual().Value1
+	  VALID VAR(STATIC) : 47 - ElseEqual().Value2
+	  VALID VAR(STATIC) : 48 - ElseEqual().IfCount
+	  VALID VAR(STATIC) : 49 - TEST().temp
+========================================================
+
+============================== SYMBOL POOL ==============================
+0  th SYMBOL POOL[0x0000089C] : Real Offset 0x0000089C
+1  th SYMBOL POOL[0x000008A0] : Real Offset 0x000008A0
+2  th SYMBOL POOL[0x000008A4] : Real Offset 0x000008A4
+3  th SYMBOL POOL[0x000008A8] : Real Offset 0x000008A8
+4  th SYMBOL POOL[0x000008AC] : Real Offset 0x000008AC
+5  th SYMBOL POOL[0x000008B0] : Real Offset 0x000008B0
+6  th SYMBOL POOL[0x000008B4] : Real Offset 0x000008B4
+7  th SYMBOL POOL[0x000008B8] : Real Offset 0x000008B8
+8  th SYMBOL POOL[0x000008BC] : Real Offset 0x000008BC
+9  th SYMBOL POOL[0x000008C0] : Real Offset 0x000008C0
+10 th SYMBOL POOL[0x000008C4] : Real Offset 0x000008C4
+11 th SYMBOL POOL[0x000008D0] : Real Offset 0x000008D0
+12 th SYMBOL POOL[0x000008F0] : Real Offset 0x000008F0
+13 th SYMBOL POOL[0x00000994] : Real Offset 0x00000994
+14 th SYMBOL POOL[0x00000B94] : Real Offset 0x00000B94
+15 th SYMBOL POOL[0x00000F94] : Real Offset 0x00000F94
+16 th SYMBOL POOL[0x00000F98] : Real Offset 0x00000F98
+17 th SYMBOL POOL[0x00000F9C] : Real Offset 0x00000F9C
+18 th SYMBOL POOL[0x00000FA0] : Real Offset 0x00000FA0
+19 th SYMBOL POOL[0x00000FA4] : Real Offset 0x00000FA4
+20 th SYMBOL POOL[0x00000FA8] : Real Offset 0x00000FA8
+21 th SYMBOL POOL[0x00000FB0] : Real Offset 0x00000FB0
+22 th SYMBOL POOL[0x00000FCC] : Real Offset 0x00000FCC
+23 th SYMBOL POOL[0x00000FE4] : Real Offset 0x00000FE4
+24 th SYMBOL POOL[0x00000FF8] : Real Offset 0x00000FF8
+25 th SYMBOL POOL[0x00001010] : Real Offset 0x00001010
+26 th SYMBOL POOL[0x00001020] : Real Offset 0x00001020
+27 th SYMBOL POOL[0x000010D4] : Real Offset 0x000010D4
+28 th SYMBOL POOL[0x000010D8] : Real Offset 0x000010D8
+29 th SYMBOL POOL[0x000010DC] : Real Offset 0x000010DC
+30 th SYMBOL POOL[0x000010E0] : Real Offset 0x000010E0
+31 th SYMBOL POOL[0x000010E4] : Real Offset 0x000010E4
+32 th SYMBOL POOL[0x000011AC] : Real Offset 0x000011AC
+33 th SYMBOL POOL[0x000011B0] : Real Offset 0x000011B0
+34 th SYMBOL POOL[0x000011B4] : Real Offset 0x000011B4
+35 th SYMBOL POOL[0x000011B8] : Real Offset 0x000011B8
+36 th SYMBOL POOL[0x000011BC] : Real Offset 0x000011BC
+37 th SYMBOL POOL[0x000011C0] : Real Offset 0x000011C0
+38 th SYMBOL POOL[0x000011C4] : Real Offset 0x000011C4
+39 th SYMBOL POOL[0x000011C8] : Real Offset 0x000011C8
+40 th SYMBOL POOL[0x000011CC] : Real Offset 0x000011CC
+41 th SYMBOL POOL[0x000011D0] : Real Offset 0x000011D0
+42 th SYMBOL POOL[0x000011D4] : Real Offset 0x000011D4
+43 th SYMBOL POOL[0x000011D8] : Real Offset 0x000011D8
+44 th SYMBOL POOL[0x000011DC] : Real Offset 0x000011DC
+45 th SYMBOL POOL[0x000011E0] : Real Offset 0x000011E0
+46 th SYMBOL POOL[0x000011E4] : Real Offset 0x000011E4
+47 th SYMBOL POOL[0x000011E8] : Real Offset 0x000011E8
+48 th SYMBOL POOL[0x000011EC] : Real Offset 0x000011EC
+49 th SYMBOL POOL[0x000011F0] : Real Offset 0x000011F0
