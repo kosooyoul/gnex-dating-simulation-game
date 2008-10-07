@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Documents and Settings\master\πŸ≈¡ »≠∏È\integral\main.sal
+C:\Documents and Settings\js203\πŸ≈¡ »≠∏È\integral\main.sal
 
 Generating code...
 
@@ -10,12 +10,14 @@ HEADER_COMPTYPE is 0
 
 Script profile : 
 
-	Script size       : 5744 Byte(s)
-	Code size         : 2062 Byte(s)
-	Symbol count      : 58
-	Total media count : 23
-	Total media size  : 316 Byte(s)
-		String count  : 23
-		String size   : 316 Byte(s)
+	Script size       : 17220 Byte(s)
+	Code size         : 4752 Byte(s)
+	Symbol count      : 96
+	Total media count : 47
+	Total media size  : 8268 Byte(s)
+		String count  : 41
+		String size   : 540 Byte(s)
+		Image count   : 6
+		Image size    : 7728 Byte(s)
 
 integral.sgs - 0 error(s), 0 warning(s)

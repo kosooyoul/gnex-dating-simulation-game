@@ -7,12 +7,14 @@ const string Names[] = {
 };
 
 const string Messages[] = {
-	"학교가서 뭐하게?",
+	"학교가서 뭐하게?학교가서 뭐하게?학교가서 뭐하게?학교가서 뭐하게?학교가서 뭐하게?학교가서 뭐하게?",
 	"어 심심해.",
 	"밥먹은지 얼마나 됐다고 또 먹을라고?",
 	"피곤하면 집에나 가.",
 	"반드시 출력",
-	"대화테스트 끝"
+	"대화테스트 끝",
+	"대화테스트 시작",
+	"Do you know ME??"
 };
 
 const string SelectMessages[] = {
@@ -23,25 +25,25 @@ const string SelectMessages[] = {
 };
 
 const int EventLine[] = {
-	1,0,0,1,2,3,		//DrawQuestion(Variable[0], SelectMessages[0, 1, 2, 3])
+	1,0,4,0,1,2,3,		//DrawQuestion(Variable[0], MsgCount = 4, SelectMessages[0, 1, 2, 3])
 
-	3,0,0,4,			//If(0 == Variable[0]) Goto(EventPointer + 4)
-	2,0,				//	SetCurrentName(Names[0])	: 이름 = "누구?"
+	3,0,0,5,			//If(0 == Variable[0]) Goto(EventPointer + 4)
+	2,0,0,				//	SetCurrentName(Names[0])	: 이름 = "누구?"
 	0,0,				//	DrawMessages(Messages[0])	: "학교가서 뭐하게?"
 
-	3,1,0,4,			//If(1 == Variable[0]) Goto(EventPointer + 4)
-	2,1,				//	SetCurrentName(Names[1])	: 이름 = "바바"
+	3,1,0,5,			//If(1 == Variable[0]) Goto(EventPointer + 4)
+	2,1,1,				//	SetCurrentName(Names[1])	: 이름 = "바바"
 	0,1,				//	DrawMessages(Messages[1])	: "어 심심해."
 
-	3,2,0,4,			//If(2 == Variable[0]) Goto(EventPointer + 4)
-	2,2,				//	SetCurrentName(Names[2])	: 이름 = "알리바바와 42개의 주전자"
+	3,2,0,5,			//If(2 == Variable[0]) Goto(EventPointer + 4)
+	2,2,0,				//	SetCurrentName(Names[2])	: 이름 = "알리바바와 42개의 주전자"
 	0,2,				//	DrawMessages(Messages[2])	: "밥먹은지 얼마나 됐다고 또 먹을라고?"
 
-	3,3,0,4,			//If(3 == Variable[0]) Goto(EventPointer + 4)
-	2,3,				//	SetCurrentName(Names[3])	: 이름 = "그사람"
+	3,3,0,5,			//If(3 == Variable[0]) Goto(EventPointer + 4)
+	2,3,1,				//	SetCurrentName(Names[3])	: 이름 = "그사람"
 	0,3,				//	DrawMessages(Messages[3])	: "피곤하면 집에나 가."
 
-	2,-1,				//SetCurrentName(NONE)		: 이름 = 없음
+	2,-1,0,				//SetCurrentName(NONE)		: 이름 = 없음
 	0,4,				//DrawMessages(Messages[4])	: "반드시 출력"
 	0,5,				//DrawMessages(Messages[5])	: "대화테스트 끝"
 
