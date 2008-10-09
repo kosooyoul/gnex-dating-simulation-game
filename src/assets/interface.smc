@@ -1,18 +1,18 @@
 /*****************************************************************************/
 /* GNEX Image Master v3.20 Map Output for Mobile C						 */
 /*                                                                           */
-/* Output file : C:\Documents and Settings\js203\바탕 화면\integral\interface.smc					*/
-/*    IDF file  : C:\Documents and Settings\js203\바탕 화면\integral\interface.idf					*/
+/* Output file : C:\Users\Ahyane\Desktop\GNEX\Project\integral\interface.smc					*/
+/*    IDF file  : C:\Users\Ahyane\Desktop\GNEX\Project\integral\interface.idf					*/
 /*                                                                           */
 /* First written : Tuesday, October 07, 2008 16:28:51			     */
-/* Last modified : Tuesday, October 07, 2008 17:06:00			     */
+/* Last modified : Thursday, October 09, 2008 23:05:41			     */
 /*                                                                           */
 /* Copyright(c) 2000~2007 Sinjisoft Corporation.  All rights reserved.       */
 /*****************************************************************************/
 
 // 전체 블럭에 대해 지정한 속성 배열 저장
-binary interface_BlockInfo={0, 0, 0, 0, 0, 0};
-int interface_BlockName[6]; // 전체 블럭에 대한 블럭 포인터 배열 저장
+binary interface_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0};
+int interface_BlockName[8]; // 전체 블럭에 대한 블럭 포인터 배열 저장
 void interface_BlockNameInit()
 {
 	interface_BlockName[0]=talk_sup;
@@ -21,4 +21,6 @@ void interface_BlockNameInit()
 	interface_BlockName[3]=talk_main;
 	interface_BlockName[4]=talk_sub;
 	interface_BlockName[5]=talk_sel;
+	interface_BlockName[6]=menu;
+	interface_BlockName[7]=bg[0];
 }

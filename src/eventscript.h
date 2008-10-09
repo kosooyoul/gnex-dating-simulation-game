@@ -79,7 +79,7 @@ void DrawMessages(int MessageNumber)
 	Length = StrLen(Messages[MessageNumber]) / 36 + 1;
 
 	//이름 표시위치 계산
-	PosNameY = 252- 14 * Length;
+	PosNameY = 252- 14 * ((3)) -(P_MSG_Y);
 
 	if(CurrentName > -1)
 	{
@@ -87,59 +87,78 @@ void DrawMessages(int MessageNumber)
 		{
 			case 0:
 				//이름 배경 왼쪽
-				CopyImage(4, 252 - 14 * Length, talk_name);
-				CopyImage(215, 260 - 14 * Length, talk_ok);
+				CopyImage(4, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
+				CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 				//이름 출력
 				SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
 				DrawStr(40, PosNameY + 5, Names[CurrentName]);
 				break;
 			case 1:
 				//이름 배경 오른쪽
-				CopyImage(166, 252 - 14 * Length, talk_name);
-				CopyImage(2, 260 - 14 * Length, talk_ok);
+				CopyImage(166, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
+				CopyImage(2, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 				//이름 출력
 				SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
 				DrawStr(202, PosNameY + 5, Names[CurrentName]);
 		}
+	}else{
+		CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 	}
-
+	
 	//대화 출력
 	SetColor(S_BLACK);
-	FillRectEx(4, 274 - 14 * Length, 285, 290, 2);
-	CopyImage(0, 270 - 14 * Length, talk_sup);
+	FillRectEx(4, 274 - 14 * ((3)) -(P_MSG_Y), 285, 290 -(P_MSG_Y), 2);
+	CopyImage(0, 270 - 14 * ((3)) -(P_MSG_Y), talk_sup);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	for(i = 0; i < Length; i++)
+	for(i = 0; i < ((4)); i++)
 	{
-		CopyImage(0,  275 - 14 * i, talk_main);
-		StrSub(TempString, Messages[MessageNumber], i * 36, 36);
-		
-		DrawStr(7, 277 - (Length - i) * 14, TempString);
+		CopyImage(0,  275 - 14 * i -(P_MSG_Y), talk_main);
+		if(i < Length){
+			StrSub(TempString, Messages[MessageNumber], i * 36, 36);
+			DrawStr(7, 277 - (((3)) - i) * 14 -(P_MSG_Y), TempString);
+		}
 	}
-	CopyImage(0,  288, talk_sub);
+	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
 }
 
 //1 > 선택지 출력
 void DrawQuestion(int Value, int MsgCount, int Select1, int Select2, int Select3, int Select4)
 {
+int i;
+string Temp;
 	//선택지 내용
 	SetColor(S_BLACK);
-	FillRectEx(4, 288 - 14 * MsgCount, 285, 290, 2);
-	CopyImage(0, 284 - 14 * MsgCount, talk_sup);
+	FillRectEx(4, 288 - 14 * ((4)) -(P_MSG_Y), 285, 290 -(P_MSG_Y), 2);
+	CopyImage(0, 284 - 14 * ((4)) -(P_MSG_Y), talk_sup);
+	CopyImage(0,  275 - 14 * 2 -(P_MSG_Y), talk_main);
+	CopyImage(0,  275 - 14 * 1 -(P_MSG_Y), talk_main);
+	CopyImage(0,  275 -(P_MSG_Y), talk_main);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+
+	for(i = 0; i < MsgCount; i++){
+		switch(i+1){
+			case 4: Temp = SelectMessages[Select4];break;
+			case 3: Temp = SelectMessages[Select3];break;
+			case 2: Temp = SelectMessages[Select2];break;
+			case 1: Temp = SelectMessages[Select1];break;
+		}
+		DrawStr(120, 235 + i * 14 -(P_MSG_Y), Temp);
+	}
+	/*
 	switch(MsgCount){
 		case 4:
-			DrawStr(120, 277 - (MsgCount - 4) * 14, SelectMessages[Select4]);
+			DrawStr(120, 277 - (MsgCount - 4) * 14 -(P_MSG_Y), SelectMessages[Select4]);
 		case 3:
-			CopyImage(0,  275 - 14 * 2, talk_main);
-			DrawStr(120, 277 - (MsgCount - 3) * 14, SelectMessages[Select3]);
+		
+			DrawStr(120, 277 - (MsgCount - 3) * 14 -(P_MSG_Y), SelectMessages[Select3]);
 		case 2:
-			CopyImage(0,  275 - 14 * 1, talk_main);
-			DrawStr(120, 277 - (MsgCount - 2) * 14, SelectMessages[Select2]);
+		
+			DrawStr(120, 277 - (MsgCount - 2) * 14 -(P_MSG_Y), SelectMessages[Select2]);
 		case 1:
-			CopyImage(0,  275, talk_main);
-			DrawStr(120, 277 - (MsgCount - 1) * 14, SelectMessages[Select1]);
+			DrawStr(120, 277 - (MsgCount - 1) * 14 -(P_MSG_Y), SelectMessages[Select1]);
 	}
-	CopyImage(0,  288, talk_sub);
+	*/
+	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
 
 	//키입력
 	if(NextKey == SWAP_KEY_DOWN)
@@ -159,15 +178,17 @@ void DrawQuestion(int Value, int MsgCount, int Select1, int Select2, int Select3
 
 	//선택항목 표시
 	SetColor(S_WHITE);
-	FillRectEx(6, 277 + 12 - (MsgCount - SelectedAnswer) * 14, 233, 277 + 26 - (MsgCount - SelectedAnswer) * 14, 3);
-	CopyImage(4, 277 + 11 - (MsgCount - SelectedAnswer) * 14, talk_sel);
+	//FillRectEx(6, 277 + 12 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), 233, 277 + 26 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), 3);
+	//CopyImage(4, 277 + 11 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), talk_sel);
+	FillRectEx(6, 233 + SelectedAnswer * 14 -(P_MSG_Y), 233, 247 + SelectedAnswer * 14 -(P_MSG_Y), 3);
+	CopyImage(4, 232 + SelectedAnswer * 14 -(P_MSG_Y), talk_sel);
 }
 
 //2 > 현재 화자이름과 위치 설정
 void SetCurrentName(int NameNumber, int Position)
 {
-	CurrentName = NameNumber;
-	NamePosition = Position;
+	CurrentName = NameNumber;	//-1:없음
+	NamePosition = Position;	//0:좌, 1:우
 }
 
 //3 > 같을경우 계속 수행
