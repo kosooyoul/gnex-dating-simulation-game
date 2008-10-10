@@ -72,66 +72,70 @@
 .equ 	&EventPointer 	   41     0     0
 .equ 	&CurrentName 	   42     0     0
 .equ 	&NamePosition 	   43     0     0
-.syma 	&Variable 	   44    50     0
-.equ 	&TestCount 	   45     0     0
-.sym 	GetTotalDay&Year 	   46     1
-.sym 	GetTotalDay&Month 	   47     1
-.sym 	GetTotalDay&Day 	   48     1
-.sym 	GetTotalDay&Total 	   49     1
-.sym 	GetTotalDay&i 	   50     1
-.sym 	GetWeek&Year 	   51     1
-.sym 	GetWeek&Month 	   52     1
-.sym 	GetWeek&Day 	   53     1
-.sym 	DrawBackground&i 	   54     1
-.equ 	DrawBackground&temp 	   55   %%42     1
-.equ 	DrawInterface&TempString 	   56   %%43     1
-.sym 	DrawMessages&MessageNumber 	   57     1
-.equ 	DrawMessages&TempString 	   58   %%44     1
-.sym 	DrawMessages&Length 	   59     1
-.sym 	DrawMessages&i 	   60     1
-.sym 	DrawMessages&PosNameY 	   61     1
-.sym 	DrawQuestion&Value 	   62     1
-.sym 	DrawQuestion&MsgCount 	   63     1
-.sym 	DrawQuestion&Select1 	   64     1
-.sym 	DrawQuestion&Select2 	   65     1
-.sym 	DrawQuestion&Select3 	   66     1
-.sym 	DrawQuestion&Select4 	   67     1
-.sym 	DrawQuestion&i 	   68     1
-.equ 	DrawQuestion&Temp 	   69   %%45     1
-.sym 	SetCurrentName&NameNumber 	   70     1
-.sym 	SetCurrentName&Position 	   71     1
-.sym 	IfEqual&Value1 	   72     1
-.sym 	IfEqual&Value2 	   73     1
-.sym 	IfEqual&ElseCount 	   74     1
-.sym 	ElseEqual&Value1 	   75     1
-.sym 	ElseEqual&Value2 	   76     1
-.sym 	ElseEqual&IfCount 	   77     1
-.sym 	SetBackground&Layer 	   78     1
-.sym 	SetBackground&ImageNumber 	   79     1
-.sym 	SetChara&Layer 	   80     1
-.sym 	SetChara&ImageNumber 	   81     1
-.sym 	SetDate&Year 	   82     1
-.sym 	SetDate&Month 	   83     1
-.sym 	SetDate&Day 	   84     1
-.sym 	SetTime&Hour 	   85     1
-.sym 	SetTime&Minute 	   86     1
-.sym 	SetWeather&Weather 	   87     1
-.sym 	PassTime&Element 	   88     1
-.sym 	PassTime&Count 	   89     1
-.sym 	PassTime&TempCount 	   90     1
-.equ 	TEST&temp 	   91   %%46     1
-.sym 	TEST&i 	   92     1
-.equ 	TEST&TempString 	   93   %%31     1
-.sym 	ShadowText&j 	   94     1
-.sym 	ShadowText&i 	   95     1
-.sym 	ShadowText&z 	   96     1
-.sym 	ShadowText&sc 	   97     1
-.sym 	ShadowText&tc 	   98     1
-.equ 	ShadowText&TempString 	   99   %%48     1
+.equ 	&EffectFrame 	   44     0     0
+.syma 	&Variable 	   45    50     0
+.equ 	&TestCount 	   46     0     0
+.sym 	GetTotalDay&Year 	   47     1
+.sym 	GetTotalDay&Month 	   48     1
+.sym 	GetTotalDay&Day 	   49     1
+.sym 	GetTotalDay&Total 	   50     1
+.sym 	GetTotalDay&i 	   51     1
+.sym 	GetWeek&Year 	   52     1
+.sym 	GetWeek&Month 	   53     1
+.sym 	GetWeek&Day 	   54     1
+.sym 	ScreenEffect&Type 	   55     1
+.sym 	ScreenEffect&Count 	   56     1
+.sym 	DrawBackground&i 	   57     1
+.equ 	DrawBackground&temp 	   58   %%42     1
+.equ 	DrawInterface&TempString 	   59   %%43     1
+.sym 	DrawMessages&MessageNumber 	   60     1
+.equ 	DrawMessages&TempString 	   61   %%44     1
+.sym 	DrawMessages&Length 	   62     1
+.sym 	DrawMessages&i 	   63     1
+.sym 	DrawMessages&PosNameY 	   64     1
+.sym 	DrawQuestion&Value 	   65     1
+.sym 	DrawQuestion&MsgCount 	   66     1
+.sym 	DrawQuestion&Select1 	   67     1
+.sym 	DrawQuestion&Select2 	   68     1
+.sym 	DrawQuestion&Select3 	   69     1
+.sym 	DrawQuestion&Select4 	   70     1
+.sym 	DrawQuestion&i 	   71     1
+.equ 	DrawQuestion&Temp 	   72   %%45     1
+.sym 	SetCurrentName&NameNumber 	   73     1
+.sym 	SetCurrentName&Position 	   74     1
+.sym 	IfEqual&Value1 	   75     1
+.sym 	IfEqual&Value2 	   76     1
+.sym 	IfEqual&ElseCount 	   77     1
+.sym 	ElseEqual&Value1 	   78     1
+.sym 	ElseEqual&Value2 	   79     1
+.sym 	ElseEqual&IfCount 	   80     1
+.sym 	SetBackground&Layer 	   81     1
+.sym 	SetBackground&ImageNumber 	   82     1
+.sym 	SetChara&Layer 	   83     1
+.sym 	SetChara&ImageNumber 	   84     1
+.sym 	SetDate&Year 	   85     1
+.sym 	SetDate&Month 	   86     1
+.sym 	SetDate&Day 	   87     1
+.sym 	SetTime&Hour 	   88     1
+.sym 	SetTime&Minute 	   89     1
+.sym 	SetWeather&Weather 	   90     1
+.sym 	PassTime&Element 	   91     1
+.sym 	PassTime&Count 	   92     1
+.sym 	PassTime&TempCount 	   93     1
+.equ 	TEST&temp 	   94   %%46     1
+.sym 	TEST&i 	   95     1
+.equ 	TEST&TempString 	   96   %%31     1
+.sym 	ShadowText&j 	   97     1
+.sym 	ShadowText&i 	   98     1
+.sym 	ShadowText&z 	   99     1
+.sym 	ShadowText&sc 	  100     1
+.sym 	ShadowText&tc 	  101     1
+.equ 	ShadowText&TempString 	  102   %%48     1
 @EXTERN_INTSYMBOL_TABLE
 @STATIC_FUNC_TABLE
 .func     GetTotalDay 	3	
 .func     GetWeek 	3	
+.func     ScreenEffect 	2	
 .func     InitNature 	0	
 .func     InitEvent 	0	
 .func     DrawBackground 	0	
@@ -228,9 +232,12 @@
     0xc7 0xd0 0xb1 0xb3 0xb0 0xa1 0xbc 0xad 0x20 0xb9 0xb9 0xc7 
     0xcf 0xb0 0xd4 0x3f 0xb0 0xa1 0xbc 0xad 0x20 0xb9 0xb9 0xc7 
     0xcf 0xb0 0xd4 0x3f 0x20 0xc0 0xc0 0x3f 0x00
-.equm 	%%20 	   20     0    11
-// string form = "어 심심해."
-    0xbe 0xee 0x20 0xbd 0xc9 0xbd 0xc9 0xc7 0xd8 0x2e 0x00
+.equm 	%%20 	   20     0    48
+// string form = "がっこうへ いったら, なにを する  つもりですか?"
+    0xaa 0xac 0xaa 0xc3 0xaa 0xb3 0xaa 0xa6 0xaa 0xd8 0x20 0xaa 
+    0xa4 0xaa 0xc3 0xaa 0xbf 0xaa 0xe9 0x2c 0x20 0xaa 0xca 0xaa 
+    0xcb 0xaa 0xf2 0x20 0xaa 0xb9 0xaa 0xeb 0x20 0x20 0xaa 0xc4 
+    0xaa 0xe2 0xaa 0xea 0xaa 0xc7 0xaa 0xb9 0xaa 0xab 0x3f 0x00
 .equm 	%%21 	   21     0    36
 // string form = "밥먹은지 얼마나 됐다고 또 먹을라고?"
     0xb9 0xe4 0xb8 0xd4 0xc0 0xba 0xc1 0xf6 0x20 0xbe 0xf3 0xb8 
@@ -240,9 +247,10 @@
 // string form = "피곤하면 집에나 가."
     0xc7 0xc7 0xb0 0xef 0xc7 0xcf 0xb8 0xe9 0x20 0xc1 0xfd 0xbf 
     0xa1 0xb3 0xaa 0x20 0xb0 0xa1 0x2e 0x00
-.equm 	%%23 	   23     0    12
-// string form = "반드시 출력"
-    0xb9 0xdd 0xb5 0xe5 0xbd 0xc3 0x20 0xc3 0xe2 0xb7 0xc2 0x00
+.equm 	%%23 	   23     0    22
+// string form = "あきらかだ반드시 출력"
+    0xaa 0xa2 0xaa 0xad 0xaa 0xe9 0xaa 0xab 0xaa 0xc0 0xb9 0xdd 
+    0xb5 0xe5 0xbd 0xc3 0x20 0xc3 0xe2 0xb7 0xc2 0x00
 .equm 	%%24 	   24     0    14
 // string form = "대화테스트 끝"
     0xb4 0xeb 0xc8 0xad 0xc5 0xd7 0xbd 0xba 0xc6 0xae 0x20 0xb3 
@@ -406,6 +414,212 @@ GetWeek:   nop
            pushc    7   
            mod      
            ret      
+ScreenEffect: nop   
+           popz     ScreenEffect&Count   
+           popz     ScreenEffect&Type   
+           ssp      
+           pushz    ScreenEffect&Type   
+           dup      
+           eqjp     0   $$14:
+           dup      
+           eqjp     1   $$15:
+           rsp      
+           ujp      $$13:
+$$14:      rsp      
+           ssp      
+           pushz    ScreenEffect&Count   
+           dup      
+           eqjp     0   $$17:
+           dup      
+           eqjp     1   $$18:
+           dup      
+           eqjp     2   $$19:
+           dup      
+           eqjp     3   $$20:
+           dup      
+           eqjp     4   $$20:
+           dup      
+           eqjp     5   $$20:
+           dup      
+           eqjp     6   $$20:
+           dup      
+           eqjp     7   $$21:
+           dup      
+           eqjp     8   $$22:
+           dup      
+           eqjp     9   $$23:
+           rsp      
+           ujp      $$13:
+$$17:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    3   
+           calls    FillRectEx
+           ujp      $$13:
+$$18:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    2   
+           calls    FillRectEx
+           ujp      $$13:
+$$19:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    1   
+           calls    FillRectEx
+           ujp      $$13:
+$$20:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    0   
+           calls    FillRectEx
+           ujp      $$13:
+$$21:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    1   
+           calls    FillRectEx
+           ujp      $$13:
+$$22:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    2   
+           calls    FillRectEx
+           ujp      $$13:
+$$23:      rsp      
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    280   
+           pushc    3   
+           calls    FillRectEx
+           ujp      $$13:
+           ujp      $$13:
+$$15:      rsp      
+           ssp      
+           pushz    ScreenEffect&Count   
+           dup      
+           eqjp     0   $$25:
+           dup      
+           eqjp     1   $$25:
+           dup      
+           eqjp     2   $$25:
+           dup      
+           eqjp     3   $$25:
+           dup      
+           eqjp     4   $$25:
+           dup      
+           eqjp     5   $$26:
+           dup      
+           eqjp     6   $$26:
+           dup      
+           eqjp     7   $$26:
+           dup      
+           eqjp     8   $$26:
+           dup      
+           eqjp     9   $$26:
+           rsp      
+           ujp      $$13:
+$$25:      rsp      
+           pushc    0   
+           pushc    280   
+           pushc    239   
+           pushc    280   
+           pushc    28   
+           pushz    ScreenEffect&Count   
+           inc      
+           mult     
+           sub      
+           calls    FillRect
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    20   
+           pushc    28   
+           pushz    ScreenEffect&Count   
+           inc      
+           mult     
+           add      
+           calls    FillRect
+           pushc    239   
+           pushc    20   
+           pushc    239   
+           pushc    23   
+           pushz    ScreenEffect&Count   
+           inc      
+           mult     
+           sub      
+           pushc    280   
+           calls    FillRect
+           pushc    0   
+           pushc    20   
+           pushc    0   
+           pushc    23   
+           pushz    ScreenEffect&Count   
+           inc      
+           mult     
+           add      
+           pushc    280   
+           calls    FillRect
+           ujp      $$13:
+$$26:      rsp      
+           pushc    0   
+           pushc    280   
+           pushc    239   
+           pushc    280   
+           pushc    28   
+           pushc    10   
+           pushz    ScreenEffect&Count   
+           sub      
+           mult     
+           sub      
+           calls    FillRect
+           pushc    0   
+           pushc    20   
+           pushc    239   
+           pushc    20   
+           pushc    28   
+           pushc    10   
+           pushz    ScreenEffect&Count   
+           sub      
+           mult     
+           add      
+           calls    FillRect
+           pushc    239   
+           pushc    20   
+           pushc    239   
+           pushc    23   
+           pushc    10   
+           pushz    ScreenEffect&Count   
+           sub      
+           mult     
+           sub      
+           pushc    280   
+           calls    FillRect
+           pushc    0   
+           pushc    20   
+           pushc    0   
+           pushc    23   
+           pushc    10   
+           pushz    ScreenEffect&Count   
+           sub      
+           mult     
+           add      
+           pushc    280   
+           calls    FillRect
+$$13:      ret      
 InitNature: nop     
            ldrz     &Now   
            pushc    2008   
@@ -459,10 +673,10 @@ DrawBackground: nop
            pushc    0   
            calls    SetFontType
            zsetc    DrawBackground&i   0   
-$$13:      pushz    DrawBackground&i   
-           gejp     2   $$14:
+$$27:      pushz    DrawBackground&i   
+           gejp     2   $$28:
            pushi    &Background   DrawBackground&i   
-           ltjp     0   $$15:
+           ltjp     0   $$29:
            pushc    0   
            pushc    20   
            pushi    &Background   DrawBackground&i   
@@ -470,11 +684,11 @@ $$13:      pushz    DrawBackground&i
            add      
            ixa      
            CopyImage 
-$$15:      incz     DrawBackground&i   1   
-           ujp      $$13:
-$$14:      zsetc    DrawBackground&i   0   
-$$17:      pushz    DrawBackground&i   
-           gejp     3   $$18:
+$$29:      incz     DrawBackground&i   1   
+           ujp      $$27:
+$$28:      zsetc    DrawBackground&i   0   
+$$31:      pushz    DrawBackground&i   
+           gejp     3   $$32:
            pushz    DrawBackground&temp   
            pushmi   %%5   
            pushi    &BackChara   DrawBackground&i   
@@ -488,8 +702,8 @@ $$17:      pushz    DrawBackground&i
            pushz    DrawBackground&temp   
            calls    DrawStr
            incz     DrawBackground&i   1   
-           ujp      $$17:
-$$18:      ret      
+           ujp      $$31:
+$$32:      ret      
 DrawInterface: nop  
            pushc    93   
            pushc    25   
@@ -630,46 +844,46 @@ RunEventLine: nop
            add      
            ixa      
            dup      
-           eqjp     -1   $$21:
+           eqjp     -1   $$35:
            dup      
-           eqjp     0   $$22:
+           eqjp     0   $$36:
            dup      
-           eqjp     1   $$23:
+           eqjp     1   $$37:
            dup      
-           eqjp     2   $$24:
+           eqjp     2   $$38:
            dup      
-           eqjp     3   $$25:
+           eqjp     3   $$39:
            dup      
-           eqjp     4   $$26:
+           eqjp     4   $$40:
            dup      
-           eqjp     5   $$27:
+           eqjp     5   $$41:
            dup      
-           eqjp     6   $$28:
+           eqjp     6   $$42:
            dup      
-           eqjp     7   $$29:
-           ujp      $$30:
-$$21:      rsp      
+           eqjp     7   $$43:
+           ujp      $$44:
+$$35:      rsp      
            zsetc    &EventPointer   0   
-           ujp      $$20:
-$$22:      rsp      
+           ujp      $$34:
+$$36:      rsp      
            pushz    &NextKey   
-           nejp     20   $$31:
+           nejp     20   $$45:
            pushz    &EventPointer   
            incz     &EventPointer   1   
            ldrz     &EventLine   
            add      
            ixa      
            call     DrawMessages:
-           ujp      $$32:
-$$31:      pushz    &EventPointer   
+           ujp      $$46:
+$$45:      pushz    &EventPointer   
            incz     &EventPointer   -1   
            ldrz     &EventLine   
            add      
            ixa      
            call     DrawMessages:
-$$32:      zsetc    &NextKey   -1   
-           ujp      $$20:
-$$23:      rsp      
+$$46:      zsetc    &NextKey   -1   
+           ujp      $$34:
+$$37:      rsp      
            pushz    &EventPointer   
            incz     &EventPointer   1   
            ldrz     &EventLine   
@@ -702,11 +916,11 @@ $$23:      rsp
            ixa      
            call     DrawQuestion:
            pushz    &NextKey   
-           eqjp     20   $$33:
+           eqjp     20   $$47:
            incz     &EventPointer   -7   
-$$33:      zsetc    &NextKey   -1   
-           ujp      $$20:
-$$24:      rsp      
+$$47:      zsetc    &NextKey   -1   
+           ujp      $$34:
+$$38:      rsp      
            pushz    &EventPointer   
            incz     &EventPointer   1   
            ldrz     &EventLine   
@@ -718,8 +932,8 @@ $$24:      rsp
            add      
            ixa      
            call     SetCurrentName:
-           ujp      $$20:
-$$25:      rsp      
+           ujp      $$34:
+$$39:      rsp      
            pushz    &EventPointer   
            pushc    3   
            pushi    &EventLine   &EventPointer   
@@ -738,8 +952,8 @@ $$25:      rsp
            add      
            add      
            popz     &EventPointer   
-           ujp      $$20:
-$$26:      rsp      
+           ujp      $$34:
+$$40:      rsp      
            pushz    &EventPointer   
            pushc    3   
            pushi    &EventLine   &EventPointer   
@@ -758,8 +972,8 @@ $$26:      rsp
            add      
            add      
            popz     &EventPointer   
-           ujp      $$20:
-$$27:      rsp      
+           ujp      $$34:
+$$41:      rsp      
            pushz    &EventPointer   
            incz     &EventPointer   1   
            ldrz     &EventLine   
@@ -771,8 +985,13 @@ $$27:      rsp
            add      
            ixa      
            call     SetBackground:
-           ujp      $$20:
-$$28:      rsp      
+           pushz    &EffectFrame   
+           gejp     10   $$48:
+           incz     &EventPointer   -3   
+           ujp      $$34:
+$$48:      zsetc    &EffectFrame   0   
+           ujp      $$34:
+$$42:      rsp      
            pushz    &EventPointer   
            incz     &EventPointer   1   
            ldrz     &EventLine   
@@ -784,12 +1003,12 @@ $$28:      rsp
            add      
            ixa      
            call     SetChara:
-           ujp      $$20:
-$$29:      rsp      
-           ujp      $$20:
-$$30:      rsp      
+           ujp      $$34:
+$$43:      rsp      
+           ujp      $$34:
+$$44:      rsp      
            zsetc    &EventPointer   0   
-$$20:      ret      
+$$34:      ret      
 DrawMessages: nop   
            stnz     DrawMessages&MessageNumber   
            ldrz     &Messages   
@@ -801,29 +1020,29 @@ DrawMessages: nop
            inc      
            popz     DrawMessages&Length   
            pushc    252   
-           pushc    61   
+           pushc    59   
            sub      
            popz     DrawMessages&PosNameY   
            pushz    &CurrentName   
-           lejp     -1   $$34:
+           lejp     -1   $$50:
            ssp      
            pushz    &NamePosition   
            dup      
-           eqjp     0   $$37:
+           eqjp     0   $$53:
            dup      
-           eqjp     1   $$38:
+           eqjp     1   $$54:
            rsp      
-           ujp      $$35:
-$$37:      rsp      
+           ujp      $$51:
+$$53:      rsp      
            pushc    4   
            pushc    252   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    35   
            CopyImage 
            pushc    215   
            pushc    260   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    36   
            CopyImage 
@@ -838,17 +1057,17 @@ $$37:      rsp
            add      
            pushi    &Names   &CurrentName   
            calls    DrawStr
-           ujp      $$35:
-$$38:      rsp      
+           ujp      $$51:
+$$54:      rsp      
            pushc    166   
            pushc    252   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    35   
            CopyImage 
            pushc    2   
            pushc    260   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    36   
            CopyImage 
@@ -863,26 +1082,26 @@ $$38:      rsp
            add      
            pushi    &Names   &CurrentName   
            calls    DrawStr
-           ujp      $$35:
-$$34:      pushc    215   
+           ujp      $$51:
+$$50:      pushc    215   
            pushc    260   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    36   
            CopyImage 
-$$35:      pushc    3   
+$$51:      pushc    3   
            calls    SetColor
            pushc    4   
            pushc    274   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    285   
-           pushc    271   
+           pushc    273   
            pushc    2   
            calls    FillRectEx
            pushc    0   
            pushc    270   
-           pushc    61   
+           pushc    59   
            sub      
            pushc    34   
            CopyImage 
@@ -892,22 +1111,22 @@ $$35:      pushc    3
            pushc    0   
            calls    SetFontType
            zsetc    DrawMessages&i   0   
-$$39:      pushz    DrawMessages&i   
-           gejp     4   $$40:
+$$55:      pushz    DrawMessages&i   
+           gejp     4   $$56:
            pushc    0   
            pushc    275   
            pushc    14   
            pushz    DrawMessages&i   
            mult     
            sub      
-           pushc    19   
+           pushc    17   
            sub      
            pushc    37   
            CopyImage 
            pushz    DrawMessages&i   
            pushz    DrawMessages&Length   
            lt       
-           fjp      $$41:
+           fjp      $$57:
            pushz    DrawMessages&TempString   
            pushi    &Messages   DrawMessages&MessageNumber   
            pushz    DrawMessages&i   
@@ -923,14 +1142,14 @@ $$39:      pushz    DrawMessages&i
            pushc    14   
            mult     
            sub      
-           pushc    19   
+           pushc    17   
            sub      
            pushz    DrawMessages&TempString   
            calls    DrawStr
-$$41:      incz     DrawMessages&i   1   
-           ujp      $$39:
-$$40:      pushc    0   
-           pushc    269   
+$$57:      incz     DrawMessages&i   1   
+           ujp      $$55:
+$$56:      pushc    0   
+           pushc    271   
            pushc    38   
            CopyImage 
            ret      
@@ -945,32 +1164,32 @@ DrawQuestion: nop
            calls    SetColor
            pushc    4   
            pushc    288   
-           pushc    75   
+           pushc    73   
            sub      
            pushc    285   
-           pushc    271   
+           pushc    273   
            pushc    2   
            calls    FillRectEx
            pushc    0   
            pushc    284   
-           pushc    75   
+           pushc    73   
            sub      
            pushc    34   
            CopyImage 
            pushc    0   
            pushc    275   
-           pushc    47   
+           pushc    45   
            sub      
            pushc    37   
            CopyImage 
            pushc    0   
            pushc    275   
-           pushc    33   
+           pushc    31   
            sub      
            pushc    37   
            CopyImage 
            pushc    0   
-           pushc    256   
+           pushc    258   
            pushc    37   
            CopyImage 
            pushc    2   
@@ -979,60 +1198,60 @@ DrawQuestion: nop
            pushc    1   
            calls    SetFontType
            zsetc    DrawQuestion&i   0   
-$$43:      pushz    DrawQuestion&i   
+$$59:      pushz    DrawQuestion&i   
            pushz    DrawQuestion&MsgCount   
            lt       
-           fjp      $$44:
+           fjp      $$60:
            ssp      
            pushz    DrawQuestion&i   
            inc      
            dup      
-           eqjp     4   $$47:
+           eqjp     4   $$63:
            dup      
-           eqjp     3   $$48:
+           eqjp     3   $$64:
            dup      
-           eqjp     2   $$49:
+           eqjp     2   $$65:
            dup      
-           eqjp     1   $$50:
+           eqjp     1   $$66:
            rsp      
-           ujp      $$46:
-$$47:      rsp      
+           ujp      $$62:
+$$63:      rsp      
            zseti    DrawQuestion&Temp   &SelectMessages   DrawQuestion&Select4   
-           ujp      $$46:
-$$48:      rsp      
+           ujp      $$62:
+$$64:      rsp      
            zseti    DrawQuestion&Temp   &SelectMessages   DrawQuestion&Select3   
-           ujp      $$46:
-$$49:      rsp      
+           ujp      $$62:
+$$65:      rsp      
            zseti    DrawQuestion&Temp   &SelectMessages   DrawQuestion&Select2   
-           ujp      $$46:
-$$50:      rsp      
+           ujp      $$62:
+$$66:      rsp      
            zseti    DrawQuestion&Temp   &SelectMessages   DrawQuestion&Select1   
-$$46:      pushc    120   
+$$62:      pushc    120   
            pushc    235   
            pushz    DrawQuestion&i   
            pushc    14   
            mult     
            add      
-           pushc    19   
+           pushc    17   
            sub      
            pushz    DrawQuestion&Temp   
            calls    DrawStr
            incz     DrawQuestion&i   1   
-           ujp      $$43:
-$$44:      pushc    0   
-           pushc    269   
+           ujp      $$59:
+$$60:      pushc    0   
+           pushc    271   
            pushc    38   
            CopyImage 
            pushz    &NextKey   
-           nejp     19   $$51:
+           nejp     19   $$67:
            pushz    &SelectedAnswer   
            inc      
            pushz    DrawQuestion&MsgCount   
            mod      
            popz     &SelectedAnswer   
-           ujp      $$52:
-$$51:      pushz    &NextKey   
-           nejp     18   $$53:
+           ujp      $$68:
+$$67:      pushz    &NextKey   
+           nejp     18   $$69:
            pushz    &SelectedAnswer   
            pushz    DrawQuestion&MsgCount   
            add      
@@ -1040,13 +1259,13 @@ $$51:      pushz    &NextKey
            pushz    DrawQuestion&MsgCount   
            mod      
            popz     &SelectedAnswer   
-           ujp      $$52:
-$$53:      pushz    &NextKey   
-           nejp     20   $$52:
+           ujp      $$68:
+$$69:      pushz    &NextKey   
+           nejp     20   $$68:
            isetz    &Variable   DrawQuestion&Value   &SelectedAnswer   
            zsetc    &SelectedAnswer   0   
            ret      
-$$52:      pushc    0   
+$$68:      pushc    0   
            calls    SetColor
            pushc    6   
            pushc    233   
@@ -1054,7 +1273,7 @@ $$52:      pushc    0
            pushc    14   
            mult     
            add      
-           pushc    19   
+           pushc    17   
            sub      
            pushc    233   
            pushc    247   
@@ -1062,7 +1281,7 @@ $$52:      pushc    0
            pushc    14   
            mult     
            add      
-           pushc    19   
+           pushc    17   
            sub      
            pushc    3   
            calls    FillRectEx
@@ -1072,7 +1291,7 @@ $$52:      pushc    0
            pushc    14   
            mult     
            add      
-           pushc    19   
+           pushc    17   
            sub      
            pushc    39   
            CopyImage 
@@ -1089,10 +1308,10 @@ IfEqual:   nop
            stnz     IfEqual&Value1   
            pushi    &Variable   IfEqual&Value2   
            eq       
-           fjp      $$56:
+           fjp      $$72:
            pushc    0   
            ret      
-$$56:      pushz    IfEqual&ElseCount   
+$$72:      pushz    IfEqual&ElseCount   
            ret      
 ElseEqual: nop      
            popz     ElseEqual&IfCount   
@@ -1100,18 +1319,25 @@ ElseEqual: nop
            stnz     ElseEqual&Value1   
            pushi    &Variable   ElseEqual&Value2   
            ne       
-           fjp      $$58:
+           fjp      $$74:
            pushc    0   
            ret      
-$$58:      pushz    ElseEqual&IfCount   
+$$74:      pushz    ElseEqual&IfCount   
            ret      
 SetBackground: nop  
            popz     SetBackground&ImageNumber   
-           stnz     SetBackground&Layer   
-           ldrz     &Background   
-           add      
-           pushz    SetBackground&ImageNumber   
-           sta      
+           popz     SetBackground&Layer   
+           pushz    &EffectFrame   
+           nejp     0   $$76:
+           isetz    &Background   SetBackground&Layer   SetBackground&ImageNumber   
+           ujp      $$77:
+$$76:      pushz    &EffectFrame   
+           lejp     10   $$77:
+           ret      
+$$77:      pushc    1   
+           pushz    &EffectFrame   
+           incz     &EffectFrame   1   
+           call     ScreenEffect:
            ret      
 SetChara:  nop      
            popz     SetChara&ImageNumber   
@@ -1174,26 +1400,26 @@ PassTime:  nop
            ssp      
            pushz    PassTime&Element   
            dup      
-           eqjp     0   $$61:
+           eqjp     0   $$80:
            dup      
-           eqjp     1   $$62:
+           eqjp     1   $$81:
            dup      
-           eqjp     2   $$63:
+           eqjp     2   $$82:
            dup      
-           eqjp     3   $$64:
+           eqjp     3   $$83:
            dup      
-           eqjp     4   $$65:
+           eqjp     4   $$84:
            rsp      
-           ujp      $$60:
-$$61:      rsp      
+           ujp      $$79:
+$$80:      rsp      
            ldrz     &Now   
            ldrz     &Now   
            ixa      
            pushz    PassTime&Count   
            add      
            sta      
-           ujp      $$60:
-$$62:      rsp      
+           ujp      $$79:
+$$81:      rsp      
            ldrz     &Now   
            inc      
            ldrz     &Now   
@@ -1223,8 +1449,8 @@ $$62:      rsp
            mod      
            inc      
            sta      
-           ujp      $$60:
-$$63:      rsp      
+           ujp      $$79:
+$$82:      rsp      
            ldrz     &Now   
            pushc    2   
            add      
@@ -1295,8 +1521,8 @@ $$63:      rsp
            mod      
            inc      
            sta      
-           ujp      $$60:
-$$64:      rsp      
+           ujp      $$79:
+$$83:      rsp      
            ldrz     &Now   
            pushc    4   
            add      
@@ -1317,8 +1543,8 @@ $$64:      rsp
            pushc    24   
            mod      
            sta      
-           ujp      $$60:
-$$65:      rsp      
+           ujp      $$79:
+$$84:      rsp      
            ldrz     &Now   
            pushc    5   
            add      
@@ -1353,7 +1579,7 @@ $$65:      rsp
            pushc    60   
            mod      
            sta      
-$$60:      ret      
+$$79:      ret      
 main:      nop      
            call     $init:
            call     InitNature:
@@ -1365,9 +1591,9 @@ TEST:      nop
            zsetc    TEST&i   150   
            zsetmi   TEST&TempString   %%31   
            pushz    &TestCount   
-           lejp     1800   $$66:
+           lejp     1800   $$85:
            zsetc    &TestCount   0   
-$$66:      pushc    2   
+$$85:      pushc    2   
            pushc    79   
            pushc    3   
            pushc    0   
@@ -1524,25 +1750,26 @@ ShadowText: nop
            calls    DrawStr
            ret      
 EVENT_TIMEOUT: nop  
-           calls    ClearBlack
+           pushc    25   
+           calls    Clear
            ssp      
            pushz    &swData   
            dup      
-           eqjp     0   $$68:
+           eqjp     0   $$87:
            dup      
-           eqjp     1   $$68:
+           eqjp     1   $$87:
            dup      
-           eqjp     2   $$69:
+           eqjp     2   $$88:
            rsp      
-           ujp      $$67:
-$$68:      rsp      
+           ujp      $$86:
+$$87:      rsp      
            call     DrawBackground:
            call     TEST:
            call     RunEventLine:
            call     DrawInterface:
-           ujp      $$67:
-$$69:      rsp      
-$$67:      calls    Flush
+           ujp      $$86:
+$$88:      rsp      
+$$86:      calls    Flush
            end      
 EVENT_KEYPRESS: nop 
            zsetz    &NextKey   &swData   

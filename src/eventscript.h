@@ -4,6 +4,7 @@ int SelectedAnswer = 0;		//선택지 번호
 int EventPointer = 0;		//실행중 이벤트라인 위치
 int CurrentName = 0;		//현재 화자의 이름
 int NamePosition = 0;		//현재 화자의 이름 표시 위치
+int EffectFrame = 0;		//화면전환 효과 프레임 번호
 
 int Variable[50];			//게임변수
 
@@ -51,6 +52,14 @@ void RunEventLine(){
 
 		case 5:		//배경화면 교체
 			SetBackground(EventLine[EventPointer++], EventLine[EventPointer++]);
+			if(EffectFrame < MOVE_EFFECT_COUNT)
+			{
+				EventPointer -= 3;
+			}
+			else
+			{
+				EffectFrame = 0;
+			}
 			break;
 
 		case 6:		//케릭터 교체
@@ -144,20 +153,7 @@ string Temp;
 		}
 		DrawStr(120, 235 + i * 14 -(P_MSG_Y), Temp);
 	}
-	/*
-	switch(MsgCount){
-		case 4:
-			DrawStr(120, 277 - (MsgCount - 4) * 14 -(P_MSG_Y), SelectMessages[Select4]);
-		case 3:
-		
-			DrawStr(120, 277 - (MsgCount - 3) * 14 -(P_MSG_Y), SelectMessages[Select3]);
-		case 2:
-		
-			DrawStr(120, 277 - (MsgCount - 2) * 14 -(P_MSG_Y), SelectMessages[Select2]);
-		case 1:
-			DrawStr(120, 277 - (MsgCount - 1) * 14 -(P_MSG_Y), SelectMessages[Select1]);
-	}
-	*/
+
 	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
 
 	//키입력
@@ -178,8 +174,6 @@ string Temp;
 
 	//선택항목 표시
 	SetColor(S_WHITE);
-	//FillRectEx(6, 277 + 12 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), 233, 277 + 26 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), 3);
-	//CopyImage(4, 277 + 11 - (MsgCount - SelectedAnswer) * 14 -(P_MSG_Y), talk_sel);
 	FillRectEx(6, 233 + SelectedAnswer * 14 -(P_MSG_Y), 233, 247 + SelectedAnswer * 14 -(P_MSG_Y), 3);
 	CopyImage(4, 232 + SelectedAnswer * 14 -(P_MSG_Y), talk_sel);
 }
@@ -208,7 +202,12 @@ int ElseEqual(int Value1, int Value2, int IfCount)
 //5 > 표시 배경 이미지 교체
 void SetBackground(int Layer, int ImageNumber)
 {
-	Background[Layer] = ImageNumber;
+	if(EffectFrame == 0){
+		Background[Layer] = ImageNumber;
+	}else if (EffectFrame > MOVE_EFFECT_COUNT){	
+		return;
+	}
+	ScreenEffect(1, EffectFrame++);
 }
 
 //6 > 표시 케릭터 이미지 교체

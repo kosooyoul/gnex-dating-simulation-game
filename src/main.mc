@@ -100,7 +100,7 @@ void ShadowText(int j, int i, int z, int sc, int tc)
 
 void EVENT_TIMEOUT()
 {
-	ClearBlack();
+	Clear(S_JADE);
 
 	switch(swData){
 		case 0:
