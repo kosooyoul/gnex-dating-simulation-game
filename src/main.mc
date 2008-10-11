@@ -48,33 +48,12 @@ void main()
 {
 	InitNature();
 
-	SetTimer1(10,1);		//이벤트 처리 주기
+	SetTimer1(20,1);                //이벤트 처리 주기
 }
 
-void TEST()
-{
-	string temp;
-	int i=150;
-	string TempString = "임시 텍스트 임시 임시 ㅎㅎ";
-	//*테스트:전역변수 확인
-	if(TestCount > 1800)
-	TestCount=0;
-	SetFontType(S_FONT_LARGE, S_BLOODRED, S_BLACK, S_ALIGN_LEFT);
-	MakeStr3(temp,"Timer=%3d  Key=%3d  EventPointer=%d",TestCount++,NextKey,EventPointer);
-	DrawStr(2,-30 + TestCount%360,temp);
-	MakeStr3(temp," CNT=%d  SelectedAnswer=%d  Variable[0]=%d",(TestCount%700)/100,SelectedAnswer,Variable[0]);
-	SetFontType(S_FONT_LARGE, S_RED, S_BLACK, S_ALIGN_LEFT);
-	DrawStr(3,-10 + TestCount%360,temp);
-	/*
-	//i = TestCount%360;
-	ShadowText(10, 100, 0 + (TestCount%400)/80, S_BLACK, S_WHITE);
-	ShadowText(20, 115, 1 , S_BLACK, S_PINK);
-	ShadowText(30, 130, 3, S_BLACK, S_GREEN);
-	ShadowText(40, 145, 4, S_BLACK, S_YELLOW);
-	ShadowText(50, 160, 5 + (TestCount%40)/20, S_BLACK, S_JADE);
-	ShadowText(40, 175, 7, S_BLACK, S_YELLOW);
-	*/
-	
+TEST(){
+        MakeStr2(temp,"r=%3d  a=%d ",GetTotalDay(1984, 12, 12),GetTotalDay(2008, 10, 11));
+        DrawStr(2,100,temp);
 }
 void ShadowText(int j, int i, int z, int sc, int tc)
 {

@@ -202,10 +202,10 @@ int ElseEqual(int Value1, int Value2, int IfCount)
 //5 > 표시 배경 이미지 교체
 void SetBackground(int Layer, int ImageNumber)
 {
-	if(EffectFrame == 0){
-		Background[Layer] = ImageNumber;
-	}else if (EffectFrame > MOVE_EFFECT_COUNT){	
-		return;
+	if(EffectFrame == MOVE_EFFECT_COUNT / 2){
+			Background[Layer] = ImageNumber;
+	}else if (EffectFrame > MOVE_EFFECT_COUNT){        
+			return;
 	}
 	ScreenEffect(1, EffectFrame++);
 }
