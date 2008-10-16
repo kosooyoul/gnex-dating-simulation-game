@@ -37,7 +37,7 @@ int GetWeek(int Year, int Month, int Day)
 	return GetTotalDay(Year, Month, Day) % 7;
 }
 
-void ScreenEffect(int Type, int Count){
+void ScreenEffect(int Type, int Count, int Imgnum){
 	
 	switch(Type){
 		//페이드인-페이드아웃
@@ -56,7 +56,7 @@ void ScreenEffect(int Type, int Count){
 			}
 			break;
 
-		//눈 깜빡
+		//사각형 밖에서 안으로 채워지면서 교체
 		case 1:
 			switch(Count){
 				case 0:
@@ -80,5 +80,44 @@ void ScreenEffect(int Type, int Count){
 						break;
 			}
 			break;
+
+		//두 장면 겹쳐 서서히 사라짐
+		case 2:
+			switch(Count){
+				case 0:
+				case 1: CopyImageEx(0, 20, bg[Imgnum], 3, 0, 0, 0);break;
+				case 2:
+				case 3: CopyImageEx(0, 20, bg[Imgnum], 3, 0, 0, 0);break;
+				case 4:	
+				case 5:
+				case 6: CopyImageEx(0, 20, bg[Imgnum], 1, 0, 0, 0);break;
+				case 7:
+				case 8:
+				case 9:	CopyImage(0, 20, bg[Imgnum]);break;
+			}
+			break;
+
 	}
 }
+
+//텍스트 효과
+void ShadowText(int j, int i, int z, int sc, int tc)
+{
+	string TempString;
+	TempString = Messages[z];
+	SetFontType((TestCount%700)/100, sc, S_BLACK, S_ALIGN_LEFT);
+	DrawStr(- 1 + j,  + 1 + i, TempString);
+	DrawStr(- 1 + j,      + i, TempString);
+	DrawStr(    + j,  + 1 + i, TempString);
+	DrawStr(    + j,      + i, TempString);
+	DrawStr(+ 1 + j,  + 1 + i, TempString);
+	DrawStr(+ 1 + j,      + i, TempString);
+	DrawStr(    + j,  + 1 + i, TempString);
+	DrawStr(- 1 + j,  + 1 + i, TempString);
+	DrawStr(+ 1 + j,  + 1 + i, TempString);
+	DrawStr(- 1 + j,  - 1 + i, TempString);
+	DrawStr(    + j,  - 1 + i, TempString);
+	DrawStr(+ 1 + j,  - 1 + i, TempString);
+	SetFontType((TestCount%700)/100, tc, S_BLACK, S_ALIGN_LEFT);
+	DrawStr(j,i, TempString);
+}//S_FONT_LARGE

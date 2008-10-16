@@ -1,18 +1,18 @@
 /*****************************************************************************/
 /* GNEX Image Master v3.20 Map Output for Mobile C						 */
 /*                                                                           */
-/* Output file : C:\Users\Ahyane\Desktop\GNEX\Project\integral\interface.smc					*/
-/*    IDF file  : C:\Users\Ahyane\Desktop\GNEX\Project\integral\interface.idf					*/
+/* Output file : C:\Users\Ahyane\Desktop\integral\interface.smc					*/
+/*    IDF file  : C:\Users\Ahyane\Desktop\integral\interface.idf					*/
 /*                                                                           */
 /* First written : Tuesday, October 07, 2008 16:28:51			     */
-/* Last modified : Thursday, October 09, 2008 23:05:23			     */
+/* Last modified : Friday, October 17, 2008 02:38:06			     */
 /*                                                                           */
 /* Copyright(c) 2000~2007 Sinjisoft Corporation.  All rights reserved.       */
 /*****************************************************************************/
 
 // 전체 블럭에 대해 지정한 속성 배열 저장
-binary interface_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0};
-int interface_BlockName[8]; // 전체 블럭에 대한 블럭 포인터 배열 저장
+binary interface_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int interface_BlockName[33]; // 전체 블럭에 대한 블럭 포인터 배열 저장
 void interface_BlockNameInit()
 {
 	interface_BlockName[0]=talk_sup;
@@ -22,5 +22,30 @@ void interface_BlockNameInit()
 	interface_BlockName[4]=talk_sub;
 	interface_BlockName[5]=talk_sel;
 	interface_BlockName[6]=menu;
-	interface_BlockName[7]=bg[0];
+	interface_BlockName[7]=title_back_title;
+	interface_BlockName[8]=title_back_menu;
+	interface_BlockName[9]=title_menu[0];
+	interface_BlockName[10]=title_menu[1];
+	interface_BlockName[11]=title_menu[2];
+	interface_BlockName[12]=title_menu[3];
+	interface_BlockName[13]=title_menu[4];
+	interface_BlockName[14]=function_window;
+	interface_BlockName[15]=function_name[0];
+	interface_BlockName[16]=function_name[1];
+	interface_BlockName[17]=function_name[2];
+	interface_BlockName[18]=load_saved;
+	interface_BlockName[19]=load_empty;
+	interface_BlockName[20]=function_check;
+	interface_BlockName[21]=function_option;
+	interface_BlockName[22]=function_load_left;
+	interface_BlockName[23]=function_load_right;
+	interface_BlockName[24]=function_ok;
+	interface_BlockName[25]=function_crl;
+	interface_BlockName[26]=bg[0];
+	interface_BlockName[27]=bg[1];
+	interface_BlockName[28]=bg[2];
+	interface_BlockName[29]=bg[3];
+	interface_BlockName[30]=bg[4];
+	interface_BlockName[31]=chara[0];
+	interface_BlockName[32]=chara[1];
 }

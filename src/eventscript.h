@@ -1,12 +1,17 @@
-int NextKey = -1;			//시스템:입력받은 키번호
-
 int SelectedAnswer = 0;		//선택지 번호
 int EventPointer = 0;		//실행중 이벤트라인 위치
-int CurrentName = 0;		//현재 화자의 이름
+int CurrentName = -1;		//현재 화자의 이름
 int NamePosition = 0;		//현재 화자의 이름 표시 위치
 int EffectFrame = 0;		//화면전환 효과 프레임 번호
 
 int Variable[50];			//게임변수
+
+void RunMainPlay()
+{
+	DrawBackground();		//배경표시
+	RunEventLine();			//이벤트수행 및 수행결과 표시
+	DrawInterface();		//인터페이스 표시
+}
 
 //이벤트라인 수행
 void RunEventLine(){
@@ -51,10 +56,10 @@ void RunEventLine(){
 			break;
 
 		case 5:		//배경화면 교체
-			SetBackground(EventLine[EventPointer++], EventLine[EventPointer++]);
+			SetBackground(EventLine[EventPointer++], EventLine[EventPointer++], EventLine[EventPointer++]);
 			if(EffectFrame < MOVE_EFFECT_COUNT)
 			{
-				EventPointer -= 3;
+				EventPointer -= 4;
 			}
 			else
 			{
@@ -200,14 +205,14 @@ int ElseEqual(int Value1, int Value2, int IfCount)
 }
 
 //5 > 표시 배경 이미지 교체
-void SetBackground(int Layer, int ImageNumber)
+void SetBackground(int Layer, int ImageNumber, int Effect)
 {
 	if(EffectFrame == MOVE_EFFECT_COUNT / 2){
-			Background[Layer] = ImageNumber;
+		Background[Layer] = ImageNumber;
 	}else if (EffectFrame > MOVE_EFFECT_COUNT){        
-			return;
+		return;
 	}
-	ScreenEffect(1, EffectFrame++);
+	ScreenEffect(Effect, EffectFrame++, ImageNumber);
 }
 
 //6 > 표시 케릭터 이미지 교체

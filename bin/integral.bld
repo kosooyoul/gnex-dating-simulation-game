@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Documents and Settings\js203\πŸ≈¡ »≠∏È\integral\main.sal
+C:\Users\Ahyane\Desktop\integral\main.sal
 
 Generating code...
 
@@ -10,14 +10,14 @@ HEADER_COMPTYPE is 0
 
 Script profile : 
 
-	Script size       : 80386 Byte(s)
-	Code size         : 5262 Byte(s)
-	Symbol count      : 103
-	Total media count : 49
-	Total media size  : 70826 Byte(s)
-		String count  : 41
-		String size   : 610 Byte(s)
-		Image count   : 8
-		Image size    : 70216 Byte(s)
+	Script size       : 420958 Byte(s)
+	Code size         : 8120 Byte(s)
+	Symbol count      : 129
+	Total media count : 85
+	Total media size  : 407454 Byte(s)
+		String count  : 52
+		String size   : 1074 Byte(s)
+		Image count   : 33
+		Image size    : 406380 Byte(s)
 
 integral.sgs - 0 error(s), 0 warning(s)

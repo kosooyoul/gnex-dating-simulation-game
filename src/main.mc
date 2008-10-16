@@ -37,12 +37,17 @@
 
 #include "define.h"
 #include "function.h"
+#include "option.h"
 #include "status.h"
 #include "interface.h"
 #include "eventvalues.h"
 #include "eventscript.h"
+#include "title.h"
+#include "prologue.h"
 
 int TestCount = 0;			//테스트:타이머 동작 확인
+int NextKey = -1;			//시스템:입력받은 키번호
+int GameMode = 0;
 
 void main()
 {
@@ -51,55 +56,115 @@ void main()
 	SetTimer1(20,1);                //이벤트 처리 주기
 }
 
-TEST(){
-        MakeStr2(temp,"r=%3d  a=%d ",GetTotalDay(1984, 12, 12),GetTotalDay(2008, 10, 11));
-        DrawStr(2,100,temp);
-}
-void ShadowText(int j, int i, int z, int sc, int tc)
+void TEST()
 {
-	string TempString;
-	TempString = Messages[z];
-	SetFontType((TestCount%700)/100, sc, S_BLACK, S_ALIGN_LEFT);
-	DrawStr(- 1 + j,  + 1 + i, TempString);
-	DrawStr(- 1 + j,      + i, TempString);
-	DrawStr(    + j,  + 1 + i, TempString);
-	DrawStr(    + j,      + i, TempString);
-	DrawStr(+ 1 + j,  + 1 + i, TempString);
-	DrawStr(+ 1 + j,      + i, TempString);
-	DrawStr(    + j,  + 1 + i, TempString);
-	DrawStr(- 1 + j,  + 1 + i, TempString);
-	DrawStr(+ 1 + j,  + 1 + i, TempString);
-	DrawStr(- 1 + j,  - 1 + i, TempString);
-	DrawStr(    + j,  - 1 + i, TempString);
-	DrawStr(+ 1 + j,  - 1 + i, TempString);
-	SetFontType((TestCount%700)/100, tc, S_BLACK, S_ALIGN_LEFT);
-	DrawStr(j,i, TempString);
-}//S_FONT_LARGE
+	string temp;
+	int i=150;
+	string TempString = "임시 텍스트 임시 임시 ㅎㅎ";
+	//*테스트:전역변수 확인
+	if(TestCount > 1800)
+	TestCount=0;
+	SetFontType(S_FONT_LARGE, S_BLOODRED, S_BLACK, S_ALIGN_LEFT);
+	MakeStr3(temp,"Timer=%3d  Key=%3d  EventPointer=%d",TestCount++,NextKey,EventPointer);
+	DrawStr(2,-30 + TestCount%360,temp);
+	MakeStr3(temp," CNT=%d  SelectedAnswer=%d  Variable[0]=%d",(TestCount%700)/100,SelectedAnswer,Variable[0]);
+	SetFontType(S_FONT_LARGE, S_RED, S_BLACK, S_ALIGN_LEFT);
+	DrawStr(3,-10 + TestCount%360,temp);
 
+	MakeStr2(temp,"r=%3d  a=%d ",GetTotalDay(1984, 12, 12),GetTotalDay(2008, 10, 11));
+	DrawStr(2,100,temp);
+
+	/*
+	//i = TestCount%360;
+	ShadowText(10, 100, 0 + (TestCount%400)/80, S_BLACK, S_WHITE);
+	ShadowText(20, 115, 1 , S_BLACK, S_PINK);
+	ShadowText(30, 130, 3, S_BLACK, S_GREEN);
+	ShadowText(40, 145, 4, S_BLACK, S_YELLOW);
+	ShadowText(50, 160, 5 + (TestCount%40)/20, S_BLACK, S_JADE);
+	ShadowText(40, 175, 7, S_BLACK, S_YELLOW);
+	*/
+	
+}
 
 void EVENT_TIMEOUT()
 {
-	Clear(S_JADE);
+	Clear(S_BLACK);
 
-	switch(swData){
+	switch(GameMode)
+	{
+		//타이틀모드
 		case 0:
-
-		case 1:
-			DrawBackground();
-			TEST();
-
-			RunEventLine();
-			DrawInterface();
+			RunTitle();
 			break;
+
+		//프롤로그모드
+		case 1:
+			RunPrologue();
+			break;
+
+		//게임진행모드
 		case 2:
+			RunMainPlay();
+			//TEST();					//테스트
+			break;
+
+		//기능사용모드
+		case 3:
+			break;
+
+		default:
 			break;
 	}
-
-
 	Flush();
 }
 
 void EVENT_KEYPRESS()
 {
-	NextKey = swData;
+	switch(GameMode)
+	{
+		//타이틀모드
+		case 0:
+		//프롤로그모드
+		case 1:
+		//게임진행모드
+		case 2:
+			NextKey = swData;
+			break;
+
+		//기능사용모드
+		case 3:
+			break;
+
+		default:
+			break;
+	}
+}
+
+void ChangeGameMode(int Mode)
+{
+	switch(Mode)
+	{
+		//타이틀모드
+		case 0:
+			GameMode = 0;
+			break;
+
+		//프롤로그모드
+		case 1:
+			GameMode = 1;
+			break;
+
+		//게임진행모드
+		case 2:
+			GameMode = 2;
+			break;
+
+		//기능사용모드
+		case 3:
+			GameMode = 3;
+			break;
+
+		default:
+			break;
+	}
 }

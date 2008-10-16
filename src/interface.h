@@ -1,5 +1,5 @@
 int Background[2] = {-1, -1};
-int BackChara[3] = {0, 0, 0};
+int BackChara[3] = {-1, -1, -1};
 
 void DrawBackground()
 {
@@ -14,21 +14,22 @@ void DrawBackground()
 		if(Background[i] >= 0){
 			CopyImage(0, 20, bg[Background[i]]);
 		}
-		//임시->
-		//MakeStr1(temp, "BackImageNumber=%d", Background[i]);
-		//DrawStr(5, 150 + i * 18, temp);
-		//->임시
 	}
 
-
-	for(i = 0; i < 3; i++)
+	for(i = 0; i < 1; i++)
 	{
+		if(BackChara[i] >= 0){
+			CopyImage(30, 100, chara[BackChara[i]]);
+		}
 		//이미지 출력 코드
 		//임시->
-		MakeStr1(temp, "CharaImageNumber=%d", BackChara[i]);
-		DrawStr(115, 150 + i * 18, temp);
+		//MakeStr1(temp, "CharaImageNumber=%d", BackChara[i]);
+		//DrawStr(115, 150 + i * 18, temp);
 		//->임시
 	}
+
+	SetColor(S_BLACK);
+	FillRect(0, 210, 240, 300);
 
 }
 
@@ -36,7 +37,7 @@ void DrawInterface()
 {
 	string TempString;	
 
-	SetShadeColor(S_VIOLET, S_JADE);
+	SetShadeColor(S_BLUE, S_SKY);
 	ShadeRect(0, 0, 239, 19, 3, 1);
 	SetColor(S_BLACK);
 	DrawRect(0, 0, 239, 19);
@@ -50,8 +51,8 @@ void DrawInterface()
 	//기능 출력
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
 	DrawStr(  5, 282, "1:스킵");
-	DrawStr( 52, 282, "2:저장");
-	DrawStr( 99, 282, "3:읽기");
+	DrawStr( 52, 282, "2:상태");
+	DrawStr( 99, 282, "3:저장");
 	DrawStr(146, 282, "4:옵션");
 	DrawStr(193, 282, "5:종료");
 
