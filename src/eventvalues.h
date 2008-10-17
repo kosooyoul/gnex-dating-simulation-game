@@ -89,3 +89,5 @@ const int EventLine[] = {
 
 	-1					//END
 };
+
+const image TESTIMG[2] = {{0,0, 0,0, 0,0, 0,0,-1}, {0,0, 0,0, 0,0, 0,0,-1}};

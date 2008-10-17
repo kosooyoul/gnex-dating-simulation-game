@@ -90,82 +90,84 @@
      0     0    10     2    -1     0     0    17     5     0     2     2     0    11     2
      3     1     6     0     1     0    12     2     0     0     0    13     2    -1     0
      6     0    -1     0    14    -1
-.equ 	&SelectedAnswer 	   55     0     0
-.equ 	&EventPointer 	   56     0     0
-.sym 	&CurrentName 	   57     1
-.equ 	&NamePosition 	   58     0     0
-.equ 	&EffectFrame 	   59     0     0
-.syma 	&Variable 	   60    50     0
-.equ 	&SelectedTitleMenu 	   61     0     0
-.equ 	&SelectedMenu 	   62     0     0
-.equ 	&SelectedObject 	   63     0     0
-.equ 	&PrologueEventPointer 	   64     0     0
-.equa 	&PrologueEventList 	   65    17
+.equa 	&TESTIMG 	   55     2
+ %%78 %%79
+.equ 	&SelectedAnswer 	   56     0     0
+.equ 	&EventPointer 	   57     0     0
+.sym 	&CurrentName 	   58     1
+.equ 	&NamePosition 	   59     0     0
+.equ 	&EffectFrame 	   60     0     0
+.syma 	&Variable 	   61    50     0
+.equ 	&SelectedTitleMenu 	   62     0     0
+.equ 	&SelectedMenu 	   63     0     0
+.equ 	&SelectedObject 	   64     0     0
+.equ 	&PrologueEventPointer 	   65     0     0
+.equa 	&PrologueEventList 	   66    17
      5     0     3     0     0     0     0     1     5     0     4     2     0     2     0
      3    -1
-.equ 	&TestCount 	   66     0     0
-.sym 	&NextKey 	   67     1
-.equ 	&GameMode 	   68     0     0
-.sym 	GetTotalDay&Year 	   69     1
-.sym 	GetTotalDay&Month 	   70     1
-.sym 	GetTotalDay&Day 	   71     1
-.sym 	GetTotalDay&Total 	   72     1
-.sym 	GetTotalDay&i 	   73     1
-.sym 	GetWeek&Year 	   74     1
-.sym 	GetWeek&Month 	   75     1
-.sym 	GetWeek&Day 	   76     1
-.sym 	ScreenEffect&Type 	   77     1
-.sym 	ScreenEffect&Count 	   78     1
-.sym 	ScreenEffect&Imgnum 	   79     1
-.sym 	ShadowText&j 	   80     1
-.sym 	ShadowText&i 	   81     1
-.sym 	ShadowText&z 	   82     1
-.sym 	ShadowText&sc 	   83     1
-.sym 	ShadowText&tc 	   84     1
-.equ 	ShadowText&TempString 	   85   %%78     1
-.sym 	DrawBackground&i 	   86     1
-.equ 	DrawBackground&temp 	   87   %%79     1
-.equ 	DrawInterface&TempString 	   88   %%80     1
-.sym 	DrawMessages&MessageNumber 	   89     1
-.equ 	DrawMessages&TempString 	   90   %%81     1
-.sym 	DrawMessages&Length 	   91     1
-.sym 	DrawMessages&i 	   92     1
-.sym 	DrawMessages&PosNameY 	   93     1
-.sym 	DrawQuestion&Value 	   94     1
-.sym 	DrawQuestion&MsgCount 	   95     1
-.sym 	DrawQuestion&Select1 	   96     1
-.sym 	DrawQuestion&Select2 	   97     1
-.sym 	DrawQuestion&Select3 	   98     1
-.sym 	DrawQuestion&Select4 	   99     1
-.sym 	DrawQuestion&i 	  100     1
-.equ 	DrawQuestion&Temp 	  101   %%82     1
-.sym 	SetCurrentName&NameNumber 	  102     1
-.sym 	SetCurrentName&Position 	  103     1
-.sym 	IfEqual&Value1 	  104     1
-.sym 	IfEqual&Value2 	  105     1
-.sym 	IfEqual&ElseCount 	  106     1
-.sym 	ElseEqual&Value1 	  107     1
-.sym 	ElseEqual&Value2 	  108     1
-.sym 	ElseEqual&IfCount 	  109     1
-.sym 	SetBackground&Layer 	  110     1
-.sym 	SetBackground&ImageNumber 	  111     1
-.sym 	SetBackground&Effect 	  112     1
-.sym 	SetChara&Layer 	  113     1
-.sym 	SetChara&ImageNumber 	  114     1
-.sym 	SetDate&Year 	  115     1
-.sym 	SetDate&Month 	  116     1
-.sym 	SetDate&Day 	  117     1
-.sym 	SetTime&Hour 	  118     1
-.sym 	SetTime&Minute 	  119     1
-.sym 	SetWeather&Weather 	  120     1
-.sym 	PassTime&Element 	  121     1
-.sym 	PassTime&Count 	  122     1
-.sym 	PassTime&TempCount 	  123     1
-.sym 	ShowTitleContinue&i 	  124     1
-.equ 	TEST&temp 	  125   %%83     1
-.sym 	TEST&i 	  126     1
-.equ 	TEST&TempString 	  127   %%41     1
-.sym 	ChangeGameMode&Mode 	  128     1
+.equ 	&TestCount 	   67     0     0
+.sym 	&NextKey 	   68     1
+.equ 	&GameMode 	   69     0     0
+.sym 	GetTotalDay&Year 	   70     1
+.sym 	GetTotalDay&Month 	   71     1
+.sym 	GetTotalDay&Day 	   72     1
+.sym 	GetTotalDay&Total 	   73     1
+.sym 	GetTotalDay&i 	   74     1
+.sym 	GetWeek&Year 	   75     1
+.sym 	GetWeek&Month 	   76     1
+.sym 	GetWeek&Day 	   77     1
+.sym 	ScreenEffect&Type 	   78     1
+.sym 	ScreenEffect&Count 	   79     1
+.sym 	ScreenEffect&Imgnum 	   80     1
+.sym 	ShadowText&j 	   81     1
+.sym 	ShadowText&i 	   82     1
+.sym 	ShadowText&z 	   83     1
+.sym 	ShadowText&sc 	   84     1
+.sym 	ShadowText&tc 	   85     1
+.equ 	ShadowText&TempString 	   86   %%80     1
+.sym 	DrawBackground&i 	   87     1
+.equ 	DrawBackground&temp 	   88   %%81     1
+.equ 	DrawInterface&TempString 	   89   %%82     1
+.sym 	DrawMessages&MessageNumber 	   90     1
+.equ 	DrawMessages&TempString 	   91   %%83     1
+.sym 	DrawMessages&Length 	   92     1
+.sym 	DrawMessages&i 	   93     1
+.sym 	DrawMessages&PosNameY 	   94     1
+.sym 	DrawQuestion&Value 	   95     1
+.sym 	DrawQuestion&MsgCount 	   96     1
+.sym 	DrawQuestion&Select1 	   97     1
+.sym 	DrawQuestion&Select2 	   98     1
+.sym 	DrawQuestion&Select3 	   99     1
+.sym 	DrawQuestion&Select4 	  100     1
+.sym 	DrawQuestion&i 	  101     1
+.equ 	DrawQuestion&Temp 	  102   %%84     1
+.sym 	SetCurrentName&NameNumber 	  103     1
+.sym 	SetCurrentName&Position 	  104     1
+.sym 	IfEqual&Value1 	  105     1
+.sym 	IfEqual&Value2 	  106     1
+.sym 	IfEqual&ElseCount 	  107     1
+.sym 	ElseEqual&Value1 	  108     1
+.sym 	ElseEqual&Value2 	  109     1
+.sym 	ElseEqual&IfCount 	  110     1
+.sym 	SetBackground&Layer 	  111     1
+.sym 	SetBackground&ImageNumber 	  112     1
+.sym 	SetBackground&Effect 	  113     1
+.sym 	SetChara&Layer 	  114     1
+.sym 	SetChara&ImageNumber 	  115     1
+.sym 	SetDate&Year 	  116     1
+.sym 	SetDate&Month 	  117     1
+.sym 	SetDate&Day 	  118     1
+.sym 	SetTime&Hour 	  119     1
+.sym 	SetTime&Minute 	  120     1
+.sym 	SetWeather&Weather 	  121     1
+.sym 	PassTime&Element 	  122     1
+.sym 	PassTime&Count 	  123     1
+.sym 	PassTime&TempCount 	  124     1
+.sym 	ShowTitleContinue&i 	  125     1
+.equ 	TEST&temp 	  126   %%85     1
+.sym 	TEST&i 	  127     1
+.equ 	TEST&TempString 	  128   %%41     1
+.sym 	ChangeGameMode&Mode 	  129     1
 @EXTERN_INTSYMBOL_TABLE
 @STATIC_FUNC_TABLE
 .func     GetTotalDay 	3	
@@ -385,11 +387,10 @@
     0xb6 0xc7 0x20 0xb4 0xe7 0xbd 0xc5 0xc0 0xce 0xb0 0xa1 0xbf 
     0xe4 0x3f 0x20 0xc1 0xa4 0xb8 0xbb 0x20 0xb1 0xcd 0xc2 0xfa 
     0xb1 0xba 0xbf 0xe4 0x2e 0x00
-.equm 	%%41 	   41     0    27
-// string form = "임시 텍스트 임시 임시 ㅎㅎ"
+.equm 	%%41 	   41     0    22
+// string form = "임시 텍스트 임시 임시"
     0xc0 0xd3 0xbd 0xc3 0x20 0xc5 0xd8 0xbd 0xba 0xc6 0xae 0x20 
-    0xc0 0xd3 0xbd 0xc3 0x20 0xc0 0xd3 0xbd 0xc3 0x20 0xa4 0xbe 
-    0xa4 0xbe 0x00
+    0xc0 0xd3 0xbd 0xc3 0x20 0xc0 0xd3 0xbd 0xc3 0x00
 .equm 	%%42 	   42     0    36
 // string form = "Timer=%3d  Key=%3d  EventPointer=%d"
     0x54 0x69 0x6d 0x65 0x72 0x3d 0x25 0x33 0x64 0x20 0x20 0x4b 
@@ -401,10 +402,10 @@
     0x65 0x63 0x74 0x65 0x64 0x41 0x6e 0x73 0x77 0x65 0x72 0x3d 
     0x25 0x64 0x20 0x20 0x56 0x61 0x72 0x69 0x61 0x62 0x6c 0x65 
     0x5b 0x30 0x5d 0x3d 0x25 0x64 0x00
-.equm 	%%44 	   44     0    13
-// string form = "r=%3d  a=%d "
+.equm 	%%44 	   44     0    17
+// string form = "r=%3d  a=%d   %d"
     0x72 0x3d 0x25 0x33 0x64 0x20 0x20 0x61 0x3d 0x25 0x64 0x20 
-    0x00
+    0x20 0x20 0x25 0x64 0x00
 .equm 	%%45 	   45     1     5
     0x0b 0xf0 0x13 0x00 0x00 
 .equm 	%%46 	   46     1     5
@@ -471,13 +472,17 @@
     0x0c 0x82 0xd4 0x00 0x00 
 .equm 	%%77 	   77     1     5
     0x0c 0x36 0x79 0x00 0x00 
-.symm 	%%78 	   78     0     0
-.symm 	%%79 	   79     0     0
+.equm 	%%78 	   78     1     9
+    0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xffffffff 
+.equm 	%%79 	   79     1     9
+    0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xffffffff 
 .symm 	%%80 	   80     0     0
 .symm 	%%81 	   81     0     0
 .symm 	%%82 	   82     0     0
 .symm 	%%83 	   83     0     0
 .symm 	%%84 	   84     0     0
+.symm 	%%85 	   85     0     0
+.symm 	%%86 	   86     0     0
 @CODE_SECTION
 $init:     zsetc    &CurrentName   -1   
            zsetc    &NextKey   -1   
@@ -2496,10 +2501,11 @@ $$152:     rsp
 $$143:     ret      
 main:      nop      
            call     $init:
-           call     InitNature:
            pushc    20   
            pushc    1   
            calls    SetTimer1
+           pushc    0   
+           call     ChangeGameMode:
            end      
 TEST:      nop      
            zsetc    TEST&i   150   
@@ -2560,7 +2566,8 @@ $$158:     pushc    2
            pushc    10   
            pushc    11   
            call     GetTotalDay:
-           calls    MakeStr2
+           pushc    0   
+           calls    MakeStr3
            pushc    2   
            pushc    100   
            pushz    TEST&temp   
@@ -2596,47 +2603,69 @@ $$159:     calls    Flush
            end      
 EVENT_KEYPRESS: nop 
            ssp      
-           pushz    &GameMode   
+           pushz    &swData   
            dup      
-           eqjp     0   $$166:
+           eqjp     20   $$166:
            dup      
-           eqjp     1   $$166:
+           eqjp     13   $$167:
            dup      
-           eqjp     2   $$166:
+           eqjp     16   $$168:
            dup      
-           eqjp     3   $$167:
-           ujp      $$168:
+           eqjp     17   $$168:
+           dup      
+           eqjp     18   $$168:
+           dup      
+           eqjp     19   $$168:
+           rsp      
+           ujp      $$165:
 $$166:     rsp      
-           zsetz    &NextKey   &swData   
            ujp      $$165:
 $$167:     rsp      
            ujp      $$165:
 $$168:     rsp      
-$$165:     end      
+$$165:     ssp      
+           pushz    &GameMode   
+           dup      
+           eqjp     0   $$170:
+           dup      
+           eqjp     1   $$170:
+           dup      
+           eqjp     2   $$170:
+           dup      
+           eqjp     3   $$171:
+           ujp      $$172:
+$$170:     rsp      
+           zsetz    &NextKey   &swData   
+           ujp      $$169:
+$$171:     rsp      
+           ujp      $$169:
+$$172:     rsp      
+$$169:     end      
 ChangeGameMode: nop 
            popz     ChangeGameMode&Mode   
            ssp      
            pushz    ChangeGameMode&Mode   
            dup      
-           eqjp     0   $$170:
+           eqjp     0   $$174:
            dup      
-           eqjp     1   $$171:
+           eqjp     1   $$175:
            dup      
-           eqjp     2   $$172:
+           eqjp     2   $$176:
            dup      
-           eqjp     3   $$173:
-           ujp      $$174:
-$$170:     rsp      
-           zsetc    &GameMode   0   
-           ujp      $$169:
-$$171:     rsp      
-           zsetc    &GameMode   1   
-           ujp      $$169:
-$$172:     rsp      
-           zsetc    &GameMode   2   
-           ujp      $$169:
-$$173:     rsp      
-           zsetc    &GameMode   3   
-           ujp      $$169:
+           eqjp     3   $$177:
+           ujp      $$178:
 $$174:     rsp      
-$$169:     ret      
+           call     InitNature:
+           zsetc    &GameMode   0   
+           ujp      $$173:
+$$175:     rsp      
+           zsetc    &GameMode   1   
+           ujp      $$173:
+$$176:     rsp      
+           zsetc    &GameMode   2   
+           ujp      $$173:
+$$177:     rsp      
+           zsetc    &GameMode   3   
+           ujp      $$173:
+$$178:     rsp      
+$$173:     ret      
