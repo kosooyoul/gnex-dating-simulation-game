@@ -12,7 +12,7 @@ Begin VB.Form Event1
    MinButton       =   0   'False
    ScaleHeight     =   3495
    ScaleWidth      =   5535
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.Frame Frame3 
       Caption         =   "선택지 표시"
       Height          =   2655
@@ -141,12 +141,34 @@ Private Sub EventSelect_Click(Index As Integer)
 End Sub
 
 Private Sub Form_Load()
+    Dim filenumber As Integer '파일번호
+    Dim filename As String '파일이름
+    Dim ftemp As String '파일내용
     Dim i As Integer
     
     EventSelectValue.ListIndex = 0
     For i = 0 To 3
+        On Error GoTo Err:
+        
+        EventSelect(i).Clear
+        
+        filename = App.Path & "\select.txt"
+        filenumber = FreeFile '사용가능한 파일번호를 구하고
+        '파일을 Input 모드(읽기 전용)로 연다.
+        Open filename For Input As filenumber
+    
+        Do Until EOF(filenumber)
+            '줄단위로 파일 끝가지 ftemp 라는 변수로 읽어 들인다.
+            Line Input #filenumber, ftemp
+            If Trim(ftemp) <> "" Then EventSelect(i).AddItem ftemp
+        Loop
+    
+        Close filenumber '파일을 닫는다.
+        
         EventSelect(i).ListIndex = 0
     Next i
+    
+Err:
 End Sub
 
 '(int Value, int MsgCount, int Select1, int Select2, int Select3, int Select4)

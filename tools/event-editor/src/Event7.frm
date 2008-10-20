@@ -12,7 +12,7 @@ Begin VB.Form Event7
    MinButton       =   0   'False
    ScaleHeight     =   5955
    ScaleWidth      =   7290
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.Frame Frame7 
       Caption         =   "날짜 설정"
       Height          =   1215

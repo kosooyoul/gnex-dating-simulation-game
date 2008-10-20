@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form Event6 
    BorderStyle     =   1  '단일 고정
    Caption         =   "6 : 케릭터 이미지 교체"
-   ClientHeight    =   2295
+   ClientHeight    =   2790
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   4215
@@ -10,41 +10,52 @@ Begin VB.Form Event6
    LinkTopic       =   "Form3"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2295
+   ScaleHeight     =   2790
    ScaleWidth      =   4215
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.Frame Frame6 
       Caption         =   "케릭터 이미지 교체"
-      Height          =   1455
+      Height          =   1935
       Left            =   120
       TabIndex        =   2
       Top             =   120
       Width           =   3975
-      Begin VB.ComboBox EventChara 
+      Begin VB.ComboBox EffectList 
+         Enabled         =   0   'False
          Height          =   300
          ItemData        =   "Event6.frx":058A
          Left            =   1560
-         List            =   "Event6.frx":05B5
+         List            =   "Event6.frx":0597
+         Style           =   2  '드롭다운 목록
+         TabIndex        =   6
+         Top             =   1200
+         Width           =   1950
+      End
+      Begin VB.ComboBox EventChara 
+         Height          =   300
+         ItemData        =   "Event6.frx":05C7
+         Left            =   1560
+         List            =   "Event6.frx":05F2
+         Style           =   2  '드롭다운 목록
          TabIndex        =   4
-         Text            =   "Combo10"
          Top             =   840
          Width           =   1950
       End
       Begin VB.ComboBox EventCharaPos 
          Height          =   300
-         ItemData        =   "Event6.frx":05E3
+         ItemData        =   "Event6.frx":0620
          Left            =   1560
-         List            =   "Event6.frx":060E
+         List            =   "Event6.frx":064B
+         Style           =   2  '드롭다운 목록
          TabIndex        =   3
-         Text            =   "Combo9"
          Top             =   480
          Width           =   1950
       End
       Begin VB.Label Label9 
          Alignment       =   1  '오른쪽 맞춤
          AutoSize        =   -1  'True
-         Caption         =   $"Event6.frx":063C
-         Height          =   540
+         Caption         =   $"Event6.frx":0679
+         Height          =   900
          Left            =   240
          TabIndex        =   5
          Top             =   525
@@ -56,7 +67,7 @@ Begin VB.Form Event6
       Height          =   375
       Left            =   2880
       TabIndex        =   1
-      Top             =   1680
+      Top             =   2160
       Width           =   1215
    End
    Begin VB.CommandButton OK 
@@ -64,7 +75,7 @@ Begin VB.Form Event6
       Height          =   375
       Left            =   1560
       TabIndex        =   0
-      Top             =   1680
+      Top             =   2160
       Width           =   1215
    End
 End
@@ -77,3 +88,18 @@ Private Sub CANCEL_Click()
     Unload Me
 End Sub
 
+Private Sub Form_Load()
+    EventCharaPos.ListIndex = 0
+    EventChara.ListIndex = 0
+    EffectList.ListIndex = 0
+End Sub
+
+Private Sub OK_Click()
+    Dim Cmd As String
+    Cmd = EventHead(6) + Evp + Trim(Str(EventCharaPos.ListIndex))
+    Cmd = Cmd + Evp + Trim(Str(EventChara.ListIndex))
+    'Cmd = Cmd + Evp + Trim(Str(EffectList.ListIndex))
+    Cmd = Cmd + Eve + Eve + Nts + "주석 없음" + Nte
+    AddEvent (Cmd)
+    Unload Me
+End Sub

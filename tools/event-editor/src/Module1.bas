@@ -40,7 +40,10 @@ Public Function CommandToArray()
     For LineCount = 0 To Form1.EventList.ListCount
         Source = Form1.EventList.List(LineCount)
         
-        If InStr(Source, ",") > 0 Then
+        If Left(Source, 2) = "//" Then  '주석은 그대로
+            ArrayCode = ArrayCode + Source + vbCrLf
+        
+        ElseIf InStr(Source, ",") > 0 Then
             Head = Left(Source, InStr(Source, ",") - 1)
             Source = Mid(Source, InStr(Source, ","))
                     

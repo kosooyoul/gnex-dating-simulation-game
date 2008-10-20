@@ -12,7 +12,7 @@ Begin VB.Form Event3
    MinButton       =   0   'False
    ScaleHeight     =   2535
    ScaleWidth      =   5535
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.Frame Frame4 
       Caption         =   "변수값 일치 여부에 따라 다른 이벤트로 이동"
       Height          =   1695
