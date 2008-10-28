@@ -5,7 +5,7 @@ const string Names[] = {
 	"혜선",
 	"태호",
 	"김부장",
-	"바바"	
+	"바바"
 };
 
 const string Messages[] = {

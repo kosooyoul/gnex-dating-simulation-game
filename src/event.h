@@ -29,7 +29,7 @@ struct EventObject{
 }EventObject[MAX_EVENT_COUNT];
 
 int EventLine[] = { 
-/*00*/ 7, 1, 9,13,/*04*/-1,	//맵이동
+/*00*/ 30, -1, 9,13,/*04*/-1,	//맵이동
 /*05*/ 7, 2, 3, 8,/*09*/-1,	//맵이동
 /*10*/ 7, 0, 3,13,/*14*/-1,	//맵이동
 /*15*/ 7, 0,12,10,/*19*/-1,	//맵이동
@@ -59,70 +59,70 @@ void SetEvent(){
 	EventObject[0].x = 9;				//테스트 코드
 	EventObject[0].y = 10;				//테스트 코드
 	EventObject[0].EventLoop = 0;		//테스트 코드
-	EventObject[0].EventPage = 63;		//테스트 코드
+	EventObject[0].EventPage = 0;//63;		//테스트 코드
 	EventObject[0].LineCount = 0;		//테스트 코드
 	EventObject[0].MoveType = 0;		//이동
 
 	EventObject[1].graphic = 2;			//테스트 코드
-	EventObject[1].map = 12;				//테스트 코드
+	EventObject[1].map = 1;				//테스트 코드
 	EventObject[1].x = 8;				//테스트 코드
 	EventObject[1].y = 8;				//테스트 코드
 	EventObject[1].direction = 1;		//테스트 코드
 	EventObject[1].frame = 0;			//테스트 코드
 	EventObject[1].EventLoop = 0;		//테스트 코드
-	EventObject[1].EventPage = 48;		//테스트 코드
+	EventObject[1].EventPage = 0;		//테스트 코드
 	EventObject[1].LineCount = 0;		//테스트 코드
 	EventObject[1].ScrollMapX = 0;
 	EventObject[1].ScrollMapY = 0;
 	EventObject[1].MoveType = 1;		//이동
 
 	EventObject[2].graphic = 0;			//테스트 코드
-	EventObject[2].map = 10;				//테스트 코드
+	EventObject[2].map = 2;				//테스트 코드
 	EventObject[2].x = 8;				//테스트 코드
-	EventObject[2].y = 13;				//테스트 코드
+	EventObject[2].y = 7;				//테스트 코드
 	EventObject[2].direction = 1;		//테스트 코드
 	EventObject[2].frame = 0;			//테스트 코드
 	EventObject[2].EventLoop = 0;		//테스트 코드
-	EventObject[2].EventPage = 44;		//테스트 코드
+	EventObject[2].EventPage = 0;		//테스트 코드
 	EventObject[2].LineCount = 0;		//테스트 코드
 	EventObject[2].ScrollMapX = 0;
 	EventObject[2].ScrollMapY = 0;
 	EventObject[2].MoveType = 1;		//이동
 
 	EventObject[3].graphic = 3;			//테스트 코드
-	EventObject[3].map = 10;				//테스트 코드
-	EventObject[3].x = 13;				//테스트 코드
-	EventObject[3].y = 15;				//테스트 코드
+	EventObject[3].map = 3;				//테스트 코드
+	EventObject[3].x = 9;				//테스트 코드
+	EventObject[3].y = 8;				//테스트 코드
 	EventObject[3].direction = 1;		//테스트 코드
 	EventObject[3].frame = 0;			//테스트 코드
 	EventObject[3].EventLoop = 0;		//테스트 코드
-	EventObject[3].EventPage = 48;		//테스트 코드
+	EventObject[3].EventPage = 0;		//테스트 코드
 	EventObject[3].LineCount = 0;		//테스트 코드
 	EventObject[3].ScrollMapX = 0;
 	EventObject[3].ScrollMapY = 0;
 	EventObject[3].MoveType = 1;		//이동
 
 	EventObject[4].graphic = 5;			//테스트 코드
-	EventObject[4].map = 10;				//테스트 코드
-	EventObject[4].x = 17;				//테스트 코드
-	EventObject[4].y = 7;				//테스트 코드
+	EventObject[4].map = 4;				//테스트 코드
+	EventObject[4].x = 9;				//테스트 코드
+	EventObject[4].y = 8;				//테스트 코드
 	EventObject[4].direction = 1;		//테스트 코드
 	EventObject[4].frame = 0;			//테스트 코드
 	EventObject[4].EventLoop = 0;		//테스트 코드
-	EventObject[4].EventPage = 52;		//테스트 코드
+	EventObject[4].EventPage = 0;		//테스트 코드
 	EventObject[4].LineCount = 0;		//테스트 코드
 	EventObject[4].ScrollMapX = 0;
 	EventObject[4].ScrollMapY = 0;
 	EventObject[4].MoveType = 1;		//이동
 
 	EventObject[5].graphic = 6;			//테스트 코드
-	EventObject[5].map = 1;				//테스트 코드
+	EventObject[5].map = 5;				//테스트 코드
 	EventObject[5].x = 9;				//테스트 코드
 	EventObject[5].y = 6;				//테스트 코드
 	EventObject[5].direction = 1;		//테스트 코드
 	EventObject[5].frame = 0;			//테스트 코드
 	EventObject[5].EventLoop = 0;		//테스트 코드
-	EventObject[5].EventPage = 30;		//테스트 코드
+	EventObject[5].EventPage = 0;		//테스트 코드
 	EventObject[5].LineCount = 0;		//테스트 코드
 	EventObject[5].ScrollMapX = 0;
 	EventObject[5].ScrollMapY = 0;

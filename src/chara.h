@@ -21,9 +21,9 @@ void InitPlayer(){
 	Player.direction = 3;
 	Player.frame = 2;
 	
-	Player.Name = "양순이";
+	Player.Name = "주인공";
 
-	Player.Gold = 1740000;
+	Player.Gold = 17400;
 }
 
 //주인공 그리기

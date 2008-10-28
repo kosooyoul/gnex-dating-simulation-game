@@ -5,7 +5,7 @@
 	#DEFINE IMAGETYPE	255
 	#DEFINE AUDIOTYPE	255
 	#DEFINE SCRIPTTYPE	1
-	#DEFINE SCRIPTCPID	19735			//테스트 고유번호
+	#DEFINE SCRIPTCPID	19732			//테스트 고유번호
 	#DEFINE SCRIPTID	1
 	#DEFINE SCRIPTNAME	"AHYANET RPG"
 	#DEFINE VALIDCOUNT	255
@@ -18,7 +18,7 @@
 	#DEFINE IMAGETYPE	255
 	#DEFINE AUDIOTYPE	255
 	#DEFINE APPTYPE		1
-	#DEFINE APPCPID		19735			//테스트 고유번호
+	#DEFINE APPCPID		19732			//테스트 고유번호
 	#DEFINE APPID		10155			//프로그램 ID
 	#DEFINE APPNAME		"AHYANET 10155"	//프로그램 이름
 	#DEFINE COMPTYPE	2
@@ -31,25 +31,24 @@
 #endif
 
 #include <SScript.h>
-#include <mapchip.sbm>		//* s구성화면 칩 로드
-#include "define.h"					//*! 정의목록
-#include "mapdata.h"				//*  맵데이터
-#include "map.h"						//   맵표시
-#include "status.h"
-#include "option.h"
-#include "eventsource.h"
+#include <mapchip.sbm>				//*   맵칩
+#include "define.h"					//*   Define
+#include "mapdata.h"				//*   맵데이터
+#include "map.h"					//  fv맵처리
+#include "status.h"					//
+#include "option.h"					//   v게임옵션
+#include "eventsource.h"			//*   이벤트데이터
+#include "title.h"					// m  타이틀
+#include "event.h"					//  fv이벤트
+#include "eventscript.h"			// m  이벤트처리
+#include "chara.h"					//   v주인공
+#include "interface.h"				//  f 인터페이스
+#include "prologue.h"				// m v프롤로그
+#include "menu.h"					// m  메뉴
 
-#include "title.h"
-#include "event.h"					//   이벤트
-#include "eventscript.h"			//   이벤트처리
-#include "chara.h"					//   주인공
-#include "interface.h"				//   인터페이스
-#include "prologue.h"
-
-int MovingDirection = 0;
-int RunningEventNumber = -1;	//RunningEventNumber번째의 이벤트를 수행, -1은 아무것도 수행안함
-int NextKey = -1;						//이벤트 수행중 키입력을 기다리기 위함
-int GameMode = 0;					//게임 모드/ 0:타이틀, 1:프롤로그, 2:롤플레이
+int RunningEventNumber = -1;					//실행중인 이벤트번호, -1은 아무것도 수행안함
+int NextKey = -1;								//입력받은 키
+int GameMode = 0;								//게임 모드
 
 void TEST(){
 	string Temp;
@@ -68,76 +67,57 @@ void TEST(){
 
 }
 
-//******************************************************************************************************[ Main ]
+//Main
 void main(){
-	//mode: title, play(move), battle, event, menu(item,skill,status,.....)
-	InitPlayer();						//주인공 초기화
-	SetArea();
-	SetEvent();
-	SetTimer(20, 1);					//이동 및 맵 출력 시간 간격, 이벤트 수행 속도(에뮬 40, 핸드폰 임시 40)
-	SetTimer1(500, 1);					//이벤트 이동 시간 간격//기본 500
+	InitPlayer();								//주인공 초기화
+	SetArea();									//지역 초기화
+	SetEvent();									//이벤트 초기화
+	SetTimer(20, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
+	SetTimer1(500, 1);							//이벤트 이동 빈도
 }
 
-//******************************************************************************************************[ EVENT_TIMEOUT ]
+//EVENT_TIMEOUT
 void EVENT_TIMEOUT(){
 	int i;
 	switch(GameMode){
-		//타이틀(GameMode=0)
-		case 0:	
+		case 0:									//타이틀
 			if(!swData){
-				RunTitle();
-			}
+				RunTitle();							//타이틀 실행
+			}break;
+
+		case 1:									//프롤로그
+			ClearBlack();							//재출력
+			RunPrologue();							//프롤로그 실행
 			break;
 
-		//프롤로그
-		case 1:
-			ClearBlack();
-			RunPrologue();
-			break;
-
-		//이동모드(GameMode=2)
-		case 2:
+		case 2:									//이동모드
 			switch(swData){
-				//타이머0(t=30)
-				case 0:
-					//자연스러운 이동 #1
-					SetDirection(0, MovingDirection);
-					MovePosition(0, MovingDirection);
-					//맵 스크롤
-					MapScroll();						
-					//각 레이어 출력
-					DrawSubLayer();			//하위맵 출력
-					DrawSupLayer(0);		//상위맵 0단계 출력
-					DrawEventLayer();		//주인공 및 이벤트 출력
-					DrawSupLayer(1);		//상위맵 1단계 출력
+				case 0:								//타이머[0]
+					SetDirection(0, MovingDirection);	//자연스러운 이동 #1
+					MovePosition(0, MovingDirection);	//자연스러운 이동 #2
+					MapScroll();						//맵 스크롤
+					DrawSubLayer();						//하위맵 출력
+					DrawSupLayer(0);					//상위맵 0단계 출력
+					DrawEventLayer();					//주인공 및 이벤트 출력
+					DrawSupLayer(1);					//상위맵 1단계 출력
+					DrawInterface();					//인터페이스 출력
 
-					DrawInterface();
-
-					//이벤트 수행중에
-					if(RunningEventNumber >= 0){
+					if(RunningEventNumber >= 0){		//이벤트 수행중이면 이벤트 수행
 						EventObject[RunningEventNumber].EventLoop = 1;
 						RunEventLine(RunningEventNumber);
-					}
-					break;
+					}break;
 
-				//타이머1(t=500) 
-				case 1:
+				case 1:								//타이머[1]
 					for(i = 0; i < MAX_EVENT_COUNT; i++){
 						if(EventObject[i].MoveType == 1)
 							MoveEventRandom(i);			//테스트 코드 : 이벤트 랜덤이동
-					}
-					break;
-			}
-
-			TEST();					//테스트코드
-
-			break;
+					}break;
+			}break;
 			
-		//메뉴 모드(GameMode=2)
-		case 3:
+		case 3:									//메뉴 모드
 			if(!swData){
 				RestoreLCD();
-				//DrawMenu(MenuPX, MenuPY);
+				DrawMenu(50, 50);
 				switch (selected_menu){
 					case 0:	
 					case 1:	
@@ -146,35 +126,30 @@ void EVENT_TIMEOUT(){
 					case 4:	break;
 				}
 			}
+			DrawInterface();						//인터페이스 출력
 			break;
 
-		//이벤트수행 모드(GameMode=3)
-		case 4:
-			RestoreLCD();
-			DrawInterface();
-
+		case 4:									//이벤트수행 모드
+			RestoreLCD();							//버퍼 로드
+			DrawInterface();						//인터페이스 출력
 			EventObject[RunningEventNumber].EventLoop = 1;
-			RunEventLine(RunningEventNumber);
+			RunEventLine(RunningEventNumber);		//이벤트 수행
 			break;
-	}
-	
+	}//END SWITCH[GameMode]
 	Flush();
 }
 
-//******************************************************************************************************[ EVENT_KEYPRESS ]
+//EVENT_KEYPRESS
 void EVENT_KEYPRESS(){
 	switch(GameMode){
-		//타이틀(GameMode=0)
-		case 0:
+		case 0:								//타이틀
 		case 1:
 			NextKey = swData;
 			break;
 
-		//이동모드(GameMode=1)
-		case 2:
+		case 2:								//이동모드
 			switch(swData){
-				//정면에 이벤트 실행
-				case SWAP_KEY_OK:
+				case SWAP_KEY_OK:				//정면에 이벤트 실행
 					RunningEventNumber = SerchEvent() - 1;
 					//이벤트가 있다면 그 이벤트는 나를 볼 것이다
 					if(RunningEventNumber >= 0){
@@ -183,8 +158,7 @@ void EVENT_KEYPRESS(){
 					}
 					break;
 
-				//메뉴 출력
-				case SWAP_KEY_CLR:
+				case SWAP_KEY_CLR:				//메뉴 출력
 					ChangeMode(3);
 					break;
 				
@@ -209,53 +183,45 @@ void EVENT_KEYPRESS(){
 				case SWAP_KEY_9:		
 				case SWAP_KEY_0:		
 				case SWAP_KEY_SHARP:	break;
-				default:
-					break;
+				default:				break;
 			}
 			break;
 
-		//메뉴 모드(GameMode=2)
-		case 3:
-			//입력키에 대한 메뉴선택
-			//ShowMenu(swData);
-			ChangeMode(2);
+		case 3:								//메뉴 모드
+			ShowMenu(swData);					//입력키에 대한 메뉴선택
 			break;
 
-		//이벤트수행 모드(GameMode=3)
-		case 4:
+		case 4:								//이벤트수행 모드
 			if(RunningEventNumber >= 0)
 				NextKey = swData;
 			else
-				//이동모드로
-				ChangeMode(2);
+				ChangeMode(2);					//이동모드로
 			break;
 
-	}
+	}//END SWITCH[GameMode]
 
 }
 
 //******************************************************************************************************[ Any Fuction ]
 void ChangeMode(int Mode){
 	switch(Mode){
-		//타이틀로
-		case 0:				GameMode = 0;	break;
-		//프롤로그로
-		case 1:				GameMode = 1;	break;
-		//이동모드로
-		case 2:				GameMode = 2;	break;
-		//메뉴모드로
-		case 3:
-		//이벤트실행모드로
-		case 4:
-			DrawSubLayer();		//하위맵 출력
+		case 0:			//타이틀로
+			GameMode = 0;	break;
+		case 1:			//프롤로그로
+			GameMode = 1;	break;
+		case 2:			//이동모드로
+			GameMode = 2;	break;
+		case 3:			//메뉴모드로
+		case 4:			//이벤트실행모드로
+			DrawSubLayer();			//하위맵 출력
 			DrawSupLayer(0);		//상위맵 0단계 출력
 			DrawEventLayer();		//주인공 및 이벤트 출력
 			DrawSupLayer(1);		//상위맵 1단계 출력
 			SaveLCD();
 			GameMode = Mode;
 			break;
-					
-		//
-		default:							break;
-	}
+
+		default:
+			break;
+	}//END SWITCH[Mode]
 }

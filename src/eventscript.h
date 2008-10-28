@@ -1,10 +1,15 @@
-int SelectedAnswer = 0;		//선택지
-int SecondSelect = 0;			//이벤트 내 메뉴 선택
+int SelectedAnswer = 0;				//선택지
+int EventMode = 0;					//이벤트 모드
+int SelectedStation = 0;				//이벤트 내 선택 장소
+int SecondSelect = 0;				//이벤트 내 메뉴 선택
 
-int EventPointer = 0;		//실행중 이벤트라인 위치
-int CurrentName = -1;		//현재 화자의 이름
-int NamePosition = 0;		//현재 화자의 이름 표시 위치
-int EffectFrame = 0;		//화면전환 효과 프레임 번호
+int EventPointer = 0;				//실행중 이벤트라인 위치
+int CurrentName = -1;				//현재 화자의 이름
+int NamePosition = 0;				//현재 화자의 이름 표시 위치
+int Background[2] = {-1, -1};		//배경
+int BackChara[3] = {-1, -1, -1};	//케릭터
+
+int EffectFrame = 0;				//화면전환 효과 프레임 번호
 
 void RunEventLine(int EventNumber)
 {
@@ -40,11 +45,32 @@ void RunEventLine(int EventNumber)
 			NextKey = -1;
 			break;
 
-		case 2:		//스위치 조작					 :: 매개변수 2개
-			SwitchOnOff(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+		case 2:
+			SetCurrentName(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
-		case 3:		//변수 조작						 :: 매개변수 3개
-			SetVariable(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+
+		case 3:		//조건분기_변수 if(s==v[vn])goto
+			EventObject[EventNumber].LineCount += 3 + IfEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
+			break;
+
+		case 4:		//조건분기_변수 if(s!=v[vn])goto
+			EventObject[EventNumber].LineCount += 3 + ElseEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
+			break;
+
+		case 5:		//배경화면 교체
+			SetBackground(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			if(EffectFrame < MOVE_EFFECT_COUNT)
+			{
+				EventObject[EventNumber].LineCount -= 4;
+			}
+			else
+			{
+				EffectFrame = 0;
+			}
+			break;
+
+		case 6:		//케릭터 교체
+			SetChara(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
 		case 7:		//주인공 맵 이동_지역 워프		 :: 매개변수 3개
@@ -56,6 +82,7 @@ void RunEventLine(int EventNumber)
 			else
 			{
 				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+				SecondSelect = 0;								//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 				//워프후 이벤트 강제 종료 ▼ 워프(맵이동)시 버튼입력 대기가 되버려 삽입함
 				EventObject[EventNumber].LineCount = 0;
 				//EventObject[EventNumber].EventLoop = 0;
@@ -64,26 +91,42 @@ void RunEventLine(int EventNumber)
 				//워프후 이벤트 강제 종료 ▲
 			}
 			break;
+
 		case 8:		//개체 위치 이동_좌표만			 :: 매개변수 2개
 			MovePosition(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
+
 		case 9:		//개체 방향 전환				 :: 매개변수 2개
 			SetDirection(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
-		case 11:	//조건분기_변수					 :: 매개변수 4개
-			EventObject[EventNumber].LineCount += 4 + ConditionVariable(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+3]);
+
+		case 10:	//스위치 조작					 :: 매개변수 2개
+			SwitchOnOff(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
+
+		case 11:	//변수 조작						 :: 매개변수 3개
+			SetVariable(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			break;
+
 		case 12:	//조건분기_스위치				 :: 매개변수 2개
 			EventObject[EventNumber].LineCount += 2 + ConditionSwitch(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1]);
 			break;
+
 		case 13:	//딜레이						 :: 매개변수 1개
 			if(Delay(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]) == 0)EventObject[EventNumber].LineCount--;
 			else EventObject[EventNumber].LineCount++;
 			break;
+
+		case 30:	//지하철
+			if(!Subway(EventNumber))EventObject[EventNumber].LineCount--;
+			NextKey = -1;
+			break;
+
+		case 31:	//항공기
+			break;
+
 		default:
 			EventObject[EventNumber].LineCount++;
-			//EventObject[EventNumber].EventLoop = 0;
-			//RunningEventNumber = -1;
 	}
 }
 
@@ -112,11 +155,9 @@ int CheckVariable(int Value1, int Operation, int Value2)
 }
 
 //맵 이동을 위한 화면 전환 처리
-void ScreenEffect(int Type, int Count){
-	
+void ScreenEffect(int Type, int Count, int Imgnum){
 	switch(Type){
-		//페이드인-페이드아웃
-		case 0:
+		case 0:			//페이드인-페이드아웃
 			switch(Count){
 					case 0:FillRectEx(MAP_POS_X1,MAP_POS_Y1,MAP_POS_X2,MAP_POS_Y2,3);break;
 					case 1:FillRectEx(MAP_POS_X1,MAP_POS_Y1,MAP_POS_X2,MAP_POS_Y2,2);break;
@@ -131,8 +172,7 @@ void ScreenEffect(int Type, int Count){
 			}
 			break;
 
-		//눈 깜빡
-		case 1:
+		case 1:			//눈 깜빡
 			switch(Count){
 				case 0:
 				case 1:
@@ -156,9 +196,8 @@ void ScreenEffect(int Type, int Count){
 			}
 			break;
 
-		/*/두 장면 겹쳐 서서히 사라짐
-		case 2:
-			switch(Count){
+		case 2:			//두 장면 겹쳐 서서히 사라짐
+			/*switch(Count){
 				case 0:
 				case 1: CopyImageEx(0, 20, bg[Imgnum], 3, 0, 0, 0);break;
 				case 2:
@@ -169,10 +208,8 @@ void ScreenEffect(int Type, int Count){
 				case 7:
 				case 8:
 				case 9:	CopyImage(0, 20, bg[Imgnum]);break;
-			}
+			}*/
 			break;
-		*/
-
 	}
 }
 
@@ -189,47 +226,45 @@ void DrawMessages(int MessageNumber)
 	//이름 표시위치 계산
 	PosNameY = 252- 14 * ((3)) -(P_MSG_Y);
 
-	CurrentName=0;//지우기
 	if(CurrentName > -1)
 	{
 		switch(NamePosition)
 		{
 			case 0:
 				//이름 배경 왼쪽
-				//CopyImage(4, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
-				//CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
+				CopyImage(4, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
+				CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 				//이름 출력
 				SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
 				DrawStr(40, PosNameY + 5, Names[CurrentName]);
 				break;
 			case 1:
 				//이름 배경 오른쪽
-				//CopyImage(166, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
-				//CopyImage(2, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
+				CopyImage(166, 252 - 14 * ((3)) -(P_MSG_Y), talk_name);
+				CopyImage(2, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 				//이름 출력
 				SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
 				DrawStr(202, PosNameY + 5, Names[CurrentName]);
 		}
 	}else{
-		CurrentName=0;//지우기
-		//CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
+		CopyImage(215, 260 - 14 * ((3)) -(P_MSG_Y), talk_ok);
 	}
 
 	
 	//대화 출력
 	SetColor(S_BLACK);
 	FillRectEx(4, 274 - 14 * ((3)) -(P_MSG_Y), 285, 290 -(P_MSG_Y), 2);
-	//CopyImage(0, 270 - 14 * ((3)) -(P_MSG_Y), talk_sup);
+	CopyImage(0, 270 - 14 * ((3)) -(P_MSG_Y), talk_sup);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
 	for(i = 0; i < ((4)); i++)
 	{
-		//CopyImage(0,  275 - 14 * i -(P_MSG_Y), talk_main);
+		CopyImage(0,  275 - 14 * i -(P_MSG_Y), talk_main);
 		if(i < Length){
 			StrSub(TempString, Messages[MessageNumber], i * 36, 36);
 			DrawStr(7, 277 - (((3)) - i) * 14 -(P_MSG_Y), TempString);
 		}
 	}
-	//CopyImage(0,  288 -(P_MSG_Y), talk_sub);
+	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
 }
 
 //1 > 선택지 출력
@@ -240,10 +275,10 @@ string Temp;
 	//선택지 내용
 	SetColor(S_BLACK);
 	FillRectEx(4, 288 - 14 * ((4)) -(P_MSG_Y), 285, 290 -(P_MSG_Y), 2);
-	//CopyImage(0, 284 - 14 * ((4)) -(P_MSG_Y), talk_sup);
-	//CopyImage(0,  275 - 14 * 2 -(P_MSG_Y), talk_main);
-	//CopyImage(0,  275 - 14 * 1 -(P_MSG_Y), talk_main);
-	//CopyImage(0,  275 -(P_MSG_Y), talk_main);
+	CopyImage(0, 284 - 14 * ((4)) -(P_MSG_Y), talk_sup);
+	CopyImage(0,  275 - 14 * 2 -(P_MSG_Y), talk_main);
+	CopyImage(0,  275 - 14 * 1 -(P_MSG_Y), talk_main);
+	CopyImage(0,  275 -(P_MSG_Y), talk_main);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
 
 	for(i = 0; i < MsgCount; i++){
@@ -256,7 +291,7 @@ string Temp;
 		DrawStr(120, 235 + i * 14 -(P_MSG_Y), Temp);
 	}
 
-	//CopyImage(0,  288 -(P_MSG_Y), talk_sub);
+	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
 
 	//키입력
 	if(NextKey == SWAP_KEY_DOWN)
@@ -277,50 +312,46 @@ string Temp;
 	//선택항목 표시
 	SetColor(S_WHITE);
 	FillRectEx(6, 233 + SelectedAnswer * 14 -(P_MSG_Y), 233, 247 + SelectedAnswer * 14 -(P_MSG_Y), 3);
-	//CopyImage(4, 232 + SelectedAnswer * 14 -(P_MSG_Y), talk_sel);
+	CopyImage(4, 232 + SelectedAnswer * 14 -(P_MSG_Y), talk_sel);
 }
 
-//2번 이벤트 라인{2,*,*} - 스위치조작
-void SwitchOnOff(int SwitchNumber, int OnOffSet)
+
+//2 > 현재 화자이름과 위치 설정
+void SetCurrentName(int NameNumber, int Position)
 {
-	Switch[SwitchNumber] = OnOffSet;
+	CurrentName = NameNumber;	//-1:없음
+	NamePosition = Position;	//0:좌, 1:우
 }
 
-//3번 이벤트 라인{3,*,*,*} - 변수조작
-void SetVariable(int VariableNumber, int Operation, int Value)
+//3 > 같을경우 계속 수행
+int IfEqual(int Value1, int Value2, int ElseCount)
 {
-	int Temp;
-	switch(Operation)
-	{
-		case 0:		// = Value
-			Variable[VariableNumber] = Value;break;
-		case 1:		// VariableNumber + Value
-			Variable[VariableNumber] += Value;break;
-		case 2:		// VariableNumber - Value
-			Variable[VariableNumber] -= Value;break;
-		case 3:		// VariableNumber * Value
-			Variable[VariableNumber] *= Value;break;
-		case 4:		// VariableNumber / Value
-			Variable[VariableNumber] /= Value;break;
-		case 5:		// VariableNumber % Value
-			Variable[VariableNumber] %= Value;break;
-		case 6:		// = VariableNumber
-			Variable[VariableNumber] = Variable[Value];break;
-		case 7:		// VariableNumber + VariableNumber
-			Variable[VariableNumber] += Variable[Value];break;
-		case 8:		// VariableNumber - VariableNumber
-			Variable[VariableNumber] -= Variable[Value];break;
-		case 9:		// VariableNumber * VariableNumber
-			Variable[VariableNumber] *= Variable[Value];break;
-		case 10:	// VariableNumber / VariableNumber
-			Variable[VariableNumber] /= Variable[Value];break;
-		case 11:	// VariableNumber % VariableNumber
-			Variable[VariableNumber] %= Variable[Value];break;
-		case 12:	// Swap(VariableNumber)
-			Temp = Variable[VariableNumber];
-			Variable[VariableNumber] = Variable[Value];
-			Variable[Value] = Temp;
+	if(Value1 == Variable[Value2])return 0;
+	else return ElseCount;
+}
+
+//4 > 다를경우 계속 수행
+int ElseEqual(int Value1, int Value2, int IfCount)
+{
+	if(Value1 != Variable[Value2])return 0;
+	else return IfCount;
+}
+
+//5 > 표시 배경 이미지 교체
+void SetBackground(int Layer, int ImageNumber, int Effect)
+{
+	if(EffectFrame == MOVE_EFFECT_COUNT / 2){
+		Background[Layer] = ImageNumber;
+	}else if (EffectFrame > MOVE_EFFECT_COUNT){        
+		return;
 	}
+	ScreenEffect(Effect, EffectFrame++, ImageNumber);
+}
+
+//6 > 표시 케릭터 이미지 교체
+void SetChara(int Layer, int ImageNumber)
+{
+	BackChara[Layer] = ImageNumber;
 }
 
 //7번 이벤트 라인{7,*,*,*} - 주인공 맵 이동
@@ -334,7 +365,7 @@ void MoveMap(int MapNumber, int PositionX, int PositionY)
 	DrawSupLayer(1);		//상위맵 1단계 출력
 
 	SetColor(S_BLACK);		//Rand(0,127)//클리어 색상
-	ScreenEffect(1, SecondSelect);
+	ScreenEffect(1, SecondSelect, 0);
 
 	if(SecondSelect == MOVE_EFFECT_COUNT / 2){
 	
@@ -347,7 +378,6 @@ void MoveMap(int MapNumber, int PositionX, int PositionY)
 		MovingDirection = 0;							//워프 후 계속이동 됨을 방지
 
 	}else if(SecondSelect == MOVE_EFFECT_COUNT){
-		SecondSelect = 0;								//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 		return;
 	}
 
@@ -471,11 +501,47 @@ void SetDirection(int Actor, int Direction)
 	}
 }
 
-//11번 이벤트 라인{11,*,*,*,*} - 변수에 대한 조건분기
-int ConditionVariable(int Value1, int Operation, int Value2, int ElseCount)
+//10번 이벤트 라인{2,*,*} - 스위치조작
+void SwitchOnOff(int SwitchNumber, int OnOffSet)
 {
-	if(CheckVariable(Value1, Operation, Value2) == 0)return ElseCount;
-	else if(CheckVariable(Value1, Operation, Value2) == 1) return 0;
+	Switch[SwitchNumber] = OnOffSet;
+}
+
+//11번 이벤트 라인{3,*,*,*} - 변수조작
+void SetVariable(int VariableNumber, int Operation, int Value)
+{
+	int Temp;
+	switch(Operation)
+	{
+		case 0:		// = Value
+			Variable[VariableNumber] = Value;break;
+		case 1:		// VariableNumber + Value
+			Variable[VariableNumber] += Value;break;
+		case 2:		// VariableNumber - Value
+			Variable[VariableNumber] -= Value;break;
+		case 3:		// VariableNumber * Value
+			Variable[VariableNumber] *= Value;break;
+		case 4:		// VariableNumber / Value
+			Variable[VariableNumber] /= Value;break;
+		case 5:		// VariableNumber % Value
+			Variable[VariableNumber] %= Value;break;
+		case 6:		// = VariableNumber
+			Variable[VariableNumber] = Variable[Value];break;
+		case 7:		// VariableNumber + VariableNumber
+			Variable[VariableNumber] += Variable[Value];break;
+		case 8:		// VariableNumber - VariableNumber
+			Variable[VariableNumber] -= Variable[Value];break;
+		case 9:		// VariableNumber * VariableNumber
+			Variable[VariableNumber] *= Variable[Value];break;
+		case 10:	// VariableNumber / VariableNumber
+			Variable[VariableNumber] /= Variable[Value];break;
+		case 11:	// VariableNumber % VariableNumber
+			Variable[VariableNumber] %= Variable[Value];break;
+		case 12:	// Swap(VariableNumber)
+			Temp = Variable[VariableNumber];
+			Variable[VariableNumber] = Variable[Value];
+			Variable[Value] = Temp;
+	}
 }
 
 //12번 이벤트 라인{12,*} - 스위치에 대한 조건분기
@@ -491,4 +557,87 @@ int Delay(int Value)
 	if(Variable[Value] == 0)return 1;
 	Variable[Value]--;
 	return 0;
+}
+
+
+
+
+
+
+
+//30번>>지하철 30
+int Subway(int EventNumber)
+{
+
+	FillRectEx(0, 100, 240, 200, 2);
+	FillRect(20 + SelectedStation * 25, 150, 40 + SelectedStation * 25, 170);
+
+	DrawStr(60, 160, Area[SelectedStation].name);
+
+ 	switch(EventMode){
+		case 0:						//이벤트 초기화
+			SelectedStation = Player.map;	//현재 위치 적용
+			EventMode++;
+
+		case 1:						//목적지 선택
+			switch(NextKey){
+				case SWAP_KEY_OK:		//목적지 결정
+					Player.map = SelectedStation;
+					return 1;				//선택 종료
+
+				case SWAP_KEY_LEFT:		//좌선택
+					SelectedStation = (SelectedStation + 4) % 5;
+					break;
+
+				case SWAP_KEY_RIGHT:	//우선택
+					SelectedStation = (SelectedStation + 1) % 5;
+					break;
+
+				case SWAP_KEY_CLR:		//목적지 취소
+					return 1;
+					break;
+			}//END SWITCH[NextKey]
+			break;
+
+		case 2:						//확인
+			break;
+	}//END SWITCH[EventMode]
+
+/*
+if(SelectedAnswer){
+					switch(SecondSelect){
+						case 0:
+							MoveMap(0, 10, 10);
+							break;
+						case 1:
+							MoveMap(1, 10, 10);
+							break;
+						case 2:
+							MoveMap(2, 10, 10);
+							break;
+						case 3:
+							MoveMap(3, 10, 10);
+							break;
+						case 4:
+							MoveMap(4, 10, 10);
+							break;
+						case 5:
+							MoveMap(5, 10, 10);
+							break;
+					}
+					if(SecondSelect == MOVE_EFFECT_COUNT){
+						EventMode = 0;							//이벤트 모드 초기화
+						SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+						SelectedAnswer = 0;
+						SelectedStation = 0;
+						EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+						EventObject[EventNumber].EventLoop = 0;
+						RunningEventNumber = -1;				//실행 이벤트 종료
+						ChangeMode(2);
+						return 1;
+					}
+}*/
+
+	return 0;
+
 }

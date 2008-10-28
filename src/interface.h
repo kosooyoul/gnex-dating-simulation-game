@@ -5,6 +5,9 @@ void DrawInterface()
 {
 	string TempString;	
 
+	FillRect(0,0,240,32);
+	FillRect(0,245,240,298);
+
 	SetShadeColor(S_BLUE, S_SKY);
 	ShadeRect(0, 0, 239, 19, 3, 1);
 	SetColor(S_BLACK);
@@ -28,8 +31,5 @@ void DrawInterface()
 	//날씨 출력
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
 	DrawStr(180, 6, WEATHER[Now.Weather]);
-
-	FillRect(0,0,240,36);
-	FillRect(0,240,240,298);
 
 }
