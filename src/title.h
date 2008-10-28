@@ -43,7 +43,7 @@ void DrawTitle()
 
 	if(SelectedMenu)
 	{
-		CopyImageEx(0, 85, function_window, 1, 0, 0, 0);
+//		CopyImageEx(0, 85, function_window, 1, 0, 0, 0);
 		switch(SelectedTitleMenu)
 		{
 			case 1:
@@ -106,7 +106,7 @@ void SelectTitleMenu()
 				{
 					case 1:
 						////////////////////////저장데이터 로드 부분//////////////////////////
-						if(SelectedObject == 0)ChangeGameMode(2);	///////////임시///////////
+						if(SelectedObject == 0)ChangeMode(2);	///////////임시///////////
 						////////////////////////저장데이터 로드 부분//////////////////////////
 						break;
 
@@ -154,12 +154,14 @@ void SelectTitleMenu()
 				{
 					//시작
 					case 0:
-
-						ChangeGameMode(1);
+						ChangeMode(1);
 						break;
 
 					//이어하기
 					case 1:
+						ChangeMode(2);
+						break;
+
 					//옵션
 					case 2:
 					//게임정보
@@ -186,34 +188,35 @@ void SelectTitleMenu()
 void ShowTitleContinue()
 {
 	int i;
-	CopyImage(71, 61, function_name[0]);
-	CopyImageEx(15, 100, function_load_left, 1, 0, 0, 0);
-	CopyImageEx(166, 100, function_load_right, 1, 0, 0, 0);
+	i=0;//지우기
+//	CopyImage(71, 61, function_name[0]);
+//	CopyImageEx(15, 100, function_load_left, 1, 0, 0, 0);
+//	CopyImageEx(166, 100, function_load_right, 1, 0, 0, 0);
 
-	SetColor(S_WHITE);
-	FillRectEx(167, 111 + 15 * SelectedObject, 223, 122 + 15 * SelectedObject, 1);
+//	SetColor(S_WHITE);
+//	FillRectEx(167, 111 + 15 * SelectedObject, 223, 122 + 15 * SelectedObject, 1);
 
-	CopyImageEx(167, 112, load_saved, 1, 0, 0, 0);
-	for(i = 1; i < 6; i++)
-	{
-		CopyImageEx(167, 112 + 15 * i, load_empty, 1, 0, 0, 0);
-	}
+//	CopyImageEx(167, 112, load_saved, 1, 0, 0, 0);
+//	for(i = 1; i < 6; i++)
+//	{
+//		CopyImageEx(167, 112 + 15 * i, load_empty, 1, 0, 0, 0);
+//	}
 
 }
 
 void ShowTitleOption()
 {
-	CopyImage(71, 61, function_name[1]);
-	CopyImageEx(15, 100, function_option, 1, 0, 0, 0);
+//	CopyImage(71, 61, function_name[1]);
+//	CopyImageEx(15, 100, function_option, 1, 0, 0, 0);
 
-	if(OptionAutoSkip)
-	{
-		CopyImageEx(186, 108, function_check, 1, 0, 0, 0);
-	}
-	if(OptionSpokeSkip)
-	{
-		CopyImageEx(186, 136, function_check, 1, 0, 0, 0);
-	}
+//	if(OptionAutoSkip)
+//	{
+//		CopyImageEx(186, 108, function_check, 1, 0, 0, 0);
+//	}
+//	if(OptionSpokeSkip)
+//	{
+//		CopyImageEx(186, 136, function_check, 1, 0, 0, 0);
+//	}
 
 	SetColor(S_WHITE);
 	FillRectEx(16, 110 + 28 * SelectedObject, 223, 129 + 28 * SelectedObject, 3);
@@ -221,5 +224,7 @@ void ShowTitleOption()
 
 void ShowTitleGameInfo()
 {
-	CopyImage(71, 61, function_name[2]);
+	int a;//지우기
+	a=0;//지우기
+//	CopyImage(71, 61, function_name[2]);
 }
