@@ -45,6 +45,7 @@
 #include "interface.h"				//  f 인터페이스
 #include "prologue.h"				// m v프롤로그
 #include "menu.h"					// m  메뉴
+#include "ctrlrom.h"				//  f 롬관리
 
 int RunningEventNumber = -1;					//실행중인 이벤트번호, -1은 아무것도 수행안함
 int NextKey = -1;								//입력받은 키
@@ -69,6 +70,7 @@ void TEST(){
 
 //Main
 void main(){
+	InitNature();
 	InitPlayer();								//주인공 초기화
 	SetArea();									//지역 초기화
 	SetEvent();									//이벤트 초기화
@@ -168,6 +170,8 @@ void EVENT_KEYPRESS(){
 				case SWAP_KEY_LEFT:
 				case SWAP_KEY_RIGHT:
 				case SWAP_KEY_RELEASE:
+					Now.Today.Hour = (Now.Today.Hour + (Now.Today.Minute + 1) / 60) % 24;	//테스트 코드
+					Now.Today.Minute = (Now.Today.Minute + 1) % 60;							//테스트 코드
 				 	MovingDirection = swData;
 					break;
 

@@ -199,7 +199,7 @@ void ScreenEffect(int Type, int Count, int Imgnum){
 			break;
 
 		case 2:			//두 장면 겹쳐 서서히 사라짐
-			/*switch(Count){
+			switch(Count){
 				case 0:
 				case 1: CopyImageEx(0, 20, bg[Imgnum], 3, 0, 0, 0);break;
 				case 2:
@@ -210,7 +210,7 @@ void ScreenEffect(int Type, int Count, int Imgnum){
 				case 7:
 				case 8:
 				case 9:	CopyImage(0, 20, bg[Imgnum]);break;
-			}*/
+			}
 			break;
 	}
 }
@@ -561,174 +561,215 @@ int Delay(int Value)
 	return 0;
 }
 
-//30번>>지하철 일본 5개 도시
+//30번>> 지하철 일본 5개 도시
 int Subway(int EventNumber){
-	string Temp;
 
-	FillRectEx(0, 100, 240, 200, 2);
-	FillRect(20 + SelectedStation * 25, 150, 40 + SelectedStation * 25, 170);
+	//검은 바탕
+	SetColor(S_BLACK);
+	FillRectEx(0, 62, 240, 218, 1);
 
-	DrawStr(60, 160, Area[SelectedStation].name);
-	MakeStr1(Temp, "F = %d", SelectedStation);
-	DrawStr(60, 180, Temp);
+	//테두리
+	CopyImage(0, 60, int_border);
+	CopyImageEx(240, 220, int_border, 0, 0, 0, 2);
 
-	//선택지역 표시
+	//지도
+	CopyImage(0, 75, eve_airmap);
+
+	//선택한 목적지
 	switch(SelectedStation){
-		case 0:					//도쿄
-			break;
-		case 1:					//오사카
-			break;
-		case 2:					//쿄토
-			break;
-		case 3:					//후쿠오카
-			break;
-		case 4:					//오키나와
-			break;
-	}
-	
-	//현재지역 표시
-	switch(Player.map){
-		case 0:					//도쿄
-			break;
-		case 1:					//오사카
-			break;
-		case 2:					//쿄토
-			break;
-		case 3:					//후쿠오카
-			break;
-		case 4:					//오키나와
-			break;
+		case 0:		CopyImage(T1X, T1Y, int_select_map);break;
+		case 1:		CopyImage(T2X, T2Y, int_select_map);break;
+		case 2:		CopyImage(T3X, T3Y, int_select_map);break;
+		case 3:		CopyImage(T4X, T4Y, int_select_map);break;
+		case 4:		CopyImage(T5X, T5Y, int_select_map);break;
+		case 5:		CopyImage(T6X, T6Y, int_select_map);break;
 	}
 
-	if(SelectedAnswer){ 
-		switch(SelectedStation){
-			case 0:					//도쿄
-				MoveMap(0, 10, 10);
-				break;
-			case 1:					//오사카
-				MoveMap(1, 10, 10);
-				break;
-			case 2:					//쿄토
-				MoveMap(2, 10, 10);
-				break;
-			case 3:					//후쿠오카
-				MoveMap(3, 10, 10);
-				break;
-			case 4:					//오키나와
-				MoveMap(4, 10, 10);
-				break;
-			default:
-				SecondSelect++;
-		}
-		if(SecondSelect == MOVE_EFFECT_COUNT){
-			EventMode = 0;								//이벤트 모드 초기화
-			SecondSelect = 0;							//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
-			SelectedAnswer = 0;
-			SelectedStation = 0;
-			EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
-			EventObject[EventNumber].EventLoop = 0;
-			RunningEventNumber = -1;				//실행 이벤트 종료
-			ChangeMode(2);
-			return 1;
-		}
-	}else{
-	
-		 switch(EventMode){
-			case 0:						//이벤트 초기화
-				SelectedStation = Player.map;	//현재 위치 적용
-				EventMode = 1;
+	//목적지 이름
+	CopyImage(72, 67, int_label);
+	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+	DrawStr(120, 73, AreaName[Area[SelectedStation].name]);
 
-			case 1:						//목적지 선택
-				switch(NextKey){
-					case SWAP_KEY_OK:		//목적지 결정
-						SelectedAnswer = 1;
-						break;
+	switch(SelectedAnswer){
+		case 2:
+			switch(SelectedStation){
+				case 0:		MoveMap(0, 10, 10);break;	//도쿄
+				case 1:		MoveMap(1, 10, 10);break;	//오사카
+				case 2:		MoveMap(2, 10, 10);break;	//교토
+				case 3:		MoveMap(3, 10, 10);break;	//후쿠오카
+				case 4:		MoveMap(4, 10, 10);break;	//오키나와
+				default:
+					SecondSelect++;
 
-					case SWAP_KEY_LEFT:		//좌선택
-						SelectedStation = (SelectedStation + 4) % 5;
-						break;
+			}
+			if(SecondSelect == MOVE_EFFECT_COUNT){
+				EventMode = 0;							//이벤트 모드 초기화
+				SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+				SelectedAnswer = 0;
+				SelectedStation = 0;
+				EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+				EventObject[EventNumber].EventLoop = 0;
+				RunningEventNumber = -1;				//실행 이벤트 종료
+				ChangeMode(2);
+				return 1;
+			}
+			break;
 
-					case SWAP_KEY_RIGHT:	//우선택
-						SelectedStation = (SelectedStation + 1) % 5;
-						break;
+		case 1:
+			switch(SelectedStation){
+				case 0:					//도쿄로
+					CopyImageEx(T1X + ((T1X-T6X) / 50 * SecondSelect), T1Y + ((T1Y-T6Y) / 50 * SecondSelect), airport, 0, 0, 0, 2);
+					break;
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+					CopyImage(T6X - ((T1X-T6X) / 50 * SecondSelect), T6Y - ((T1Y-T6Y) / 50 * SecondSelect), airport);
+					break;
+			}
+			SecondSelect++;
+			if(SecondSelect >= 0){
+				SelectedAnswer = 2;
+			}
+			break;
 
-					case SWAP_KEY_CLR:		//목적지 취소
-						return 1;
-						break;
-				}//END SWITCH[NextKey]
-				break;
+		case 0:	
+			switch(EventMode){
+				case 0:						//이벤트 초기화
+					SecondSelect = 0;				//이펙트를 위해 -50
+					SelectedStation = Player.map;	//현재 위치 적용
+					EventMode = 1;
 
-			case 2:						//확인
-				break;
-		}//END SWITCH[EventMode]
-	}
+				case 1:						//목적지 선택
+					switch(NextKey){
+						case SWAP_KEY_OK:		//목적지 결정
+							if(SelectedStation == Player.map){
+								return 1;
+							}else{
+								SelectedAnswer = 1;
+							}break;
+						case SWAP_KEY_LEFT:		//좌선택
+							SelectedStation = (SelectedStation + 4) % 5;break;
+						case SWAP_KEY_RIGHT:	//우선택
+							SelectedStation = (SelectedStation + 1) % 5;break;
+						case SWAP_KEY_CLR:		//목적지 취소
+							return 1;break;
+					}//END SWITCH[NextKey]
+					break;
 
+				case 2:						//확인
+					break;
+			}//END SWITCH[EventMode]
+			break;
+	}//END SWITCH[SelectedAnswer]
 	return 0;
 
 }
 
-//31번 항공기 일본의 도쿄 - 한국의 서울
+//31번>> 항공기 일본의 도쿄 - 한국의 서울
 int Airport(int EventNumber){
-	string Temp;
 
-	FillRectEx(0, 100, 240, 200, 2);
-	FillRect(20 + SelectedStation * 25, 150, 40 + SelectedStation * 25, 170);
+	//검은 바탕
+	SetColor(S_BLACK);
+	FillRectEx(0, 62, 240, 218, 1);
 
-	DrawStr(60, 160, Area[SelectedStation].name);
-	MakeStr1(Temp, "F = %d", SelectedStation);
-	DrawStr(60, 180, Temp);
+	//테두리
+	CopyImage(0, 60, int_border);
+	CopyImageEx(240, 220, int_border, 0, 0, 0, 2);
 
-	if(SelectedAnswer){ 
-		switch(SelectedStation){
-			case 0:					//도쿄
-				MoveMap(0, 10, 10);
-				break;
-			case 5:					//서울
-				MoveMap(5, 10, 10);
-				break;
-			default:
-				SecondSelect++;
+	//지도
+	CopyImage(0, 75, eve_airmap);
 
-		}
-		if(SecondSelect == MOVE_EFFECT_COUNT){
-			EventMode = 0;							//이벤트 모드 초기화
-			SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
-			SelectedAnswer = 0;
-			SelectedStation = 0;
-			EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
-			EventObject[EventNumber].EventLoop = 0;
-			RunningEventNumber = -1;				//실행 이벤트 종료
-			ChangeMode(2);
-			return 1;
-		}
-	}else{
-	
-		 switch(EventMode){
-			case 0:						//이벤트 초기화
-				SelectedStation = Player.map;	//현재 위치 적용
-				EventMode = 1;
-
-			case 1:						//목적지 선택
-				switch(NextKey){
-					case SWAP_KEY_OK:		//목적지 결정
-						SelectedAnswer = 1;
-						break;
-
-					case SWAP_KEY_LEFT:		//좌선택
-					case SWAP_KEY_RIGHT:	//우선택
-						SelectedStation = (SelectedStation + 1) % 2 * 5;
-						break;
-
-					case SWAP_KEY_CLR:		//목적지 취소
-						return 1;
-						break;
-				}//END SWITCH[NextKey]
-				break;
-
-			case 2:						//확인
-				break;
-		}//END SWITCH[EventMode]
+	//선택한 목적지
+	switch(SelectedStation){
+		case 0:
+			CopyImage(T1X, T1Y, int_select_map);
+			break;
+		case 5:
+			CopyImage(T6X, T6Y, int_select_map);
+			break;
 	}
+
+	//목적지 이름
+	CopyImage(72, 67, int_label);
+	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+	DrawStr(120, 73, AreaName[Area[SelectedStation].name]);
+
+
+	switch(SelectedAnswer){
+		case 2:
+			switch(SelectedStation){
+				case 0:					//도쿄
+					MoveMap(0, 10, 10);
+					break;
+				case 5:					//서울
+					MoveMap(5, 10, 10);
+					break;
+				default:
+					SecondSelect++;
+
+			}
+			if(SecondSelect == MOVE_EFFECT_COUNT){
+				EventMode = 0;							//이벤트 모드 초기화
+				SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+				SelectedAnswer = 0;
+				SelectedStation = 0;
+				EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+				EventObject[EventNumber].EventLoop = 0;
+				RunningEventNumber = -1;				//실행 이벤트 종료
+				ChangeMode(2);
+				return 1;
+			}
+			break;
+
+		case 1:
+			switch(SelectedStation){
+				case 0:					//도쿄로
+					CopyImageEx(T1X + ((T1X-T6X) / 50 * SecondSelect), T1Y + ((T1Y-T6Y) / 50 * SecondSelect), airport, 0, 0, 0, 2);
+					break;
+				case 5:					//서울로
+					CopyImage(T6X - ((T1X-T6X) / 50 * SecondSelect), T6Y - ((T1Y-T6Y) / 50 * SecondSelect), airport);
+					break;
+			}
+			SecondSelect++;
+			if(SecondSelect >= 0){
+				SelectedAnswer = 2;
+			}
+			break;
+
+		case 0:	
+			switch(EventMode){
+				case 0:						//이벤트 초기화
+					SecondSelect = -50;
+					SelectedStation = Player.map;	//현재 위치 적용
+					EventMode = 1;
+
+				case 1:						//목적지 선택
+					switch(NextKey){
+						case SWAP_KEY_OK:		//목적지 결정
+							if(SelectedStation == Player.map){
+								return 1;
+							}else{
+								SelectedAnswer = 1;
+							}
+							break;
+
+						case SWAP_KEY_LEFT:		//좌선택
+						case SWAP_KEY_RIGHT:	//우선택
+							SelectedStation = (SelectedStation + 1) % 2 * 5;
+							break;
+
+						case SWAP_KEY_CLR:		//목적지 취소
+							return 1;
+							break;
+					}//END SWITCH[NextKey]
+					break;
+
+				case 2:						//확인
+					break;
+			}//END SWITCH[EventMode]
+			break;
+	}//END SWITCH[SelectedAnswer]
 	return 0;
 
 }

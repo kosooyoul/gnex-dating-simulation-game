@@ -3,52 +3,54 @@ int ScrollMapX = 0;				//가로 스크롤
 int ScrollMapY = 0;				//세로 스크롤
 
 struct Map{
-	string name;
+	int name;
 	int x_start, y_start;
 	int x_size, y_size;
 	int backchip;				//배경 맵칩
 }Area[6];
 
+const string AreaName[6] = {"도쿄", "오사카", "교토", "후쿠오카", "오키나와", "서울"};
+
 //맵 영역 설정
 void SetArea(){
-	Area[0].name = "TOKYO";
+	Area[0].name = 0;
 	Area[0].x_start = 0;
 	Area[0].y_start = 0;
 	Area[0].x_size = 20;
 	Area[0].y_size = 20;
 	Area[0].backchip = 85;		//풀밭142 검정85 자갈바닥58
 
-	Area[1].name = "OSAKA";
+	Area[1].name = 1;
 	Area[1].x_start = 20;//20;
 	Area[1].y_start = 0;//30;
 	Area[1].x_size = 20;//9;
 	Area[1].y_size = 20;//11;
 	Area[1].backchip = 85;		//풀밭142 검정85 자갈바닥58
 	
-	Area[2].name = "KYOTO";
+	Area[2].name = 2;
 	Area[2].x_start = 0;//20;
 	Area[2].y_start = 20;//30;
 	Area[2].x_size = 20;//9;
 	Area[2].y_size = 20;//11;
 	Area[2].backchip = 85;		//풀밭142 검정85 자갈바닥58
 
-	Area[3].name = "HUKUOKA";
+	Area[3].name = 3;
 	Area[3].x_start = 20;//20;
 	Area[3].y_start = 20;//30;
 	Area[3].x_size = 20;//9;
 	Area[3].y_size = 20;//11;
 	Area[3].backchip = 85;		//풀밭142 검정85 자갈바닥58
 
-	Area[4].name = "OKINAWA";
+	Area[4].name = 4;
 	Area[4].x_start = 0;//20;
 	Area[4].y_start = 40;//30;
 	Area[4].x_size = 20;//9;
 	Area[4].y_size = 20;//11;
 	Area[4].backchip = 85;		//풀밭142 검정85 자갈바닥58
 
-	Area[5].name = "SEOUL";
+	Area[5].name = 5;
 	Area[5].x_start = 20;//20;
-	Area[5].y_start = 40;//30;
+	Area[5].y_start = 0;//40;
 	Area[5].x_size = 20;//9;
 	Area[5].y_size = 20;//11;
 	Area[5].backchip = 85;		//풀밭142 검정85 자갈바닥58

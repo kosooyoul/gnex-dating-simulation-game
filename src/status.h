@@ -25,8 +25,8 @@ void InitNature(){
 	Now.Today.Year	= 2008;
 	Now.Today.Month	= 12;
 	Now.Today.Day		= 25;
-	Now.Today.Hour	= 14;
-	Now.Today.Minute	= 34;
+	Now.Today.Hour	= 11;
+	Now.Today.Minute	= 00;
 	Now.Weather	= 0;
 }
 

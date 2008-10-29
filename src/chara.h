@@ -14,7 +14,7 @@ struct Chara{
 void InitPlayer(){
 	int i;	//테스트
 
-	Player.graphic = 4;
+	Player.graphic = 0;
 	Player.map = 0;
 	Player.x = 11;
 	Player.y = 12;

@@ -31,7 +31,21 @@ struct Point{
 #define _CenterPositionY 40 + 16+32		//케릭터 표시위치 = 4*16-(8)-? -16 : 20	;+16*2	+32
 
 //map.h
-#define _PlayerPosition 7						//주인공 화면위치 조절
+#define _PlayerPosition 7				//주인공 화면위치 조절
 #define _SubChipMoveable 99				//이동 가능한 하위칩 마지막 번호
 #define _SupChipMoveable 39				//이동 가능한 상위칩 마지막 번호
-#define _SupChipWall 139						//장애물에 대한 상위칩 마지막 번호
+#define _SupChipWall 139				//장애물에 대한 상위칩 마지막 번호
+
+//EVENT MAP
+#define T1X		148
+#define T1Y		195
+#define T2X		91
+#define T2Y		183
+#define T3X		99
+#define T3Y		176
+#define T4X		210
+#define T4Y		94
+#define T5X		15
+#define T5Y		190
+#define T6X		12
+#define T6Y		87

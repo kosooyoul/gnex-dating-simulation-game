@@ -3,33 +3,40 @@ int selected_menu = 0;					//선택한 상위 메뉴
 //인터페이스 그리기
 void DrawInterface()
 {
-	string TempString;	
+	string TempString;
+	int i;
 
-	FillRect(0,0,240,32);
-	FillRect(0,245,240,298);
-
-	SetShadeColor(S_BLUE, S_SKY);
-	ShadeRect(0, 0, 239, 19, 3, 1);
-	SetColor(S_BLACK);
-	DrawRect(0, 0, 239, 19);
-
-	//CopyImage(0, 277, menu);
+	//이동모드 기본 인터페이스 배경출력
+	CopyImage(0, 0, int_top);
+	CopyImage(0, 245, int_foot);
 
 	//날짜 출력
-	SetFontType(S_FONT_MEDIUM, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	MakeStr2(TempString, "%d/%2d", Now.Today.Year, Now.Today.Month);
-	DrawStr(7, 8, TempString);
-	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	MakeStr1(TempString, "%d", Now.Today.Day);
-	DrawStr(70, 6, TempString);
+	CopyImage(26, 21, int_num_3[Now.Today.Year % 10]);
+	CopyImage(43, 21, int_num_3[Now.Today.Month / 10]);
+	CopyImage(50, 21, int_num_3[Now.Today.Month % 10]);
+	CopyImage(68, 11, int_num_1[Now.Today.Day / 10]);
+	CopyImage(82, 11, int_num_1[Now.Today.Day % 10]);
 
 	//시간 출력
-	SetFontType(S_FONT_MEDIUM, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	MakeStr2(TempString, "%d:%d", Now.Today.Hour, Now.Today.Minute);
-	DrawStr(100, 8, TempString);
+	CopyImage(145, 18, int_num_2[(Now.Today.Hour % 12) / 10]);
+	CopyImage(156, 18, int_num_2[(Now.Today.Hour % 12) % 10]);
+	CopyImage(176, 18, int_num_2[Now.Today.Minute / 10]);
+	CopyImage(187, 18, int_num_2[Now.Today.Minute % 10]);
 
-	//날씨 출력
-	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	DrawStr(180, 6, WEATHER[Now.Weather]);
+	//AM/PM 출력
+	CopyImage(207, 18, int_apm[(Now.Today.Hour / 12)]);
+	
+	//이벤트 배경
+	for(i = 0; i < 2; i++){
+		if(Background[i] >= 0){
+			CopyImage(0, 20, bg[Background[i]]);
+		}
+	}
 
+	//이벤트 케릭터
+	//for(i = 0; i < 1; i++){
+	//	if(BackChara[i] >= 0){
+	//		CopyImage(30, 100, chara[BackChara[i]]);
+	//	}
+	//}
 }
