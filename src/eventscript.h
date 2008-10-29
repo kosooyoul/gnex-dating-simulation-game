@@ -1,6 +1,6 @@
 int SelectedAnswer = 0;				//선택지
 int EventMode = 0;					//이벤트 모드
-int SelectedStation = 0;				//이벤트 내 선택 장소
+int SelectedStation = 0;			//이벤트 내 선택 장소
 int SecondSelect = 0;				//이벤트 내 메뉴 선택
 
 int EventPointer = 0;				//실행중 이벤트라인 위치
@@ -123,6 +123,8 @@ void RunEventLine(int EventNumber)
 			break;
 
 		case 31:	//항공기
+			if(!Airport(EventNumber))EventObject[EventNumber].LineCount--;
+			NextKey = -1;
 			break;
 
 		default:
@@ -559,85 +561,174 @@ int Delay(int Value)
 	return 0;
 }
 
-
-
-
-
-
-
-//30번>>지하철 30
-int Subway(int EventNumber)
-{
+//30번>>지하철 일본 5개 도시
+int Subway(int EventNumber){
+	string Temp;
 
 	FillRectEx(0, 100, 240, 200, 2);
 	FillRect(20 + SelectedStation * 25, 150, 40 + SelectedStation * 25, 170);
 
 	DrawStr(60, 160, Area[SelectedStation].name);
+	MakeStr1(Temp, "F = %d", SelectedStation);
+	DrawStr(60, 180, Temp);
 
- 	switch(EventMode){
-		case 0:						//이벤트 초기화
-			SelectedStation = Player.map;	//현재 위치 적용
-			EventMode++;
-
-		case 1:						//목적지 선택
-			switch(NextKey){
-				case SWAP_KEY_OK:		//목적지 결정
-					Player.map = SelectedStation;
-					return 1;				//선택 종료
-
-				case SWAP_KEY_LEFT:		//좌선택
-					SelectedStation = (SelectedStation + 4) % 5;
-					break;
-
-				case SWAP_KEY_RIGHT:	//우선택
-					SelectedStation = (SelectedStation + 1) % 5;
-					break;
-
-				case SWAP_KEY_CLR:		//목적지 취소
-					return 1;
-					break;
-			}//END SWITCH[NextKey]
+	//선택지역 표시
+	switch(SelectedStation){
+		case 0:					//도쿄
 			break;
-
-		case 2:						//확인
+		case 1:					//오사카
 			break;
-	}//END SWITCH[EventMode]
+		case 2:					//쿄토
+			break;
+		case 3:					//후쿠오카
+			break;
+		case 4:					//오키나와
+			break;
+	}
+	
+	//현재지역 표시
+	switch(Player.map){
+		case 0:					//도쿄
+			break;
+		case 1:					//오사카
+			break;
+		case 2:					//쿄토
+			break;
+		case 3:					//후쿠오카
+			break;
+		case 4:					//오키나와
+			break;
+	}
 
-/*
-if(SelectedAnswer){
-					switch(SecondSelect){
-						case 0:
-							MoveMap(0, 10, 10);
-							break;
-						case 1:
-							MoveMap(1, 10, 10);
-							break;
-						case 2:
-							MoveMap(2, 10, 10);
-							break;
-						case 3:
-							MoveMap(3, 10, 10);
-							break;
-						case 4:
-							MoveMap(4, 10, 10);
-							break;
-						case 5:
-							MoveMap(5, 10, 10);
-							break;
-					}
-					if(SecondSelect == MOVE_EFFECT_COUNT){
-						EventMode = 0;							//이벤트 모드 초기화
-						SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
-						SelectedAnswer = 0;
-						SelectedStation = 0;
-						EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
-						EventObject[EventNumber].EventLoop = 0;
-						RunningEventNumber = -1;				//실행 이벤트 종료
-						ChangeMode(2);
+	if(SelectedAnswer){ 
+		switch(SelectedStation){
+			case 0:					//도쿄
+				MoveMap(0, 10, 10);
+				break;
+			case 1:					//오사카
+				MoveMap(1, 10, 10);
+				break;
+			case 2:					//쿄토
+				MoveMap(2, 10, 10);
+				break;
+			case 3:					//후쿠오카
+				MoveMap(3, 10, 10);
+				break;
+			case 4:					//오키나와
+				MoveMap(4, 10, 10);
+				break;
+			default:
+				SecondSelect++;
+		}
+		if(SecondSelect == MOVE_EFFECT_COUNT){
+			EventMode = 0;								//이벤트 모드 초기화
+			SecondSelect = 0;							//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+			SelectedAnswer = 0;
+			SelectedStation = 0;
+			EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+			EventObject[EventNumber].EventLoop = 0;
+			RunningEventNumber = -1;				//실행 이벤트 종료
+			ChangeMode(2);
+			return 1;
+		}
+	}else{
+	
+		 switch(EventMode){
+			case 0:						//이벤트 초기화
+				SelectedStation = Player.map;	//현재 위치 적용
+				EventMode = 1;
+
+			case 1:						//목적지 선택
+				switch(NextKey){
+					case SWAP_KEY_OK:		//목적지 결정
+						SelectedAnswer = 1;
+						break;
+
+					case SWAP_KEY_LEFT:		//좌선택
+						SelectedStation = (SelectedStation + 4) % 5;
+						break;
+
+					case SWAP_KEY_RIGHT:	//우선택
+						SelectedStation = (SelectedStation + 1) % 5;
+						break;
+
+					case SWAP_KEY_CLR:		//목적지 취소
 						return 1;
-					}
-}*/
+						break;
+				}//END SWITCH[NextKey]
+				break;
 
+			case 2:						//확인
+				break;
+		}//END SWITCH[EventMode]
+	}
+
+	return 0;
+
+}
+
+//31번 항공기 일본의 도쿄 - 한국의 서울
+int Airport(int EventNumber){
+	string Temp;
+
+	FillRectEx(0, 100, 240, 200, 2);
+	FillRect(20 + SelectedStation * 25, 150, 40 + SelectedStation * 25, 170);
+
+	DrawStr(60, 160, Area[SelectedStation].name);
+	MakeStr1(Temp, "F = %d", SelectedStation);
+	DrawStr(60, 180, Temp);
+
+	if(SelectedAnswer){ 
+		switch(SelectedStation){
+			case 0:					//도쿄
+				MoveMap(0, 10, 10);
+				break;
+			case 5:					//서울
+				MoveMap(5, 10, 10);
+				break;
+			default:
+				SecondSelect++;
+
+		}
+		if(SecondSelect == MOVE_EFFECT_COUNT){
+			EventMode = 0;							//이벤트 모드 초기화
+			SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+			SelectedAnswer = 0;
+			SelectedStation = 0;
+			EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+			EventObject[EventNumber].EventLoop = 0;
+			RunningEventNumber = -1;				//실행 이벤트 종료
+			ChangeMode(2);
+			return 1;
+		}
+	}else{
+	
+		 switch(EventMode){
+			case 0:						//이벤트 초기화
+				SelectedStation = Player.map;	//현재 위치 적용
+				EventMode = 1;
+
+			case 1:						//목적지 선택
+				switch(NextKey){
+					case SWAP_KEY_OK:		//목적지 결정
+						SelectedAnswer = 1;
+						break;
+
+					case SWAP_KEY_LEFT:		//좌선택
+					case SWAP_KEY_RIGHT:	//우선택
+						SelectedStation = (SelectedStation + 1) % 2 * 5;
+						break;
+
+					case SWAP_KEY_CLR:		//목적지 취소
+						return 1;
+						break;
+				}//END SWITCH[NextKey]
+				break;
+
+			case 2:						//확인
+				break;
+		}//END SWITCH[EventMode]
+	}
 	return 0;
 
 }
