@@ -1,10 +1,31 @@
 int selected_menu = 0;					//선택한 상위 메뉴
 
-//인터페이스 그리기
-void DrawInterface()
-{
+//배경그리기
+void DrawBackground(){
 	string TempString;
 	int i;
+
+	//이벤트 배경
+	for(i = 0; i < 2; i++){
+		if(Background[i] >= 0){
+			CopyImage(0, 20, bg[Background[i]]);
+		}
+	}
+
+	//이벤트 케릭터
+	for(i = 0; i < 3; i++){
+		if(BackChara[i] >= 0){
+			switch(i){
+				case 0:		CopyImage(130, 74, EveChara[BackChara[i]]);break;
+				case 1:		CopyImage(10, 74, EveChara[BackChara[i]]);break;
+				case 2:		CopyImage(130, 74, EveChara[BackChara[i]]);break;
+			}
+		}
+	}
+}
+
+//인터페이스 그리기
+void DrawInterface(){
 
 	//이동모드 기본 인터페이스 배경출력
 	CopyImage(0, 0, int_top);
@@ -25,18 +46,7 @@ void DrawInterface()
 
 	//AM/PM 출력
 	CopyImage(207, 18, int_apm[(Now.Today.Hour / 12)]);
-	
-	//이벤트 배경
-	for(i = 0; i < 2; i++){
-		if(Background[i] >= 0){
-			CopyImage(0, 20, bg[Background[i]]);
-		}
-	}
 
-	//이벤트 케릭터
-	//for(i = 0; i < 1; i++){
-	//	if(BackChara[i] >= 0){
-	//		CopyImage(30, 100, chara[BackChara[i]]);
-	//	}
-	//}
+	DrawBackground();
+	
 }

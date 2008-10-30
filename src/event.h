@@ -1,5 +1,5 @@
-int Switch[50];
-int Variable[50];
+int Switch[10];
+int Variable[10];
 
 struct EventObject{
 	//기본정보
@@ -14,6 +14,7 @@ struct EventObject{
 	int ScrollMapX;
 	int ScrollMapY;
 
+	//이동타입
 	int MoveType;		//0:정지,1:랜덤
 
 	//발생조건
@@ -29,22 +30,10 @@ struct EventObject{
 }EventObject[MAX_EVENT_COUNT];
 
 int EventLine[] = { 
-/*00*/ 31, -1, 9,13,/*04*/-1,	//맵이동
-/*05*/ 7, 2, 3, 8,/*09*/-1,	//맵이동
-/*10*/ 7, 0, 3,13,/*14*/-1,	//맵이동
-/*15*/ 7, 0,12,10,/*19*/-1,	//맵이동
-/*20*/ 7, 3, 8,11,/*24*/-1,	//맵이동
-/*25*/ 7, 0,17, 4,/*2*/-1,	//맵이동
-///????
-/*29*/ 0, 0,10,/*32*/15, 0, 0,/*35*/ 0, 0,11,/*38*/ -1,	//전투테스트
-/*39*/ 0, 0, 0 /*42*/-1,
-/*43*/ 0, 0, 0,/*46*/-1,
-/*47*/ 0, 0, 1,/*50*/-1,
-/*51*/ 0, 0, 2,/*54*/-1,
-/*55*/ 0, 0, 5,/*58*/-1,
-/*59*/ 0, 0, 7,/*63*/-1,
-/*63*/ 0, 1,  0, 2,  0, 3,  0, 4,  0, 5,  0, 6,  0, 7,  0, 1,  0, 2,  0, 3,  0, 4,  0, 5,  0, 6,  0, 7, -1
-
+/*00*/ 31, -1,		//공항이벤트
+/*02*/  2, -1,  0,/**/  0,  0,/**/  0,  1,		//도쿄타워 테스트
+/*09*/
+-1
 
 };
 
@@ -53,168 +42,37 @@ int EventLine[] = {
 void SetEvent(){
 
 	////이동관련 이벤트////
-	//마을->집1
+
+	////건물관련 이벤트////
+	//도쿄.공항
 	EventObject[0].graphic = -1;		//테스트 코드
 	EventObject[0].map = 0;				//테스트 코드
-	EventObject[0].x = 9;				//테스트 코드
-	EventObject[0].y = 10;				//테스트 코드
+	EventObject[0].x = 11;				//테스트 코드
+	EventObject[0].y = 3;				//테스트 코드
 	EventObject[0].EventLoop = 0;		//테스트 코드
-	EventObject[0].EventPage = 0;//63;		//테스트 코드
+	EventObject[0].EventPage = 0;		//테스트 코드
 	EventObject[0].LineCount = 0;		//테스트 코드
-	EventObject[0].MoveType = 0;		//이동
+	EventObject[0].MoveType = 0;		//정지상태
 
-	EventObject[1].graphic = 2;			//테스트 코드
-	EventObject[1].map = 1;				//테스트 코드
-	EventObject[1].x = 8;				//테스트 코드
-	EventObject[1].y = 8;				//테스트 코드
-	EventObject[1].direction = 1;		//테스트 코드
-	EventObject[1].frame = 0;			//테스트 코드
+	//서울.공항
+	EventObject[1].graphic = -1;		//테스트 코드
+	EventObject[1].map = 5;				//테스트 코드
+	EventObject[1].x = 16;				//테스트 코드
+	EventObject[1].y = 3;				//테스트 코드
 	EventObject[1].EventLoop = 0;		//테스트 코드
 	EventObject[1].EventPage = 0;		//테스트 코드
 	EventObject[1].LineCount = 0;		//테스트 코드
-	EventObject[1].ScrollMapX = 0;
-	EventObject[1].ScrollMapY = 0;
-	EventObject[1].MoveType = 1;		//이동
+	EventObject[1].MoveType = 0;		//정지상태
 
-	EventObject[2].graphic = 0;			//테스트 코드
-	EventObject[2].map = 2;				//테스트 코드
-	EventObject[2].x = 8;				//테스트 코드
-	EventObject[2].y = 7;				//테스트 코드
-	EventObject[2].direction = 1;		//테스트 코드
-	EventObject[2].frame = 0;			//테스트 코드
+	//도쿄.도쿄타워
+	EventObject[2].graphic = -1;		//테스트 코드
+	EventObject[2].map = 0;				//테스트 코드
+	EventObject[2].x = 9;				//테스트 코드
+	EventObject[2].y = 10;				//테스트 코드
 	EventObject[2].EventLoop = 0;		//테스트 코드
-	EventObject[2].EventPage = 0;		//테스트 코드
+	EventObject[2].EventPage = 2;		//테스트 코드
 	EventObject[2].LineCount = 0;		//테스트 코드
-	EventObject[2].ScrollMapX = 0;
-	EventObject[2].ScrollMapY = 0;
-	EventObject[2].MoveType = 1;		//이동
-
-	EventObject[3].graphic = 3;			//테스트 코드
-	EventObject[3].map = 3;				//테스트 코드
-	EventObject[3].x = 9;				//테스트 코드
-	EventObject[3].y = 8;				//테스트 코드
-	EventObject[3].direction = 1;		//테스트 코드
-	EventObject[3].frame = 0;			//테스트 코드
-	EventObject[3].EventLoop = 0;		//테스트 코드
-	EventObject[3].EventPage = 0;		//테스트 코드
-	EventObject[3].LineCount = 0;		//테스트 코드
-	EventObject[3].ScrollMapX = 0;
-	EventObject[3].ScrollMapY = 0;
-	EventObject[3].MoveType = 1;		//이동
-
-	EventObject[4].graphic = 5;			//테스트 코드
-	EventObject[4].map = 4;				//테스트 코드
-	EventObject[4].x = 9;				//테스트 코드
-	EventObject[4].y = 8;				//테스트 코드
-	EventObject[4].direction = 1;		//테스트 코드
-	EventObject[4].frame = 0;			//테스트 코드
-	EventObject[4].EventLoop = 0;		//테스트 코드
-	EventObject[4].EventPage = 0;		//테스트 코드
-	EventObject[4].LineCount = 0;		//테스트 코드
-	EventObject[4].ScrollMapX = 0;
-	EventObject[4].ScrollMapY = 0;
-	EventObject[4].MoveType = 1;		//이동
-
-	EventObject[5].graphic = 6;			//테스트 코드
-	EventObject[5].map = 5;				//테스트 코드
-	EventObject[5].x = 9;				//테스트 코드
-	EventObject[5].y = 6;				//테스트 코드
-	EventObject[5].direction = 1;		//테스트 코드
-	EventObject[5].frame = 0;			//테스트 코드
-	EventObject[5].EventLoop = 0;		//테스트 코드
-	EventObject[5].EventPage = 0;		//테스트 코드
-	EventObject[5].LineCount = 0;		//테스트 코드
-	EventObject[5].ScrollMapX = 0;
-	EventObject[5].ScrollMapY = 0;
-	EventObject[5].MoveType = 1;		//이동
-	
-	EventObject[6].NameNumber = 8;		//테스트 코드
-	EventObject[6].graphic = 1;			//테스트 코드
-	EventObject[6].map = 11;				//테스트 코드
-	EventObject[6].x = 10;				//테스트 코드
-	EventObject[6].y = 5;				//테스트 코드
-	EventObject[6].direction = 1;		//테스트 코드
-	EventObject[6].frame = 0;			//테스트 코드
-	EventObject[6].EventLoop = 0;		//테스트 코드
-	EventObject[6].EventPage = 56;		//테스트 코드
-	EventObject[6].LineCount = 0;		//테스트 코드
-	EventObject[6].ScrollMapX = 0;
-	EventObject[6].ScrollMapY = 0;
-	EventObject[6].MoveType = 1;		//이동
-	
-	EventObject[7].graphic = 1;			//테스트 코드
-	EventObject[7].map = 2;				//테스트 코드
-	EventObject[7].x = 4;				//테스트 코드
-	EventObject[7].y = 4;				//테스트 코드
-	EventObject[7].direction = 1;		//테스트 코드
-	EventObject[7].frame = 0;			//테스트 코드
-	EventObject[7].EventLoop = 0;		//테스트 코드
-	EventObject[7].EventPage = 63;		//테스트 코드
-	EventObject[7].LineCount = 0;		//테스트 코드
-	EventObject[7].ScrollMapX = 0;
-	EventObject[7].ScrollMapY = 0;
-	EventObject[7].MoveType = 1;		//이동
-
-	////이동관련 이벤트////
-	//마을->집1
-	EventObject[8].graphic = -1;		//테스트 코드
-	EventObject[8].map = 10;				//테스트 코드
-	EventObject[8].x = 3;				//테스트 코드
-	EventObject[8].y = 12;				//테스트 코드
-	EventObject[8].EventLoop = 0;		//테스트 코드
-	EventObject[8].EventPage = 00;		//테스트 코드
-	EventObject[8].LineCount = 0;		//테스트 코드
-	EventObject[8].MoveType = 0;		//이동
-
-	//마을->집2
-	EventObject[9].graphic = -1;		//테스트 코드
-	EventObject[9].map = 0;				//테스트 코드
-	EventObject[9].x = 12;				//테스트 코드
-	EventObject[9].y = 9;				//테스트 코드
-	EventObject[9].EventLoop = 0;		//테스트 코드
-	EventObject[9].EventPage = 05;		//테스트 코드
-	EventObject[9].LineCount = 0;		//테스트 코드
-	EventObject[9].MoveType = 0;		//이동
-	
-	//집1->마을
-	EventObject[10].graphic = -1;		//테스트 코드
-	EventObject[10].map = 11;			//테스트 코드
-	EventObject[10].x = 9;				//테스트 코드
-	EventObject[10].y = 14;				//테스트 코드
-	EventObject[10].EventLoop = 0;		//테스트 코드
-	EventObject[10].EventPage = 10;		//테스트 코드
-	EventObject[10].LineCount = 0;		//테스트 코드
-	EventObject[10].MoveType = 0;		//이동
-
-	//집2->마을
-	EventObject[11].graphic = -1;		//테스트 코드
-	EventObject[11].map = 12;			//테스트 코드
-	EventObject[11].x = 3;				//테스트 코드
-	EventObject[11].y = 9;				//테스트 코드
-	EventObject[11].EventLoop = 0;		//테스트 코드
-	EventObject[11].EventPage = 15;		//테스트 코드
-	EventObject[11].LineCount = 0;		//테스트 코드
-	EventObject[11].MoveType = 0;		//이동
-
-	//마을->상점1
-	EventObject[12].graphic = -1;		//테스트 코드
-	EventObject[12].map = 10;			//테스트 코드
-	EventObject[12].x = 17;				//테스트 코드
-	EventObject[12].y = 3;				//테스트 코드
-	EventObject[12].EventLoop = 0;		//테스트 코드
-	EventObject[12].EventPage = 20;		//테스트 코드
-	EventObject[12].LineCount = 0;		//테스트 코드
-	EventObject[12].MoveType = 0;		//이동
-
-	//상점1->마을
-	EventObject[13].graphic = -1;		//테스트 코드
-	EventObject[13].map = 13;			//테스트 코드
-	EventObject[13].x = 8;				//테스트 코드
-	EventObject[13].y = 12;				//테스트 코드
-	EventObject[13].EventLoop = 0;		//테스트 코드
-	EventObject[13].EventPage = 25;		//테스트 코드
-	EventObject[13].LineCount = 0;		//테스트 코드
-	EventObject[13].MoveType = 0;		//이동
+	EventObject[2].MoveType = 0;		//정지상태
 
 	ApplyEventOnMap();
 }

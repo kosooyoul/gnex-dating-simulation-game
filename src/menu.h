@@ -1,10 +1,7 @@
 
-void DrawMenu(int MenuX, int MenuY)
+void DrawMenu(int MenuY)
 {
-	FillRect(MenuX, MenuY, 50 + MenuX, 100 + MenuY);
-
-
-
+	FillRect(0 , 50 + MenuY, 240, 200 + MenuY);
 
 }
 

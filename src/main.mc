@@ -70,12 +70,12 @@ void TEST(){
 
 //Main
 void main(){
-	InitNature();
+	InitNature();								//시간초기화
 	InitPlayer();								//주인공 초기화
 	SetArea();									//지역 초기화
 	SetEvent();									//이벤트 초기화
-	SetTimer(20, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
-	SetTimer1(500, 1);							//이벤트 이동 빈도
+	SetTimer(30, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
+	//SetTimer1(500, 1);							//이벤트 이동 빈도
 }
 
 //EVENT_TIMEOUT
@@ -93,33 +93,24 @@ void EVENT_TIMEOUT(){
 			break;
 
 		case 2:									//이동모드
-			switch(swData){
-				case 0:								//타이머[0]
-					SetDirection(0, MovingDirection);	//자연스러운 이동 #1
-					MovePosition(0, MovingDirection);	//자연스러운 이동 #2
-					MapScroll();						//맵 스크롤
-					DrawSubLayer();						//하위맵 출력
-					DrawSupLayer(0);					//상위맵 0단계 출력
-					DrawEventLayer();					//주인공 및 이벤트 출력
-					DrawSupLayer(1);					//상위맵 1단계 출력
-					DrawInterface();					//인터페이스 출력
+			SetDirection(0, MovingDirection);	//자연스러운 이동 #1
+			MovePosition(0, MovingDirection);	//자연스러운 이동 #2
+			MapScroll();						//맵 스크롤
+			DrawSubLayer();						//하위맵 출력
+			DrawSupLayer(0);					//상위맵 0단계 출력
+			DrawEventLayer();					//주인공 및 이벤트 출력
+			DrawSupLayer(1);					//상위맵 1단계 출력
+			DrawInterface();					//인터페이스 출력
 
-					if(RunningEventNumber >= 0){		//이벤트 수행중이면 이벤트 수행
-						EventObject[RunningEventNumber].EventLoop = 1;
-						RunEventLine(RunningEventNumber);
-					}break;
-
-				case 1:								//타이머[1]
-					for(i = 0; i < MAX_EVENT_COUNT; i++){
-						if(EventObject[i].MoveType == 1)
-							MoveEventRandom(i);			//테스트 코드 : 이벤트 랜덤이동
-					}break;
+			if(RunningEventNumber >= 0){		//이벤트 수행중이면 이벤트 수행
+				EventObject[RunningEventNumber].EventLoop = 1;
+				RunEventLine(RunningEventNumber);
 			}break;
 			
 		case 3:									//메뉴 모드
 			if(!swData){
 				RestoreLCD();
-				DrawMenu(50, 50);
+				DrawMenu(0);
 				switch (selected_menu){
 					case 0:	
 					case 1:	
@@ -145,7 +136,7 @@ void EVENT_TIMEOUT(){
 void EVENT_KEYPRESS(){
 	switch(GameMode){
 		case 0:								//타이틀
-		case 1:
+		case 1:								//프롤로그
 			NextKey = swData;
 			break;
 
@@ -153,7 +144,7 @@ void EVENT_KEYPRESS(){
 			switch(swData){
 				case SWAP_KEY_OK:				//정면에 이벤트 실행
 					RunningEventNumber = SerchEvent() - 1;
-					//이벤트가 있다면 그 이벤트는 나를 볼 것이다
+					//정면에 이벤트가 있다면 그 이벤트는 나를 볼것임
 					if(RunningEventNumber >= 0){
 						EventObject[RunningEventNumber].direction = (Player.direction + 2) %4;
 						ChangeMode(4);
@@ -187,6 +178,7 @@ void EVENT_KEYPRESS(){
 				case SWAP_KEY_9:		
 				case SWAP_KEY_0:		
 				case SWAP_KEY_SHARP:	break;
+
 				default:				break;
 			}
 			break;
@@ -210,18 +202,16 @@ void EVENT_KEYPRESS(){
 void ChangeMode(int Mode){
 	switch(Mode){
 		case 0:			//타이틀로
-			GameMode = 0;	break;
 		case 1:			//프롤로그로
-			GameMode = 1;	break;
 		case 2:			//이동모드로
-			GameMode = 2;	break;
+			GameMode = Mode;	break;
 		case 3:			//메뉴모드로
 		case 4:			//이벤트실행모드로
 			DrawSubLayer();			//하위맵 출력
 			DrawSupLayer(0);		//상위맵 0단계 출력
 			DrawEventLayer();		//주인공 및 이벤트 출력
 			DrawSupLayer(1);		//상위맵 1단계 출력
-			SaveLCD();
+			SaveLCD();				//현재화면 버퍼에 저장
 			GameMode = Mode;
 			break;
 

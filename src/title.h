@@ -2,21 +2,18 @@ int SelectedTitleMenu = 0;
 int SelectedMenu = 0;
 int SelectedObject = 0;
 
-void RunTitle()
-{
+void RunTitle(){
 	SelectTitleMenu();
 	DrawTitle();
-	NextKey = 0;		//입력받은 키값 초기화
+	NextKey = -1;		//입력받은 키값 초기화
 }
 
 //타이틀 화면 출력
-void DrawTitle()
-{
+void DrawTitle(){
 	CopyImage(0, 0, title_back_title);
 	CopyImage(0, 89, title_back_menu);
 
-	switch(SelectedTitleMenu)
-	{
+	switch(SelectedTitleMenu){
 		case 0:
 			CopyImage(100, 136, title_menu[SelectedTitleMenu]);
 			break;
@@ -41,15 +38,9 @@ void DrawTitle()
 			break;
 	}
 
-	if(SelectedMenu)
-	{
-//		CopyImageEx(0, 85, function_window, 1, 0, 0, 0);
-		switch(SelectedTitleMenu)
-		{
-			case 1:
-				ShowTitleContinue();
-				break;
-
+	if(SelectedMenu){
+		CopyImageEx(0, 85, title_window, 1, 0, 0, 0);
+		switch(SelectedTitleMenu){
 			case 2:
 				ShowTitleOption();
 				break;
@@ -102,22 +93,20 @@ void SelectTitleMenu()
 				break;
 
 			case SWAP_KEY_OK:
-				switch(SelectedTitleMenu)
-				{
+				switch(SelectedTitleMenu){
 					case 1:
 						////////////////////////저장데이터 로드 부분//////////////////////////
-						if(SelectedObject == 0)ChangeMode(2);	///////////임시///////////
+						if(SelectedObject == 0)ChangeMode(2);		///////////임시///////////
 						////////////////////////저장데이터 로드 부분//////////////////////////
 						break;
 
 					case 2:
-						switch(SelectedObject)
-						{
+						switch(SelectedObject){
 							case 0:
 								OptionAutoSkip = !OptionAutoSkip;
 								break;
 							case 1:
-								OptionSpokeSkip = !OptionSpokeSkip;
+								OptionPlayBGM = !OptionPlayBGM;
 								break;
 						}
 						break;
@@ -185,46 +174,30 @@ void SelectTitleMenu()
 
 }
 
-void ShowTitleContinue()
-{
-	int i;
-	i=0;//지우기
-//	CopyImage(71, 61, function_name[0]);
-//	CopyImageEx(15, 100, function_load_left, 1, 0, 0, 0);
-//	CopyImageEx(166, 100, function_load_right, 1, 0, 0, 0);
+void ShowTitleOption(){
+	CopyImage(71, 61, title_label_option);
+	CopyImageEx(15, 100, title_option, 1, 0, 0, 0);
 
-//	SetColor(S_WHITE);
-//	FillRectEx(167, 111 + 15 * SelectedObject, 223, 122 + 15 * SelectedObject, 1);
-
-//	CopyImageEx(167, 112, load_saved, 1, 0, 0, 0);
-//	for(i = 1; i < 6; i++)
-//	{
-//		CopyImageEx(167, 112 + 15 * i, load_empty, 1, 0, 0, 0);
-//	}
-
-}
-
-void ShowTitleOption()
-{
-//	CopyImage(71, 61, function_name[1]);
-//	CopyImageEx(15, 100, function_option, 1, 0, 0, 0);
-
-//	if(OptionAutoSkip)
-//	{
-//		CopyImageEx(186, 108, function_check, 1, 0, 0, 0);
-//	}
-//	if(OptionSpokeSkip)
-//	{
-//		CopyImageEx(186, 136, function_check, 1, 0, 0, 0);
-//	}
+	if(OptionAutoSkip){
+		CopyImageEx(186, 108, func_check, 1, 0, 0, 0);
+	}
+	if(OptionPlayBGM){
+		CopyImageEx(186, 136, func_check, 1, 0, 0, 0);
+	}
 
 	SetColor(S_WHITE);
 	FillRectEx(16, 110 + 28 * SelectedObject, 223, 129 + 28 * SelectedObject, 3);
 }
 
-void ShowTitleGameInfo()
-{
-	int a;//지우기
-	a=0;//지우기
-//	CopyImage(71, 61, function_name[2]);
+void ShowTitleGameInfo(){
+	CopyImage(71, 61, title_label_info);
+	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+	DrawStr(120, 115, "4조");
+	DrawStr(120, 130, "(연애 시뮬레이션)");
+	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
+	DrawStr(20, 155, "조장 : 이진중");
+	DrawStr(20, 170, "조원 : 차지웅, 최영민, 고수열");
+	
+
+
 }

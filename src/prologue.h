@@ -1,7 +1,7 @@
 int PrologueEventPointer = 0;
 
 void RunPrologue(){
-	//DrawBackground();		//배경표시
+	DrawBackground();		//배경표시
 	RunPrologueEvent();		//프롤로그 이벤트수행 및 수행결과 표시
 }
 
@@ -12,11 +12,20 @@ void RunPrologueEvent(){
 			ChangeMode(2);
 			break;
 
-		case 0:		//대화
+		case 0:		//대화 
 			if(NextKey == SWAP_KEY_OK){
 				DrawMessages(PrologueEventList[PrologueEventPointer++]);
+				SecondSelect = 0;
 			}else{
 				DrawMessages(PrologueEventList[PrologueEventPointer--]);
+				//자동 스킵 옵션 설정한 경우
+				if(OptionAutoSkip){
+					SecondSelect++;
+					if(SecondSelect > SKIP_COUNT){
+						PrologueEventPointer += 2;
+						SecondSelect = 0;
+					}
+				}
 			}
 			NextKey = -1;
 			break;

@@ -11,77 +11,94 @@ int BackChara[3] = {-1, -1, -1};	//케릭터
 
 int EffectFrame = 0;				//화면전환 효과 프레임 번호
 
-void RunEventLine(int EventNumber)
-{
+void RunEventLine(int EventNumber){
+
 	if(EventNumber < 0) return;
 	if(EventObject[EventNumber].EventLoop == 0) return;
 
 	switch(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++])
 	{
-		case -1:
+		case -1:	//이벤트 종료	 				 :: 매개변수 없음
 			EventObject[EventNumber].LineCount = 0;
 			EventObject[EventNumber].EventLoop = 0;
 			RunningEventNumber = -1;
 			break;
 
-		case 0:		//대화 
-			if(NextKey == SWAP_KEY_OK)
-			{
+		case 0:		//대화 							 :: 매개변수 1개
+			if(NextKey == SWAP_KEY_OK){
 				DrawMessages(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-			}
-			else
-			{
+				SecondSelect = 0;
+			}else{
 				DrawMessages(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount--]);
+				
+				//자동 스킵 옵션 설정한 경우
+				if(OptionAutoSkip){
+					SecondSelect++;
+					if(SecondSelect > 20){
+						EventObject[EventNumber].LineCount += 2;
+						SecondSelect = 0;
+					}
+				}
 			}
 			NextKey = -1;
 			break;
 
-		case 1:		//선택지
-			DrawQuestion(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],	EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-			if(NextKey != SWAP_KEY_OK)
-			{
+		case 1:		//선택지						 :: 매개변수 6개
+			DrawQuestion(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			if(NextKey != SWAP_KEY_OK){
 				EventPointer -= 7;
 			}
 			NextKey = -1;
 			break;
 
-		case 2:
-			SetCurrentName(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+		case 2:		//화자이름 설정					 :: 매개변수 2개
+			SetCurrentName(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						   EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
-		case 3:		//조건분기_변수 if(s==v[vn])goto
-			EventObject[EventNumber].LineCount += 3 + IfEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
+		case 3:		//조건분기_변수 if(s==v[vn])	 :: 매개변수 3개
+			EventObject[EventNumber].LineCount += 3 + IfEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount],
+															  EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1],
+															  EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
 			break;
 
-		case 4:		//조건분기_변수 if(s!=v[vn])goto
-			EventObject[EventNumber].LineCount += 3 + ElseEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
+		case 4:		//조건분기_변수 if(s!=v[vn])	 :: 매개변수 3개
+			EventObject[EventNumber].LineCount += 3 + ElseEqual(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount],
+															    EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1],
+															    EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+2]);
 			break;
 
-		case 5:		//배경화면 교체
-			SetBackground(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-			if(EffectFrame < MOVE_EFFECT_COUNT)
-			{
+		case 5:		//배경화면 교체					 :: 매개변수 3개
+			SetBackground(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						  EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						  EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			if(EffectFrame < MOVE_EFFECT_COUNT){
 				EventObject[EventNumber].LineCount -= 4;
-			}
-			else
-			{
+			}else{
 				EffectFrame = 0;
 			}
 			break;
 
-		case 6:		//케릭터 교체
-			SetChara(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+		case 6:		//케릭터 교체					 :: 매개변수 2개
+			SetChara(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+					 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
 		case 7:		//주인공 맵 이동_지역 워프		 :: 매개변수 3개
-			if(SecondSelect < MOVE_EFFECT_COUNT)
-			{
-				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount + 1], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount + 2]);
+			if(SecondSelect < MOVE_EFFECT_COUNT){
+				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount],
+						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount + 1],
+						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount + 2]);
 				EventObject[EventNumber].LineCount--;
-			}
-			else
-			{
-				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			}else{
+				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 				SecondSelect = 0;								//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 				//워프후 이벤트 강제 종료 ▼ 워프(맵이동)시 버튼입력 대기가 되버려 삽입함
 				EventObject[EventNumber].LineCount = 0;
@@ -93,67 +110,34 @@ void RunEventLine(int EventNumber)
 			break;
 
 		case 8:		//개체 위치 이동_좌표만			 :: 매개변수 2개
-			MovePosition(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			MovePosition(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
 		case 9:		//개체 방향 전환				 :: 매개변수 2개
-			SetDirection(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+			SetDirection(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
+						 EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
-		case 10:	//스위치 조작					 :: 매개변수 2개
-			SwitchOnOff(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-			break;
-
-		case 11:	//변수 조작						 :: 매개변수 3개
-			SetVariable(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-			break;
-
-		case 12:	//조건분기_스위치				 :: 매개변수 2개
-			EventObject[EventNumber].LineCount += 2 + ConditionSwitch(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount], EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount+1]);
-			break;
-
-		case 13:	//딜레이						 :: 매개변수 1개
+		case 10:	//딜레이						 :: 매개변수 1개
 			if(Delay(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]) == 0)EventObject[EventNumber].LineCount--;
 			else EventObject[EventNumber].LineCount++;
 			break;
 
-		case 30:	//지하철
+		case 30:	//지하철						 :: 매개변수 없음
 			if(!Subway(EventNumber))EventObject[EventNumber].LineCount--;
 			NextKey = -1;
 			break;
 
-		case 31:	//항공기
+		case 31:	//항공기						 :: 매개변수 없음
 			if(!Airport(EventNumber))EventObject[EventNumber].LineCount--;
 			NextKey = -1;
 			break;
 
-		default:
+		case 99:	//에러처리						 :: 매개변수 없음
 			EventObject[EventNumber].LineCount++;
-	}
-}
-
-//조건부 변수 비교
-int CheckVariable(int Value1, int Operation, int Value2)
-{
-	switch(Operation)
-	{
-		case 0:	// Data == Value
-			if(Variable[Value1] < Variable[Value2])return 1;
-			break;
-		case 1:	// Data > Value
-			if(Variable[Value1] <= Variable[Value2])return 1;
-			break;
-		case 2:	// Data >= Value
-			if(Variable[Value1] == Variable[Value2])return 1;
-			break;
-		case 3:	// Data < Value
-			if(Variable[Value1] >= Variable[Value2])return 1;
-			break;
-		case 4:	// Data <= Value
-			if(Variable[Value1] > Variable[Value2])return 1;
 			break;
 	}
-	return 0;
 }
 
 //맵 이동을 위한 화면 전환 처리
@@ -216,8 +200,7 @@ void ScreenEffect(int Type, int Count, int Imgnum){
 }
 
 //0 > 대화창 출력
-void DrawMessages(int MessageNumber)
-{
+void DrawMessages(int MessageNumber){
 	string TempString;	//줄단위
 	int Length;			//문장 라인수
 	int i;
@@ -503,57 +486,7 @@ void SetDirection(int Actor, int Direction)
 	}
 }
 
-//10번 이벤트 라인{2,*,*} - 스위치조작
-void SwitchOnOff(int SwitchNumber, int OnOffSet)
-{
-	Switch[SwitchNumber] = OnOffSet;
-}
-
-//11번 이벤트 라인{3,*,*,*} - 변수조작
-void SetVariable(int VariableNumber, int Operation, int Value)
-{
-	int Temp;
-	switch(Operation)
-	{
-		case 0:		// = Value
-			Variable[VariableNumber] = Value;break;
-		case 1:		// VariableNumber + Value
-			Variable[VariableNumber] += Value;break;
-		case 2:		// VariableNumber - Value
-			Variable[VariableNumber] -= Value;break;
-		case 3:		// VariableNumber * Value
-			Variable[VariableNumber] *= Value;break;
-		case 4:		// VariableNumber / Value
-			Variable[VariableNumber] /= Value;break;
-		case 5:		// VariableNumber % Value
-			Variable[VariableNumber] %= Value;break;
-		case 6:		// = VariableNumber
-			Variable[VariableNumber] = Variable[Value];break;
-		case 7:		// VariableNumber + VariableNumber
-			Variable[VariableNumber] += Variable[Value];break;
-		case 8:		// VariableNumber - VariableNumber
-			Variable[VariableNumber] -= Variable[Value];break;
-		case 9:		// VariableNumber * VariableNumber
-			Variable[VariableNumber] *= Variable[Value];break;
-		case 10:	// VariableNumber / VariableNumber
-			Variable[VariableNumber] /= Variable[Value];break;
-		case 11:	// VariableNumber % VariableNumber
-			Variable[VariableNumber] %= Variable[Value];break;
-		case 12:	// Swap(VariableNumber)
-			Temp = Variable[VariableNumber];
-			Variable[VariableNumber] = Variable[Value];
-			Variable[Value] = Temp;
-	}
-}
-
-//12번 이벤트 라인{12,*} - 스위치에 대한 조건분기
-int ConditionSwitch(int Value, int ElseCount)
-{
-	if(Switch[Value] == 0)return ElseCount;
-	else if(Switch[Value] == 1) return 0;
-}
-
-//13번 이벤트 라인{13,*} - 딜레이
+//10번 이벤트 라인{13,*} - 딜레이
 int Delay(int Value)
 {
 	if(Variable[Value] == 0)return 1;
@@ -574,21 +507,6 @@ int Subway(int EventNumber){
 
 	//지도
 	CopyImage(0, 75, eve_airmap);
-
-	//선택한 목적지
-	switch(SelectedStation){
-		case 0:		CopyImage(T1X, T1Y, int_select_map);break;
-		case 1:		CopyImage(T2X, T2Y, int_select_map);break;
-		case 2:		CopyImage(T3X, T3Y, int_select_map);break;
-		case 3:		CopyImage(T4X, T4Y, int_select_map);break;
-		case 4:		CopyImage(T5X, T5Y, int_select_map);break;
-		case 5:		CopyImage(T6X, T6Y, int_select_map);break;
-	}
-
-	//목적지 이름
-	CopyImage(72, 67, int_label);
-	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
-	DrawStr(120, 73, AreaName[Area[SelectedStation].name]);
 
 	switch(SelectedAnswer){
 		case 2:
@@ -653,7 +571,9 @@ int Subway(int EventNumber){
 						case SWAP_KEY_RIGHT:	//우선택
 							SelectedStation = (SelectedStation + 1) % 5;break;
 						case SWAP_KEY_CLR:		//목적지 취소
-							return 1;break;
+							EventMode = 0;			//이벤트 모드 초기화
+							return 1;
+							break;
 					}//END SWITCH[NextKey]
 					break;
 
@@ -662,6 +582,23 @@ int Subway(int EventNumber){
 			}//END SWITCH[EventMode]
 			break;
 	}//END SWITCH[SelectedAnswer]
+
+	if(SelectedAnswer != 2){
+		//선택한 목적지
+		switch(SelectedStation){
+			case 0:		CopyImage(T1X, T1Y, int_select_map);break;
+			case 1:		CopyImage(T2X, T2Y, int_select_map);break;
+			case 2:		CopyImage(T3X, T3Y, int_select_map);break;
+			case 3:		CopyImage(T4X, T4Y, int_select_map);break;
+			case 4:		CopyImage(T5X, T5Y, int_select_map);break;
+			case 5:		CopyImage(T6X, T6Y, int_select_map);break;
+		}
+
+		//목적지 이름
+		CopyImage(72, 67, int_label);
+		SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+		DrawStr(120, 74, AreaName[Area[SelectedStation].name]);
+	}
 	return 0;
 
 }
@@ -680,30 +617,14 @@ int Airport(int EventNumber){
 	//지도
 	CopyImage(0, 75, eve_airmap);
 
-	//선택한 목적지
-	switch(SelectedStation){
-		case 0:
-			CopyImage(T1X, T1Y, int_select_map);
-			break;
-		case 5:
-			CopyImage(T6X, T6Y, int_select_map);
-			break;
-	}
-
-	//목적지 이름
-	CopyImage(72, 67, int_label);
-	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
-	DrawStr(120, 73, AreaName[Area[SelectedStation].name]);
-
-
 	switch(SelectedAnswer){
 		case 2:
 			switch(SelectedStation){
 				case 0:					//도쿄
-					MoveMap(0, 10, 10);
+					MoveMap(0, 11, 4);
 					break;
 				case 5:					//서울
-					MoveMap(5, 10, 10);
+					MoveMap(5, 16, 4);
 					break;
 				default:
 					SecondSelect++;
@@ -725,10 +646,10 @@ int Airport(int EventNumber){
 		case 1:
 			switch(SelectedStation){
 				case 0:					//도쿄로
-					CopyImageEx(T1X + ((T1X-T6X) / 50 * SecondSelect), T1Y + ((T1Y-T6Y) / 50 * SecondSelect), airport, 0, 0, 0, 2);
+					CopyImage(T1X + ((T1X-T6X) / 50 * SecondSelect), T1Y + ((T1Y-T6Y) / 50 * SecondSelect), airport[1]);
 					break;
 				case 5:					//서울로
-					CopyImage(T6X - ((T1X-T6X) / 50 * SecondSelect), T6Y - ((T1Y-T6Y) / 50 * SecondSelect), airport);
+					CopyImage(T6X - ((T1X-T6X) / 50 * SecondSelect), T6Y - ((T1Y-T6Y) / 50 * SecondSelect), airport[0]);
 					break;
 			}
 			SecondSelect++;
@@ -760,6 +681,7 @@ int Airport(int EventNumber){
 							break;
 
 						case SWAP_KEY_CLR:		//목적지 취소
+							EventMode = 0;			//이벤트 모드 초기화
 							return 1;
 							break;
 					}//END SWITCH[NextKey]
@@ -770,6 +692,24 @@ int Airport(int EventNumber){
 			}//END SWITCH[EventMode]
 			break;
 	}//END SWITCH[SelectedAnswer]
+	
+	if(SelectedAnswer != 2){
+		//선택한 목적지
+		switch(SelectedStation){
+			case 0:
+				CopyImage(T1X, T1Y, int_select_map);
+				break;
+			case 5:
+				CopyImage(T6X, T6Y, int_select_map);
+				break;
+		}
+
+		//목적지 이름
+		CopyImage(72, 67, int_label);
+		SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
+		DrawStr(120, 74, AreaName[Area[SelectedStation].name]);
+	}
+
 	return 0;
 
 }

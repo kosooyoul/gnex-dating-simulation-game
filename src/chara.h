@@ -12,13 +12,11 @@ struct Chara{
 
 //주인공 초기화
 void InitPlayer(){
-	int i;	//테스트
-
 	Player.graphic = 0;
 	Player.map = 0;
-	Player.x = 11;
-	Player.y = 12;
-	Player.direction = 3;
+	Player.x = 12;
+	Player.y = 4;
+	Player.direction = 2;
 	Player.frame = 2;
 	
 	Player.Name = "주인공";
