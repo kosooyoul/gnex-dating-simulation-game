@@ -16,8 +16,8 @@ void DrawBackground(){
 	for(i = 0; i < 3; i++){
 		if(BackChara[i] >= 0){
 			switch(i){
-				case 0:		CopyImage(130, 74, EveChara[BackChara[i]]);break;
-				case 1:		CopyImage(10, 74, EveChara[BackChara[i]]);break;
+				case 0:		CopyImage(10, 74, EveChara[BackChara[i]]);break;
+				case 1:		CopyImage(130, 74, EveChara[BackChara[i]]);break;
 				case 2:		CopyImage(130, 74, EveChara[BackChara[i]]);break;
 			}
 		}

@@ -25,18 +25,23 @@ void RunEventLine(int EventNumber){
 			break;
 
 		case 0:		//대화 							 :: 매개변수 1개
-			if(NextKey == SWAP_KEY_OK){
+			if(NextKey == SWAP_KEY_OK && EventMode == 2){
 				DrawMessages(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
+				EffectFrame = 0;
+				SelectedAnswer = 0;
 				SecondSelect = 0;
+				EventMode = 0;
 			}else{
 				DrawMessages(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount--]);
-				
+
 				//자동 스킵 옵션 설정한 경우
 				if(OptionAutoSkip){
-					SecondSelect++;
-					if(SecondSelect > 20){
+					if(EffectFrame > SKIP_COUNT){
 						EventObject[EventNumber].LineCount += 2;
+						EffectFrame = 0;
+						SelectedAnswer = 0;
 						SecondSelect = 0;
+						EventMode = 0;
 					}
 				}
 			}
@@ -120,8 +125,12 @@ void RunEventLine(int EventNumber){
 			break;
 
 		case 10:	//딜레이						 :: 매개변수 1개
-			if(Delay(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]) == 0)EventObject[EventNumber].LineCount--;
+			if(Delay(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]))EventObject[EventNumber].LineCount--;
 			else EventObject[EventNumber].LineCount++;
+			break;
+
+		case 11:	//배경음						 :: 매개변수 1개
+			SetBGM(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
 			break;
 
 		case 30:	//지하철						 :: 매개변수 없음
@@ -241,15 +250,56 @@ void DrawMessages(int MessageNumber){
 	FillRectEx(4, 274 - 14 * ((3)) -(P_MSG_Y), 285, 290 -(P_MSG_Y), 2);
 	CopyImage(0, 270 - 14 * ((3)) -(P_MSG_Y), talk_sup);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
+
 	for(i = 0; i < ((4)); i++)
 	{
 		CopyImage(0,  275 - 14 * i -(P_MSG_Y), talk_main);
-		if(i < Length){
+	
+		if(i == SelectedAnswer){
+			StrSub(TempString, Messages[MessageNumber], i * 36, SecondSelect);
+			DrawStr(7, 277 - (((3)) - i) * 14 -(P_MSG_Y), TempString);
+		}if(i < SelectedAnswer){				
 			StrSub(TempString, Messages[MessageNumber], i * 36, 36);
 			DrawStr(7, 277 - (((3)) - i) * 14 -(P_MSG_Y), TempString);
 		}
 	}
 	CopyImage(0,  288 -(P_MSG_Y), talk_sub);
+
+
+	switch(EventMode){
+		case 0:
+			if(OptionAutoSkip){
+				EventMode = 2;
+				SecondSelect = 36;
+				SelectedAnswer = Length - 1;
+			}else{
+				EventMode = 1;
+			}
+			break;
+	
+		case 1:
+			if(SelectedAnswer < Length)SecondSelect++;
+
+			if(SecondSelect == 36){
+				SecondSelect = SecondSelect % 36;
+				if(SelectedAnswer < Length){
+					SelectedAnswer++;
+				}else{
+					EventMode = 1;
+				}
+			}
+		
+			if((StrLen(Messages[MessageNumber]) % 36 == SecondSelect && SelectedAnswer == Length - 1) || (NextKey == SWAP_KEY_OK)){
+				SecondSelect = 36;
+				SelectedAnswer = Length - 1;
+				EventMode = 2;
+			}
+			break;
+		case 2:
+			EffectFrame++;
+			break;
+	}
+
 }
 
 //1 > 선택지 출력
@@ -487,11 +537,28 @@ void SetDirection(int Actor, int Direction)
 }
 
 //10번 이벤트 라인{13,*} - 딜레이
-int Delay(int Value)
-{
-	if(Variable[Value] == 0)return 1;
-	Variable[Value]--;
-	return 0;
+int Delay(int Value){
+	
+	switch(EventMode){
+		case 0:
+			SecondSelect = Value;
+			EventMode = 1;
+			break;
+		case 1:
+			SecondSelect--;
+			if(SecondSelect < 0){
+				SecondSelect = 0;
+				EventMode = 0;
+				return 0;
+			}
+			break;
+	}
+	return 1;		//반복
+}
+
+//11번 배경음 재생
+void SetBGM(int MusicNumber){
+	PlayMusic(MusicNumber);
 }
 
 //30번>> 지하철 일본 5개 도시
@@ -503,6 +570,7 @@ int Subway(int EventNumber){
 
 	//테두리
 	CopyImage(0, 60, int_border);
+	CopyImage(-3, 55, eve_label_subway);
 	CopyImageEx(240, 220, int_border, 0, 0, 0, 2);
 
 	//지도
@@ -535,15 +603,11 @@ int Subway(int EventNumber){
 
 		case 1:
 			switch(SelectedStation){
-				case 0:					//도쿄로
-					CopyImageEx(T1X + ((T1X-T6X) / 50 * SecondSelect), T1Y + ((T1Y-T6Y) / 50 * SecondSelect), airport, 0, 0, 0, 2);
-					break;
+				case 0:
 				case 1:
 				case 2:
 				case 3:
-				case 4:
-					CopyImage(T6X - ((T1X-T6X) / 50 * SecondSelect), T6Y - ((T1Y-T6Y) / 50 * SecondSelect), airport);
-					break;
+				case 4:break;
 			}
 			SecondSelect++;
 			if(SecondSelect >= 0){
@@ -612,6 +676,7 @@ int Airport(int EventNumber){
 
 	//테두리
 	CopyImage(0, 60, int_border);
+	CopyImage(-3, 55, eve_label_airport);
 	CopyImageEx(240, 220, int_border, 0, 0, 0, 2);
 
 	//지도

@@ -13,8 +13,8 @@ struct Chara{
 //주인공 초기화
 void InitPlayer(){
 	Player.graphic = 0;
-	Player.map = 0;
-	Player.x = 12;
+	Player.map = 5;
+	Player.x = 16;
 	Player.y = 4;
 	Player.direction = 2;
 	Player.frame = 2;

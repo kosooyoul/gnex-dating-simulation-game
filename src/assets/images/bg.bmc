@@ -1,0 +1,30 @@
+/*****************************************************************************/
+/* GNEX Image Master v3.20 Map Output for Mobile C						 */
+/*                                                                           */
+/* Output file : C:\Users\Ahyane\Desktop\AISIMUL_RPG_14\bg.smc					*/
+/*    IDF file  : C:\Users\Ahyane\Desktop\AISIMUL_RPG_14\bg.idf					*/
+/*                                                                           */
+/* First written : Sunday, January 27, 2008 12:46:16			     */
+/* Last modified : Friday, October 31, 2008 03:48:37			     */
+/*                                                                           */
+/* Copyright(c) 2000~2007 Sinjisoft Corporation.  All rights reserved.       */
+/*****************************************************************************/
+
+// 전체 블럭에 대해 지정한 속성 배열 저장
+binary bg_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int bg_BlockName[12]; // 전체 블럭에 대한 블럭 포인터 배열 저장
+void bg_BlockNameInit()
+{
+	bg_BlockName[0]=bg[0];
+	bg_BlockName[1]=bg[1];
+	bg_BlockName[2]=bg[2];
+	bg_BlockName[3]=bg[3];
+	bg_BlockName[4]=bg[4];
+	bg_BlockName[5]=bg[5];
+	bg_BlockName[6]=bg[6];
+	bg_BlockName[7]=bg[7];
+	bg_BlockName[8]=bg[8];
+	bg_BlockName[9]=bg[9];
+	bg_BlockName[10]=bg[10];
+	bg_BlockName[11]=bg[11];
+}

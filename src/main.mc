@@ -15,7 +15,7 @@
 %{
 	#DEFINE PLAYERVER	4
 	#DEFINE LCDCLASS	255
-	#DEFINE IMAGETYPE	255
+	#DEFINE IMAGETYPE	
 	#DEFINE AUDIOTYPE	255
 	#DEFINE APPTYPE		1
 	#DEFINE APPCPID		19732			//테스트 고유번호
@@ -31,9 +31,11 @@
 #endif
 
 #include <SScript.h>
-#include <mapchip.sbm>				//*   맵칩
+#include "mapchip.sbm"				//*   맵칩
+#include "bg.sbm"					//*   맵칩
 #include "define.h"					//*   Define
 #include "mapdata.h"				//*   맵데이터
+#include "bgsound.h"				//    배경음 제어
 #include "map.h"					//  fv맵처리
 #include "status.h"					//
 #include "option.h"					//   v게임옵션
@@ -75,7 +77,8 @@ void main(){
 	SetArea();									//지역 초기화
 	SetEvent();									//이벤트 초기화
 	SetTimer(30, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
-	//SetTimer1(500, 1);							//이벤트 이동 빈도
+	ChangeMode(0);								//타이틀 모드
+	//SetTimer1(500, 1);						//이벤트 이동 빈도
 }
 
 //EVENT_TIMEOUT
@@ -129,6 +132,9 @@ void EVENT_TIMEOUT(){
 			RunEventLine(RunningEventNumber);		//이벤트 수행
 			break;
 	}//END SWITCH[GameMode]
+
+	DrawOption();
+	
 	Flush();
 }
 
@@ -167,7 +173,7 @@ void EVENT_KEYPRESS(){
 					break;
 
 				//숫자버튼
-				case SWAP_KEY_1:		
+				case SWAP_KEY_1:	
 				case SWAP_KEY_2:		
 				case SWAP_KEY_3:		
 				case SWAP_KEY_4:		
@@ -196,15 +202,27 @@ void EVENT_KEYPRESS(){
 
 	}//END SWITCH[GameMode]
 
+
+	//옵션 변경 단축키
+	ChangeOption(swData - 1);
+
 }
 
 //******************************************************************************************************[ Any Fuction ]
 void ChangeMode(int Mode){
 	switch(Mode){
 		case 0:			//타이틀로
+			PlayMusic(0);
+			GameMode = 0;	break;
+			break;
 		case 1:			//프롤로그로
+			GameMode = 1;	break;
 		case 2:			//이동모드로
-			GameMode = Mode;	break;
+			if(GameMode < 2){
+				PlayMusic(-1);
+				PlayMusic(2);
+			}
+			GameMode = 2;	break;
 		case 3:			//메뉴모드로
 		case 4:			//이벤트실행모드로
 			DrawSubLayer();			//하위맵 출력

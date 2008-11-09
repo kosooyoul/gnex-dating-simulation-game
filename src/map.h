@@ -13,47 +13,53 @@ const string AreaName[6] = {"도쿄", "오사카", "교토", "후쿠오카", "�
 
 //맵 영역 설정
 void SetArea(){
+	//도쿄
 	Area[0].name = 0;
 	Area[0].x_start = 0;
 	Area[0].y_start = 0;
 	Area[0].x_size = 20;
 	Area[0].y_size = 20;
 	Area[0].backchip = 85;		//풀밭142 검정85 자갈바닥58
-
-	Area[1].name = 1;
-	Area[1].x_start = 20;//20;
-	Area[1].y_start = 0;//30;
-	Area[1].x_size = 20;//9;
-	Area[1].y_size = 20;//11;
-	Area[1].backchip = 85;		//풀밭142 검정85 자갈바닥58
 	
-	Area[2].name = 2;
-	Area[2].x_start = 0;//20;
-	Area[2].y_start = 20;//30;
-	Area[2].x_size = 20;//9;
-	Area[2].y_size = 20;//11;
-	Area[2].backchip = 85;		//풀밭142 검정85 자갈바닥58
-
-	Area[3].name = 3;
-	Area[3].x_start = 20;//20;
-	Area[3].y_start = 20;//30;
-	Area[3].x_size = 20;//9;
-	Area[3].y_size = 20;//11;
-	Area[3].backchip = 85;		//풀밭142 검정85 자갈바닥58
-
-	Area[4].name = 4;
-	Area[4].x_start = 0;//20;
-	Area[4].y_start = 40;//30;
-	Area[4].x_size = 20;//9;
-	Area[4].y_size = 20;//11;
-	Area[4].backchip = 85;		//풀밭142 검정85 자갈바닥58
-
+	//서울
 	Area[5].name = 5;
 	Area[5].x_start = 20;//20;
 	Area[5].y_start = 0;//40;
 	Area[5].x_size = 20;//9;
 	Area[5].y_size = 20;//11;
 	Area[5].backchip = 85;		//풀밭142 검정85 자갈바닥58
+
+	//오사카
+	Area[1].name = 1;
+	Area[1].x_start = 0;//20;
+	Area[1].y_start = 20;//30;
+	Area[1].x_size = 20;//9;
+	Area[1].y_size = 20;//11;
+	Area[1].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	
+	//쿄토
+	Area[2].name = 2;
+	Area[2].x_start = 20;//20;
+	Area[2].y_start = 20;//30;
+	Area[2].x_size = 20;//9;
+	Area[2].y_size = 20;//11;
+	Area[2].backchip = 85;		//풀밭142 검정85 자갈바닥58
+
+	//후쿠오카
+	Area[3].name = 3;
+	Area[3].x_start = 0;//20;
+	Area[3].y_start = 40;//30;
+	Area[3].x_size = 20;//9;
+	Area[3].y_size = 20;//11;
+	Area[3].backchip = 85;		//풀밭142 검정85 자갈바닥58
+
+	//오키나와
+	Area[4].name = 4;
+	Area[4].x_start = 20;//20;
+	Area[4].y_start = 40;//30;
+	Area[4].x_size = 20;//9;
+	Area[4].y_size = 20;//11;
+	Area[4].backchip = 85;		//풀밭142 검정85 자갈바닥58
 
 }
 

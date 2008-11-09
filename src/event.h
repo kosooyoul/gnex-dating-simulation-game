@@ -29,15 +29,6 @@ struct EventObject{
 	int LineCount;		//수행중인 명령 위치
 }EventObject[MAX_EVENT_COUNT];
 
-int EventLine[] = { 
-/*00*/ 31, -1,		//공항이벤트
-/*02*/  2, -1,  0,/**/  0,  0,/**/  0,  1,		//도쿄타워 테스트
-/*09*/
--1
-
-};
-
-
 //초기 이벤트 설정
 void SetEvent(){
 
@@ -64,15 +55,25 @@ void SetEvent(){
 	EventObject[1].LineCount = 0;		//테스트 코드
 	EventObject[1].MoveType = 0;		//정지상태
 
-	//도쿄.도쿄타워
+	//도쿄.지하철
 	EventObject[2].graphic = -1;		//테스트 코드
 	EventObject[2].map = 0;				//테스트 코드
-	EventObject[2].x = 9;				//테스트 코드
-	EventObject[2].y = 10;				//테스트 코드
+	EventObject[2].x = 5;				//테스트 코드
+	EventObject[2].y = 14;				//테스트 코드
 	EventObject[2].EventLoop = 0;		//테스트 코드
 	EventObject[2].EventPage = 2;		//테스트 코드
 	EventObject[2].LineCount = 0;		//테스트 코드
 	EventObject[2].MoveType = 0;		//정지상태
+
+	//도쿄.도쿄타워 : 테스트
+	EventObject[3].graphic = -1;		//테스트 코드
+	EventObject[3].map = 0;				//테스트 코드
+	EventObject[3].x = 9;				//테스트 코드
+	EventObject[3].y = 10;				//테스트 코드
+	EventObject[3].EventLoop = 0;		//테스트 코드
+	EventObject[3].EventPage = 4;		//테스트 코드
+	EventObject[3].LineCount = 0;		//테스트 코드
+	EventObject[3].MoveType = 0;		//정지상태
 
 	ApplyEventOnMap();
 }

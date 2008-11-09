@@ -101,14 +101,7 @@ void SelectTitleMenu()
 						break;
 
 					case 2:
-						switch(SelectedObject){
-							case 0:
-								OptionAutoSkip = !OptionAutoSkip;
-								break;
-							case 1:
-								OptionPlayBGM = !OptionPlayBGM;
-								break;
-						}
+						ChangeOption(SelectedObject);
 						break;
 
 					case 3:

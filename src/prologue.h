@@ -13,17 +13,23 @@ void RunPrologueEvent(){
 			break;
 
 		case 0:		//대화 
-			if(NextKey == SWAP_KEY_OK){
+			if(NextKey == SWAP_KEY_OK && EventMode == 2){
 				DrawMessages(PrologueEventList[PrologueEventPointer++]);
+				EffectFrame = 0;
+				SelectedAnswer = 0;
 				SecondSelect = 0;
+				EventMode = 0;
 			}else{
 				DrawMessages(PrologueEventList[PrologueEventPointer--]);
+
 				//자동 스킵 옵션 설정한 경우
 				if(OptionAutoSkip){
-					SecondSelect++;
-					if(SecondSelect > SKIP_COUNT){
+					if(EffectFrame > SKIP_COUNT){
 						PrologueEventPointer += 2;
+						EffectFrame = 0;
+						SelectedAnswer = 0;
 						SecondSelect = 0;
+						EventMode = 0;
 					}
 				}
 			}
@@ -61,6 +67,15 @@ void RunPrologueEvent(){
 
 		case 6:		//케릭터 교체
 			SetChara(PrologueEventList[PrologueEventPointer++], PrologueEventList[PrologueEventPointer++]);
+			break;
+
+		case 10:	//딜레이						 :: 매개변수 1개
+			if(Delay(PrologueEventList[PrologueEventPointer]))PrologueEventPointer--;
+			else PrologueEventPointer++;
+			break;
+
+		case 11:	//배경음						 :: 매개변수 1개
+			SetBGM(PrologueEventList[PrologueEventPointer++]);
 			break;
 
 		default:	//이벤트가 종료되었거나 없는 이벤트 호출시 초기화

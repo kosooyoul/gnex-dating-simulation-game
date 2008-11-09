@@ -3,7 +3,7 @@ struct Point{
 	int Y;
 };
 
-#define MAX_EVENT_COUNT		3		//이벤트 수 현재 3 개다. 최대 카운터 + 1
+#define MAX_EVENT_COUNT		4		//이벤트 수 현재 3 개다. 최대 카운터 + 1
 
 //맵표시관련 모듈에 대해서
 #define _TopSize	32							//상단의 인터페이스 구성
@@ -33,8 +33,8 @@ struct Point{
 //map.h
 #define _PlayerPosition 7				//주인공 화면위치 조절
 #define _SubChipMoveable 99				//이동 가능한 하위칩 마지막 번호
-#define _SupChipMoveable 39				//이동 가능한 상위칩 마지막 번호
-#define _SupChipWall 139				//장애물에 대한 상위칩 마지막 번호
+#define _SupChipMoveable 19				//이동 가능한 상위칩 마지막 번호
+#define _SupChipWall 119				//장애물에 대한 상위칩 마지막 번호
 
 //EVENT MAP
 #define T1X		148

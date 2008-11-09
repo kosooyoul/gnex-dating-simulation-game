@@ -22,7 +22,8 @@
 //		2003.05.01	Add macro constant for GNEX
 //		2003.09.25	Add SMSGetCount type
 //		2004.10.21	Integrate with GVM SScript
-//		2008.07.31	Version 1.91 Release
+//		2008.07.31	Version 1.90 Release
+//		2008.10.15 	Version 1.91 Release
 //==============================================================================
 //
 #ifndef	_SSCRIPT_
@@ -524,61 +525,146 @@ enum {
 //======================================
 //	Key code
 //======================================
-#define SWAP_KEY_1					0x01
-#define	SWAP_KEY_2					0x02
-#define	SWAP_KEY_3					0x03
-#define	SWAP_KEY_4					0x04
-#define	SWAP_KEY_5					0x05
-#define	SWAP_KEY_6					0x06
-#define	SWAP_KEY_7					0x07
-#define	SWAP_KEY_8					0x08
-#define	SWAP_KEY_9					0x09
-#define	SWAP_KEY_0					0x0A
-#define	SWAP_KEY_STAR					0x0B
-#define	SWAP_KEY_SHARP					0x0C
+#define SWAP_KEY_1			0x01
+#define	SWAP_KEY_2			0x02
+#define	SWAP_KEY_3			0x03
+#define	SWAP_KEY_4			0x04
+#define	SWAP_KEY_5			0x05
+#define	SWAP_KEY_6			0x06
+#define	SWAP_KEY_7			0x07
+#define	SWAP_KEY_8			0x08
+#define	SWAP_KEY_9			0x09
+#define	SWAP_KEY_0			0x0A
+#define	SWAP_KEY_STAR			0x0B
+#define	SWAP_KEY_SHARP			0x0C
 
-#define	SWAP_KEY_CLR					0x0D
-#define	SWAP_KEY_SND					0x0E
-#define	SWAP_KEY_END					0x0F
+#define	SWAP_KEY_CLR			0x0D
+#define	SWAP_KEY_SND			0x0E
+#define	SWAP_KEY_END			0x0F
 
-#define	SWAP_KEY_LEFT					0x10
-#define	SWAP_KEY_RIGHT					0x11
-#define	SWAP_KEY_UP					0x12
-#define	SWAP_KEY_DOWN					0x13
-#define	SWAP_KEY_OK					0x14
+#define	SWAP_KEY_LEFT			0x10
+#define	SWAP_KEY_RIGHT			0x11
+#define	SWAP_KEY_UP			0x12
+#define	SWAP_KEY_DOWN			0x13
+#define	SWAP_KEY_OK			0x14
 
-#define SWAP_KEY_F1					0x15
-#define SWAP_KEY_F2					0x16
-#define SWAP_KEY_ENTER					0x17
+#define SWAP_KEY_F1			0x15
+#define SWAP_KEY_F2			0x16
+#define SWAP_KEY_ENTER			0x17
 
-#define	SWAP_KEY_1_L					0x81
-#define	SWAP_KEY_2_L					0x82
-#define	SWAP_KEY_3_L					0x83
-#define	SWAP_KEY_4_L					0x84
-#define	SWAP_KEY_5_L					0x85
-#define	SWAP_KEY_6_L					0x86
-#define	SWAP_KEY_7_L					0x87
-#define	SWAP_KEY_8_L					0x88
-#define	SWAP_KEY_9_L					0x89
-#define	SWAP_KEY_0_L					0x8A
-#define	SWAP_KEY_STAR_L					0x8B
-#define	SWAP_KEY_SHARP_L				0x8C
+// Qwerty Key 추가
+#define SWAP_KEY_A			0x18
+#define SWAP_KEY_B			0x19
+#define SWAP_KEY_C			0x1A
+#define SWAP_KEY_D			0x1B
+#define SWAP_KEY_E			0x1C
+#define SWAP_KEY_F			0x1D
+#define SWAP_KEY_G			0x1E
+#define SWAP_KEY_H			0x1F
+#define SWAP_KEY_I			0x20
+#define SWAP_KEY_J			0x21
+#define SWAP_KEY_K			0x22
+#define SWAP_KEY_L			0x23
+#define SWAP_KEY_M			0x24
+#define SWAP_KEY_N			0x25
+#define SWAP_KEY_O			0x26
+#define SWAP_KEY_P			0x27
+#define SWAP_KEY_Q			0x28
+#define SWAP_KEY_R			0x29
+#define SWAP_KEY_S			0x2A
+#define SWAP_KEY_T			0x2B
+#define SWAP_KEY_U			0x2C
+#define SWAP_KEY_V			0x2D
+#define SWAP_KEY_W			0x2F
+#define SWAP_KEY_X			0x30
+#define SWAP_KEY_Y			0x31
+#define SWAP_KEY_Z			0x32
 
-#define	SWAP_KEY_CLR_L					0x8D
-#define	SWAP_KEY_SND_L					0x8E
-#define	SWAP_KEY_END_L					0x8F
+// Function Key 추가
+#define SWAP_KEY_AT			0x33
+#define SWAP_KEY_BACK			0x34
+#define SWAP_KEY_SHIFT			0x35
+#define SWAP_KEY_COMMA			0x36
+#define SWAP_KEY_RETURN			0x37
+#define SWAP_KEY_ALT			0x38
+#define SWAP_KEY_SPACE			0x39
+#define SWAP_KEY_PERIOD			0x3A
 
-#define	SWAP_KEY_LEFT_L					0x90
-#define	SWAP_KEY_RIGHT_L				0x91
-#define	SWAP_KEY_UP_L					0x92
-#define	SWAP_KEY_DOWN_L					0x93
-#define	SWAP_KEY_OK_L					0x94
+//Side Key 추가
+#define SWAP_KEY_SIDE_UP		0X3B
+#define SWAP_KEY_SIDE_DOWN		0X3C
 
-#define SWAP_KEY_F1_L					0x95
-#define SWAP_KEY_F2_L					0x96
-#define SWAP_KEY_ENTER_L				0x97
+//Long Key
+#define	SWAP_KEY_1_L			0x81
+#define	SWAP_KEY_2_L			0x82
+#define	SWAP_KEY_3_L			0x83
+#define	SWAP_KEY_4_L			0x84
+#define	SWAP_KEY_5_L			0x85
+#define	SWAP_KEY_6_L			0x86
+#define	SWAP_KEY_7_L			0x87
+#define	SWAP_KEY_8_L			0x88
+#define	SWAP_KEY_9_L			0x89
+#define	SWAP_KEY_0_L			0x8A
+#define	SWAP_KEY_STAR_L			0x8B
+#define	SWAP_KEY_SHARP_L		0x8C
 
-#define SWAP_KEY_RELEASE				0xFF
+#define	SWAP_KEY_CLR_L			0x8D
+#define	SWAP_KEY_SND_L			0x8E
+#define	SWAP_KEY_END_L			0x8F
+
+#define	SWAP_KEY_LEFT_L			0x90
+#define	SWAP_KEY_RIGHT_L		0x91
+#define	SWAP_KEY_UP_L			0x92
+#define	SWAP_KEY_DOWN_L			0x93
+#define	SWAP_KEY_OK_L			0x94
+
+#define SWAP_KEY_F1_L			0x95
+#define SWAP_KEY_F2_L			0x96
+#define SWAP_KEY_ENTER_L		0x97
+
+// Qwerty Long Key 추가
+#define SWAP_KEY_A_L			0x98
+#define SWAP_KEY_B_L			0x99
+#define SWAP_KEY_C_L			0x9A
+#define SWAP_KEY_D_L			0x9B
+#define SWAP_KEY_E_L			0x9C
+#define SWAP_KEY_F_L			0x9D
+#define SWAP_KEY_G_L			0x9E
+#define SWAP_KEY_H_L			0x9F
+#define SWAP_KEY_I_L			0xA0
+#define SWAP_KEY_J_L			0xA1
+#define SWAP_KEY_K_L			0xA2
+#define SWAP_KEY_L_L			0xA3
+#define SWAP_KEY_M_L			0xA4
+#define SWAP_KEY_N_L			0xA5
+#define SWAP_KEY_O_L			0xA6
+#define SWAP_KEY_P_L			0xA7
+#define SWAP_KEY_Q_L			0xA8
+#define SWAP_KEY_R_L			0xA9
+#define SWAP_KEY_S_L			0xAA
+#define SWAP_KEY_T_L			0xAB
+#define SWAP_KEY_U_L			0xAC
+#define SWAP_KEY_V_L			0xAD
+#define SWAP_KEY_W_L			0xAF
+#define SWAP_KEY_X_L			0xB0
+#define SWAP_KEY_Y_L			0xB1
+#define SWAP_KEY_Z_L			0xB2
+
+// Function Long Key 추가
+#define SWAP_KEY_AT_L			0xB3
+#define SWAP_KEY_BACK_L			0xB4
+#define SWAP_KEY_SHIFT_L		0xB5
+#define SWAP_KEY_COMMA_L		0xB6
+#define SWAP_KEY_RETURN_L		0xB7
+#define SWAP_KEY_ALT_L			0xB8
+#define SWAP_KEY_SPACE_L		0xB9
+#define SWAP_KEY_PERIOD_L		0xBA
+
+//Side Long Key 추가
+#define SWAP_KEY_SIDE_UP_L		0XBB
+#define SWAP_KEY_SIDE_DOWN_L		0XBC
+
+#define SWAP_KEY_RELEASE		0xFF
 
 // 
 //	void EVENT_GENERAL()
@@ -621,9 +707,9 @@ enum {
 
 #ifdef _GVM
 #define S_RST_PTP_RECON_OK			12
-#define S_RST_PTP_RECON_FAIL		13
+#define S_RST_PTP_RECON_FAIL			13
 #define S_RST_PTP_DISCON_OK			14
-#define S_RST_PTP_DISCON_FAIL		15
+#define S_RST_PTP_DISCON_FAIL			15
 #else
 #define	S_RST_PTPCON_OK				12
 #define	S_RST_PTPCON_FAIL			13
@@ -648,7 +734,7 @@ enum {
 //
 // GNEX Version 1.04
 //
-#define	S_RST_VODEX						28
+#define	S_RST_VODEX				28
 #define S_RST_STREDIT_DONE			29
 
 #define S_VODEX_OPEN_OK				1	// S_RST_VODEX의 하위 Event
@@ -867,6 +953,8 @@ enum {
 #define	S_VOD_MEDIA_EVRC			4
 #define	S_VOD_MEDIA_H263			5
 #define	S_VOD_MEDIA_H264			6
+#define	S_VOD_MEDIA_AAC_1			7
+#define	S_VOD_MEDIA_TERMRES			8
 
 //======================================
 // VOD record quality (GNEX 1.0)
