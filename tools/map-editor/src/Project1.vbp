@@ -1,10 +1,10 @@
 Type=Exe
 Form=MapEdit.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\Windows\system32\stdole2.tlb#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
 Form=MapCode.frm
 Form=Main.frm
 Module=Module1; PublicValue.bas
-Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
+Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; mscomctl.ocx
 Form=MapChip.frm
 Object={38911DA0-E448-11D0-84A3-00DD01104159}#1.1#0; COMCT332.OCX
 Form=MapAdmin.frm
@@ -29,7 +29,7 @@ IconForm="MDIForm1"
 Startup="MDIForm1"
 HelpFile=""
 Title="Ahyane's RPG Map & Event Script Editor "
-ExeName32="Ahyane_DataEditor_v1.exe"
+ExeName32="Ahyane_DataEditor_v2.exe"
 Command32=""
 Name="Ahyane_DataEditor_v1"
 HelpContextID="0"
@@ -60,3 +60,6 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1
