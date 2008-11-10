@@ -563,6 +563,8 @@ void SetBGM(int MusicNumber){
 
 //30번>> 지하철 일본 5개 도시
 int Subway(int EventNumber){
+	int NowMap, SelMap;
+	int i, Temp;
 
 	//검은 바탕
 	SetColor(S_BLACK);
@@ -576,14 +578,20 @@ int Subway(int EventNumber){
 	//지도
 	CopyImage(0, 75, eve_airmap);
 
+	//구간 출력
+	SetColor(S_BLACK);	
+	for(i = 0; i < 21; i++){	
+		DrawRect(SubwayStation[i].X-1, SubwayStation[i].Y-1, SubwayStation[i].X+4, SubwayStation[i].Y +4);
+	}
+
 	switch(SelectedAnswer){
 		case 2:
 			switch(SelectedStation){
-				case 0:		MoveMap(0, 10, 10);break;	//도쿄
-				case 1:		MoveMap(1, 10, 10);break;	//오사카
-				case 2:		MoveMap(2, 10, 10);break;	//교토
+				case 0:		MoveMap(0, 7, 16);break;	//도쿄
+				case 1:		MoveMap(1, 15, 4);break;	//오사카
+				case 2:		MoveMap(2, 16, 14);break;	//교토
 				case 3:		MoveMap(3, 10, 10);break;	//후쿠오카
-				case 4:		MoveMap(4, 10, 10);break;	//오키나와
+				case 4:		MoveMap(4, 3, 6);break;		//오키나와
 				default:
 					SecondSelect++;
 
@@ -601,24 +609,49 @@ int Subway(int EventNumber){
 			}
 			break;
 
+		//이동효과 - 지하철
 		case 1:
-			switch(SelectedStation){
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 4:break;
-			}
-			SecondSelect++;
-			if(SecondSelect >= 0){
+			if(SecondSelect > 0){
 				SelectedAnswer = 2;
+			}else{
+				switch(Player.map){
+					case 0:		NowMap = 12;break;
+					case 1:		NowMap = 4;break;
+					case 2:		NowMap = 5;break;
+					case 3:		NowMap = 20;break;
+					case 4:		NowMap = 0;break;
+				}
+				switch(SelectedStation){
+					case 0:		SelMap = 12;break;
+					case 1:		SelMap = 4;break;
+					case 2:		SelMap = 5;break;
+					case 3:		SelMap = 20;break;
+					case 4:		SelMap = 0;break;
+				}
+
+				//이동구간 출력
+				if(NowMap < SelMap){
+					Temp = SelMap - (NowMap - SelMap) * (SecondSelect) / 50;
+					SetColor(S_RED);
+					for(i = NowMap; i <= Temp; i++){
+						FillRect(SubwayStation[i].X, SubwayStation[i].Y, SubwayStation[i].X + 3, SubwayStation[i].Y + 3);
+					}
+				}else{
+					Temp = SelMap + (SelMap - NowMap) * (SecondSelect) / 50;				
+					SetColor(S_RED);
+					for(i = NowMap; i >= Temp; i--){
+						FillRect(SubwayStation[i].X, SubwayStation[i].Y, SubwayStation[i].X + 3, SubwayStation[i].Y + 3);
+					}
+				}
 			}
+			//프레임 증가
+			SecondSelect++;
 			break;
 
 		case 0:	
 			switch(EventMode){
 				case 0:						//이벤트 초기화
-					SecondSelect = 0;				//이펙트를 위해 -50
+					SecondSelect = -60;			//이펙트를 위해 -100
 					SelectedStation = Player.map;	//현재 위치 적용
 					EventMode = 1;
 
@@ -626,6 +659,7 @@ int Subway(int EventNumber){
 					switch(NextKey){
 						case SWAP_KEY_OK:		//목적지 결정
 							if(SelectedStation == Player.map){
+								EventMode = 0;
 								return 1;
 							}else{
 								SelectedAnswer = 1;
@@ -650,12 +684,11 @@ int Subway(int EventNumber){
 	if(SelectedAnswer != 2){
 		//선택한 목적지
 		switch(SelectedStation){
-			case 0:		CopyImage(T1X, T1Y, int_select_map);break;
-			case 1:		CopyImage(T2X, T2Y, int_select_map);break;
-			case 2:		CopyImage(T3X, T3Y, int_select_map);break;
-			case 3:		CopyImage(T4X, T4Y, int_select_map);break;
-			case 4:		CopyImage(T5X, T5Y, int_select_map);break;
-			case 5:		CopyImage(T6X, T6Y, int_select_map);break;
+			case 0:		CopyImage(SubwayStation[12].X, SubwayStation[12].Y, int_select_map);break;
+			case 1:		CopyImage(SubwayStation[4].X, SubwayStation[4].Y, int_select_map);break;
+			case 2:		CopyImage(SubwayStation[5].X, SubwayStation[5].Y, int_select_map);break;
+			case 3:		CopyImage(SubwayStation[20].X, SubwayStation[20].Y, int_select_map);break;
+			case 4:		CopyImage(SubwayStation[0].X, SubwayStation[0].Y, int_select_map);break;
 		}
 
 		//목적지 이름
@@ -686,10 +719,10 @@ int Airport(int EventNumber){
 		case 2:
 			switch(SelectedStation){
 				case 0:					//도쿄
-					MoveMap(0, 11, 4);
+					MoveMap(0, 12, 6);
 					break;
 				case 5:					//서울
-					MoveMap(5, 16, 4);
+					MoveMap(5, 3, 6);
 					break;
 				default:
 					SecondSelect++;
@@ -707,7 +740,8 @@ int Airport(int EventNumber){
 				return 1;
 			}
 			break;
-
+		
+		//이동효과 - 비행기
 		case 1:
 			switch(SelectedStation){
 				case 0:					//도쿄로
@@ -734,6 +768,7 @@ int Airport(int EventNumber){
 					switch(NextKey){
 						case SWAP_KEY_OK:		//목적지 결정
 							if(SelectedStation == Player.map){
+								EventMode = 0;
 								return 1;
 							}else{
 								SelectedAnswer = 1;

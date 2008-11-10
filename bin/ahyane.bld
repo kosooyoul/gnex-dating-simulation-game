@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Users\Ahyane\Desktop\AISIMUL_RPG_17_0X6D821C4_081107\main.sal
+C:\Users\Ahyane\Desktop\PRJT\AISIMUL_RPG_18_0X9A5F67C_081110\main.sal
 
 Generating code...
 
@@ -12,15 +12,15 @@ HEADER_COMPTYPE is 2
 
 Script profile : 
 
-	Script size       : 817274 Byte(s)
-	Code size         : 24980 Byte(s)
-	Symbol count      : 170
+	Script size       : 823820 Byte(s)
+	Code size         : 26698 Byte(s)
+	Symbol count      : 176
 	Total media count : 941
-	Total media size  : 739402 Byte(s)
+	Total media size  : 743788 Byte(s)
 		String count  : 236
-		String size   : 6012 Byte(s)
+		String size   : 6014 Byte(s)
 		Image count   : 702
-		Image size    : 632702 Byte(s)
+		Image size    : 637086 Byte(s)
 		Sound count   : 3
 		Sound size    : 100688 Byte(s)
 

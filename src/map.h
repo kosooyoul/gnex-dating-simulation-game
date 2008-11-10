@@ -11,6 +11,67 @@ struct Map{
 
 const string AreaName[6] = {"도쿄", "오사카", "교토", "후쿠오카", "오키나와", "서울"};
 
+struct Point SubwayStation[21];
+
+void SetSubwayStation(){
+	int i;
+
+	SubwayStation[0].X	= 32;
+	SubwayStation[0].Y	= 117;
+	SubwayStation[1].X	= 50;
+	SubwayStation[1].Y	= 117;
+	SubwayStation[2].X	= 68;
+	SubwayStation[2].Y	= 117;
+	SubwayStation[3].X	= 86;
+	SubwayStation[3].Y	= 117;
+	SubwayStation[4].X	= 102;
+	SubwayStation[4].Y	= 117;
+
+	SubwayStation[5].X	= 102;
+	SubwayStation[5].Y	= 107;
+	SubwayStation[6].X	= 115;
+	SubwayStation[6].Y	= 107;
+	SubwayStation[7].X	= 129;
+	SubwayStation[7].Y	= 107;
+	SubwayStation[8].X	= 129;
+	SubwayStation[8].Y	= 118;
+	SubwayStation[9].X	= 129;
+	SubwayStation[9].Y	= 130;
+
+	SubwayStation[10].X	= 143;
+	SubwayStation[10].Y	= 130;
+	SubwayStation[11].X	= 158;
+	SubwayStation[11].Y	= 130;
+	SubwayStation[12].X	= 167;
+	SubwayStation[12].Y	= 117;
+	SubwayStation[13].X	= 177;
+	SubwayStation[13].Y	= 104;
+	SubwayStation[14].X	= 187;
+	SubwayStation[14].Y	= 91;
+
+	SubwayStation[15].X	= 197;
+	SubwayStation[15].Y	= 78;
+	SubwayStation[16].X	= 207;
+	SubwayStation[16].Y	= 65;
+	SubwayStation[17].X	= 217;
+	SubwayStation[17].Y	= 52;
+	SubwayStation[18].X	= 217;
+	SubwayStation[18].Y	= 39;
+	SubwayStation[19].X	= 217;
+	SubwayStation[19].Y	= 26;
+
+	SubwayStation[20].X	= 231;
+	SubwayStation[20].Y	= 26;
+
+	for(i = 0; i < 21; i++){
+		SubwayStation[i].X	+= -10;
+		SubwayStation[i].Y	+= 65;
+	}
+
+
+
+}
+
 //맵 영역 설정
 void SetArea(){
 	//도쿄
@@ -19,7 +80,7 @@ void SetArea(){
 	Area[0].y_start = 0;
 	Area[0].x_size = 20;
 	Area[0].y_size = 20;
-	Area[0].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[0].backchip = 249;		//풀밭142 검정85 자갈바닥58
 	
 	//서울
 	Area[5].name = 5;
@@ -27,7 +88,7 @@ void SetArea(){
 	Area[5].y_start = 0;//40;
 	Area[5].x_size = 20;//9;
 	Area[5].y_size = 20;//11;
-	Area[5].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[5].backchip = 249;		//풀밭142 검정85 자갈바닥58
 
 	//오사카
 	Area[1].name = 1;
@@ -35,7 +96,7 @@ void SetArea(){
 	Area[1].y_start = 20;//30;
 	Area[1].x_size = 20;//9;
 	Area[1].y_size = 20;//11;
-	Area[1].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[1].backchip = 249;		//풀밭142 검정85 자갈바닥58
 	
 	//쿄토
 	Area[2].name = 2;
@@ -43,7 +104,7 @@ void SetArea(){
 	Area[2].y_start = 20;//30;
 	Area[2].x_size = 20;//9;
 	Area[2].y_size = 20;//11;
-	Area[2].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[2].backchip = 249;		//풀밭142 검정85 자갈바닥58
 
 	//후쿠오카
 	Area[3].name = 3;
@@ -51,7 +112,7 @@ void SetArea(){
 	Area[3].y_start = 40;//30;
 	Area[3].x_size = 20;//9;
 	Area[3].y_size = 20;//11;
-	Area[3].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[3].backchip = 249;		//풀밭142 검정85 자갈바닥58
 
 	//오키나와
 	Area[4].name = 4;
@@ -59,7 +120,9 @@ void SetArea(){
 	Area[4].y_start = 40;//30;
 	Area[4].x_size = 20;//9;
 	Area[4].y_size = 20;//11;
-	Area[4].backchip = 85;		//풀밭142 검정85 자갈바닥58
+	Area[4].backchip = 249;		//풀밭142 검정85 자갈바닥58
+
+	SetSubwayStation();			//지하철 위치 설정
 
 }
 

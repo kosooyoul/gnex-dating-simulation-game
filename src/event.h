@@ -31,25 +31,22 @@ struct EventObject{
 
 //초기 이벤트 설정
 void SetEvent(){
-
-	////이동관련 이벤트////
-
 	////건물관련 이벤트////
-	//도쿄.공항
+	//서울.공항
 	EventObject[0].graphic = -1;		//테스트 코드
-	EventObject[0].map = 0;				//테스트 코드
-	EventObject[0].x = 11;				//테스트 코드
-	EventObject[0].y = 3;				//테스트 코드
+	EventObject[0].map = 5;				//테스트 코드
+	EventObject[0].x = 3;				//테스트 코드
+	EventObject[0].y = 5;				//테스트 코드
 	EventObject[0].EventLoop = 0;		//테스트 코드
 	EventObject[0].EventPage = 0;		//테스트 코드
 	EventObject[0].LineCount = 0;		//테스트 코드
 	EventObject[0].MoveType = 0;		//정지상태
 
-	//서울.공항
+	//도쿄.공항
 	EventObject[1].graphic = -1;		//테스트 코드
-	EventObject[1].map = 5;				//테스트 코드
-	EventObject[1].x = 16;				//테스트 코드
-	EventObject[1].y = 3;				//테스트 코드
+	EventObject[1].map = 0;				//테스트 코드
+	EventObject[1].x = 12;				//테스트 코드
+	EventObject[1].y = 5;				//테스트 코드
 	EventObject[1].EventLoop = 0;		//테스트 코드
 	EventObject[1].EventPage = 0;		//테스트 코드
 	EventObject[1].LineCount = 0;		//테스트 코드
@@ -58,14 +55,54 @@ void SetEvent(){
 	//도쿄.지하철
 	EventObject[2].graphic = -1;		//테스트 코드
 	EventObject[2].map = 0;				//테스트 코드
-	EventObject[2].x = 5;				//테스트 코드
-	EventObject[2].y = 14;				//테스트 코드
+	EventObject[2].x = 7;				//테스트 코드
+	EventObject[2].y = 15;				//테스트 코드
 	EventObject[2].EventLoop = 0;		//테스트 코드
 	EventObject[2].EventPage = 2;		//테스트 코드
 	EventObject[2].LineCount = 0;		//테스트 코드
 	EventObject[2].MoveType = 0;		//정지상태
 
-	//도쿄.도쿄타워 : 테스트
+	//오사카.지하철
+	EventObject[3].graphic = -1;		//테스트 코드
+	EventObject[3].map = 1;				//테스트 코드
+	EventObject[3].x = 15;				//테스트 코드
+	EventObject[3].y = 3;				//테스트 코드
+	EventObject[3].EventLoop = 0;		//테스트 코드
+	EventObject[3].EventPage = 2;		//테스트 코드
+	EventObject[3].LineCount = 0;		//테스트 코드
+	EventObject[3].MoveType = 0;		//정지상태
+
+	//쿄토.지하철
+	EventObject[4].graphic = -1;		//테스트 코드
+	EventObject[4].map = 2;				//테스트 코드
+	EventObject[4].x = 16;				//테스트 코드
+	EventObject[4].y = 13;				//테스트 코드
+	EventObject[4].EventLoop = 0;		//테스트 코드
+	EventObject[4].EventPage = 2;		//테스트 코드
+	EventObject[4].LineCount = 0;		//테스트 코드
+	EventObject[4].MoveType = 0;		//정지상태
+
+	//후쿠오카.지하철
+	EventObject[5].graphic = -1;		//테스트 코드
+	EventObject[5].map = 3;				//테스트 코드
+	EventObject[5].x = 10;				//테스트 코드
+	EventObject[5].y = 9;				//테스트 코드
+	EventObject[5].EventLoop = 0;		//테스트 코드
+	EventObject[5].EventPage = 2;		//테스트 코드
+	EventObject[5].LineCount = 0;		//테스트 코드
+	EventObject[5].MoveType = 0;		//정지상태
+
+	//오키나와.지하철
+	EventObject[6].graphic = -1;		//테스트 코드
+	EventObject[6].map = 4;				//테스트 코드
+	EventObject[6].x = 3;				//테스트 코드
+	EventObject[6].y = 5;				//테스트 코드
+	EventObject[6].EventLoop = 0;		//테스트 코드
+	EventObject[6].EventPage = 2;		//테스트 코드
+	EventObject[6].LineCount = 0;		//테스트 코드
+	EventObject[6].MoveType = 0;		//정지상태
+
+	/*/도쿄.도쿄타워 : 테스트
 	EventObject[3].graphic = -1;		//테스트 코드
 	EventObject[3].map = 0;				//테스트 코드
 	EventObject[3].x = 9;				//테스트 코드
@@ -74,6 +111,7 @@ void SetEvent(){
 	EventObject[3].EventPage = 4;		//테스트 코드
 	EventObject[3].LineCount = 0;		//테스트 코드
 	EventObject[3].MoveType = 0;		//정지상태
+	*/
 
 	ApplyEventOnMap();
 }

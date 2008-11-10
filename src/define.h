@@ -3,7 +3,7 @@ struct Point{
 	int Y;
 };
 
-#define MAX_EVENT_COUNT		4		//이벤트 수 현재 3 개다. 최대 카운터 + 1
+#define MAX_EVENT_COUNT		7		//이벤트 수 현재 3 개다. 최대 카운터 + 1
 
 //맵표시관련 모듈에 대해서
 #define _TopSize	32							//상단의 인터페이스 구성
@@ -37,15 +37,7 @@ struct Point{
 #define _SupChipWall 119				//장애물에 대한 상위칩 마지막 번호
 
 //EVENT MAP
-#define T1X		148
+#define T1X		148		//도쿄
 #define T1Y		195
-#define T2X		91
-#define T2Y		183
-#define T3X		99
-#define T3Y		176
-#define T4X		210
-#define T4Y		94
-#define T5X		15
-#define T5Y		190
-#define T6X		12
+#define T6X		12		//서울
 #define T6Y		87
