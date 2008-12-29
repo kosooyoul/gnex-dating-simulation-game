@@ -2,7 +2,6 @@
 void DrawMenu(int MenuY)
 {
 	FillRect(0 , 50 + MenuY, 240, 200 + MenuY);
-
 }
 
 void ShowMenu(int Key)

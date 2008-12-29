@@ -7,7 +7,7 @@ void DrawBackground(){
 
 	//이벤트 배경
 	for(i = 0; i < 2; i++){
-		if(Background[i] >= 0){
+		if(Background[i] > 0){
 			CopyImage(0, 20, bg[Background[i]]);
 		}
 	}
@@ -29,7 +29,9 @@ void DrawInterface(){
 
 	//이동모드 기본 인터페이스 배경출력
 	CopyImage(0, 0, int_top);
-	CopyImage(0, 245, int_foot);
+	//CopyImage(0, 245, int_foot);
+	SetColor(S_BLACK);
+	FillRect(0,245,240,298);
 
 	//날짜 출력
 	CopyImage(26, 21, int_num_3[Now.Today.Year % 10]);

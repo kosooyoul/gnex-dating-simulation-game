@@ -141,6 +141,8 @@ void SelectTitleMenu()
 
 					//이어하기
 					case 1:
+						//RunningEventNumber = 7;					//테스트 코드
+						PlayingBGM = Area[Player.map].BGM;		//배경음 초기화
 						ChangeMode(2);
 						break;
 
@@ -190,7 +192,4 @@ void ShowTitleGameInfo(){
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
 	DrawStr(20, 155, "조장 : 이진중");
 	DrawStr(20, 170, "조원 : 차지웅, 최영민, 고수열");
-	
-
-
 }

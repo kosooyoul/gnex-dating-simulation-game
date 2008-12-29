@@ -78,6 +78,28 @@ void RunPrologueEvent(){
 			SetBGM(PrologueEventList[PrologueEventPointer++]);
 			break;
 
+		case 30:	//지하철						 :: 매개변수 없음
+			if(!Subway(PrologueEventList[PrologueEventPointer]))PrologueEventPointer--;
+			NextKey = -1;
+			break;
+
+		case 31:	//항공기						 :: 매개변수 없음
+			if(!Airport(PrologueEventList[PrologueEventPointer]))PrologueEventPointer--;
+			NextKey = -1;
+			break;
+
+		case 32:	//챕터표시
+			if(DrawChapter(PrologueEventList[PrologueEventPointer++]))PrologueEventPointer-=2;
+			break;
+
+		case 33:	//아이캐치
+			if(DrawEyeCatch(PrologueEventList[PrologueEventPointer++]))PrologueEventPointer-=2;
+			break;
+
+		case 99:	//에러처리						 :: 매개변수 없음
+			PrologueEventPointer++;
+			break;
+
 		default:	//이벤트가 종료되었거나 없는 이벤트 호출시 초기화
 			PrologueEventPointer = 0;
 	}

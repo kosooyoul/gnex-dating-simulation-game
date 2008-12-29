@@ -1,6 +1,9 @@
 #include "Title.ssd"
 #include "Prologue.ssd"
 #include "Tokyo.ssd"
+#include "bgm1.ssd"
+#include "bgm2.ssd"
+#include "bgm3.ssd"
 
 int PlayingBGM = -1;
 
@@ -27,15 +30,23 @@ void PlayMusic(int MusicNumber){
 			break;
 
 		case 3:
-			//PlaySound(Seoul);
+			PlaySound(bgm1);
 			break;
 
 		case 4:
-			//PlaySound();
+			PlaySound(bgm2);
 			break;
 
 		case 5:
-			//PlaySound();
+			PlaySound(bgm3);
+			break;
+
+		case 6:
+			//PlaySound(후쿠오카);
+			break;
+
+		case 7:
+			//PlaySound(오키나와);
 			break;
 
 	}

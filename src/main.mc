@@ -55,7 +55,7 @@ int GameMode = 0;								//게임 모드
 
 void TEST(){
 	string Temp;
-
+/*
 	//SetColor(S_BLACK);
 	//FillRectEx(0,230,240,280,2);
 	SetFontType(S_FONT_MEDIUM, S_YELLOW, S_BLACK, S_ALIGN_LEFT);
@@ -66,12 +66,16 @@ void TEST(){
 	MakeStr1(Temp,"Direction = %d",Player.direction);
 	DrawStr(20,265,Temp);
 	MakeStr2(Temp,"Position = %d, %d",1,1);
-	DrawStr(20,275,Temp);
+	DrawStr(20,275,Temp);*/
+	SetFontType(S_FONT_MEDIUM, S_YELLOW, S_BLACK, S_ALIGN_LEFT);
+	MakeStr1(Temp,"EVE %d",PrologueEventPointer);
+	DrawStr(100,2,Temp);
 
 }
 
 //Main
 void main(){
+	ReadOption();								//옵션 초기화 혹은 로드
 	InitNature();								//시간초기화
 	InitPlayer();								//주인공 초기화
 	SetArea();									//지역 초기화
@@ -92,6 +96,7 @@ void EVENT_TIMEOUT(){
 
 		case 1:									//프롤로그
 			ClearBlack();							//재출력
+			TEST();
 			RunPrologue();							//프롤로그 실행
 			break;
 
@@ -103,6 +108,7 @@ void EVENT_TIMEOUT(){
 			DrawSupLayer(0);					//상위맵 0단계 출력
 			DrawEventLayer();					//주인공 및 이벤트 출력
 			DrawSupLayer(1);					//상위맵 1단계 출력
+
 			DrawInterface();					//인터페이스 출력
 
 			if(RunningEventNumber >= 0){		//이벤트 수행중이면 이벤트 수행
@@ -126,7 +132,8 @@ void EVENT_TIMEOUT(){
 			break;
 
 		case 4:									//이벤트수행 모드
-			RestoreLCD();							//버퍼 로드
+			//RestoreLCD();							//버퍼 로드
+			ClearBlack();
 			DrawInterface();						//인터페이스 출력
 			EventObject[RunningEventNumber].EventLoop = 1;
 			RunEventLine(RunningEventNumber);		//이벤트 수행
@@ -218,10 +225,10 @@ void ChangeMode(int Mode){
 		case 1:			//프롤로그로
 			GameMode = 1;	break;
 		case 2:			//이동모드로
-			if(GameMode < 2){
+			//if(GameMode < 2){
 				PlayMusic(-1);
-				PlayMusic(2);
-			}
+				PlayMusic(Area[Player.map].BGM);
+			//}
 			GameMode = 2;	break;
 		case 3:			//메뉴모드로
 		case 4:			//이벤트실행모드로

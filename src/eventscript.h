@@ -104,12 +104,12 @@ void RunEventLine(int EventNumber){
 				MoveMap(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
 						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++],
 						EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount++]);
-				SecondSelect = 0;								//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
+				//SecondSelect = 0;								//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 				//워프후 이벤트 강제 종료 ▼ 워프(맵이동)시 버튼입력 대기가 되버려 삽입함
-				EventObject[EventNumber].LineCount = 0;
+				//EventObject[EventNumber].LineCount = 0;
 				//EventObject[EventNumber].EventLoop = 0;
-				RunningEventNumber = -1;
-				ChangeMode(2);
+				//RunningEventNumber = -1;
+				//ChangeMode(2);
 				//워프후 이벤트 강제 종료 ▲
 			}
 			break;
@@ -143,6 +143,16 @@ void RunEventLine(int EventNumber){
 			NextKey = -1;
 			break;
 
+		case 32:	//챕터표시
+			if(DrawChapter(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]))EventObject[EventNumber].LineCount--;
+			else EventObject[EventNumber].LineCount++;
+			break;
+
+		case 33:	//아이캐치
+			if(DrawEyeCatch(EventLine[EventObject[EventNumber].EventPage + EventObject[EventNumber].LineCount]))EventObject[EventNumber].LineCount--;
+			else EventObject[EventNumber].LineCount++;
+			break;
+
 		case 99:	//에러처리						 :: 매개변수 없음
 			EventObject[EventNumber].LineCount++;
 			break;
@@ -153,6 +163,7 @@ void RunEventLine(int EventNumber){
 void ScreenEffect(int Type, int Count, int Imgnum){
 	switch(Type){
 		case 0:			//페이드인-페이드아웃
+			SetColor(S_BLACK);
 			switch(Count){
 					case 0:FillRectEx(MAP_POS_X1,MAP_POS_Y1,MAP_POS_X2,MAP_POS_Y2,3);break;
 					case 1:FillRectEx(MAP_POS_X1,MAP_POS_Y1,MAP_POS_X2,MAP_POS_Y2,2);break;
@@ -361,14 +372,14 @@ void SetCurrentName(int NameNumber, int Position)
 //3 > 같을경우 계속 수행
 int IfEqual(int Value1, int Value2, int ElseCount)
 {
-	if(Value1 == Variable[Value2])return 0;
+	if(Value2 == Variable[Value1])return 0;
 	else return ElseCount;
 }
 
 //4 > 다를경우 계속 수행
 int ElseEqual(int Value1, int Value2, int IfCount)
 {
-	if(Value1 != Variable[Value2])return 0;
+	if(Value2 != Variable[Value1])return 0;
 	else return IfCount;
 }
 
@@ -394,10 +405,10 @@ void MoveMap(int MapNumber, int PositionX, int PositionY)
 {
 	string temp;
 
-	DrawSubLayer();			//하위맵 출력
-	DrawSupLayer(0);		//상위맵 0단계 출력
-	DrawEventLayer();		//주인공 및 이벤트 출력
-	DrawSupLayer(1);		//상위맵 1단계 출력
+	//DrawSubLayer();			//하위맵 출력
+	//DrawSupLayer(0);		//상위맵 0단계 출력
+	//DrawEventLayer();		//주인공 및 이벤트 출력
+	//DrawSupLayer(1);		//상위맵 1단계 출력
 
 	SetColor(S_BLACK);		//Rand(0,127)//클리어 색상
 	ScreenEffect(1, SecondSelect, 0);
@@ -411,6 +422,7 @@ void MoveMap(int MapNumber, int PositionX, int PositionY)
 		ApplyEventOnMap();
 		EventLayer[Area[Player.map].y_start + Player.y][Area[Player.map].x_start + Player.x] = -1;
 		MovingDirection = 0;							//워프 후 계속이동 됨을 방지
+		//SetBGM(Area[MapNumber].BGM);					//각마을 배경음 설정
 
 	}else if(SecondSelect == MOVE_EFFECT_COUNT){
 		return;
@@ -601,10 +613,10 @@ int Subway(int EventNumber){
 				SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 				SelectedAnswer = 0;
 				SelectedStation = 0;
-				EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
-				EventObject[EventNumber].EventLoop = 0;
-				RunningEventNumber = -1;				//실행 이벤트 종료
-				ChangeMode(2);
+				//EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+				//EventObject[EventNumber].EventLoop = 0;
+				//RunningEventNumber = -1;				//실행 이벤트 종료
+				//ChangeMode(2);
 				return 1;
 			}
 			break;
@@ -719,7 +731,7 @@ int Airport(int EventNumber){
 		case 2:
 			switch(SelectedStation){
 				case 0:					//도쿄
-					MoveMap(0, 12, 6);
+					MoveMap(0, 16, 6);
 					break;
 				case 5:					//서울
 					MoveMap(5, 3, 6);
@@ -733,10 +745,10 @@ int Airport(int EventNumber){
 				SecondSelect = 0;						//MOVE_EFFECT_COUNT에 대한 비교 값 초기화
 				SelectedAnswer = 0;
 				SelectedStation = 0;
-				EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
-				EventObject[EventNumber].EventLoop = 0;
-				RunningEventNumber = -1;				//실행 이벤트 종료
-				ChangeMode(2);
+				//EventObject[EventNumber].LineCount = 0;	//실행 이벤트 위치 초기화
+				//EventObject[EventNumber].EventLoop = 0;
+				//RunningEventNumber = -1;				//실행 이벤트 종료
+				//ChangeMode(2);
 				return 1;
 			}
 			break;
@@ -812,4 +824,89 @@ int Airport(int EventNumber){
 
 	return 0;
 
+}
+
+//32번 이벤트 라인{32,*} - 챕터표시
+int DrawChapter(int ChapterNumber){
+string temp;
+	switch(EventMode){
+		case 0:
+			SecondSelect = MAX_CHAPTER_FRAME;
+			EventMode = 1;
+			break;
+		case 1:
+			SecondSelect--;
+
+			SetColor(S_WHITE);
+			FillRect(0, 20, 240, 210);	
+			CopyImage(40, 180, epilogue[ChapterNumber]);
+
+			if(SecondSelect < 0){
+				SecondSelect = 0;
+				EventMode = 0;
+				return 0;
+			}
+
+			SetColor(S_BLACK);
+			if(SecondSelect + 10 > MAX_CHAPTER_FRAME)
+				FillRectEx(0, 20, 240, 210, (MAX_CHAPTER_FRAME - SecondSelect) / 3);
+			else if(SecondSelect < 10)
+				FillRectEx(0, 20, 240, 210, SecondSelect / 3);
+
+			break;
+	}
+	return 1;		//반복
+}
+
+//33번 이벤트 라인{33,*} - DrawEyeCatch
+int DrawEyeCatch(int Type){
+	
+	switch(EventMode){
+		case 0:
+			SecondSelect = MAX_EYE_FRAME;
+			SelectedAnswer = 1;
+			EventMode = 1;
+			break;
+		case 1:
+			SecondSelect--;
+
+			SetColor(S_WHITE);
+			FillRect(0, 20, 240, 210);
+
+			SetFontType(S_FONT_HUGE, S_PINK, S_BLACK, S_ALIGN_CENTER);
+			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			SetFontType(S_FONT_HUGE, S_VIOLET, S_BLACK, S_ALIGN_CENTER);
+			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			SetFontType(S_FONT_HUGE, S_RED, S_BLACK, S_ALIGN_CENTER);
+			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+
+			SetFontType(S_FONT_LARGE, S_JADE, S_BLACK, S_ALIGN_CENTER);
+			switch(SelectedAnswer){
+				case 1:
+					DrawStr(120, 150, "- LOVE -");
+					break;
+				case 2:
+					DrawStr(120, 150, "- FOREVER -");
+					break;
+				case 3:
+					DrawStr(120, 150, "Coutinue...");
+					break;
+			}
+			SetColor(S_BLACK);
+			if(SecondSelect + 10 > MAX_EYE_FRAME)
+				FillRectEx(0, 20, 240, 210, (MAX_EYE_FRAME - SecondSelect) / 3);
+			else if(SecondSelect < 10)
+				FillRectEx(0, 20, 240, 210, SecondSelect / 3);
+
+			if(SecondSelect < 0){
+				SecondSelect = 0;
+				SelectedAnswer = 0;
+				EventMode = 0;
+				return 0;
+			}
+			break;
+	}
+	return 1;		//반복
 }

@@ -33,7 +33,7 @@ struct EventObject{
 void SetEvent(){
 	////건물관련 이벤트////
 	//서울.공항
-	EventObject[0].graphic = -1;		//테스트 코드
+	EventObject[0].graphic = 1;		//테스트 코드
 	EventObject[0].map = 5;				//테스트 코드
 	EventObject[0].x = 3;				//테스트 코드
 	EventObject[0].y = 5;				//테스트 코드
@@ -43,9 +43,9 @@ void SetEvent(){
 	EventObject[0].MoveType = 0;		//정지상태
 
 	//도쿄.공항
-	EventObject[1].graphic = -1;		//테스트 코드
+	EventObject[1].graphic = 1;		//테스트 코드
 	EventObject[1].map = 0;				//테스트 코드
-	EventObject[1].x = 12;				//테스트 코드
+	EventObject[1].x = 16;				//테스트 코드
 	EventObject[1].y = 5;				//테스트 코드
 	EventObject[1].EventLoop = 0;		//테스트 코드
 	EventObject[1].EventPage = 0;		//테스트 코드
@@ -102,16 +102,45 @@ void SetEvent(){
 	EventObject[6].LineCount = 0;		//테스트 코드
 	EventObject[6].MoveType = 0;		//정지상태
 
-	/*/도쿄.도쿄타워 : 테스트
-	EventObject[3].graphic = -1;		//테스트 코드
-	EventObject[3].map = 0;				//테스트 코드
-	EventObject[3].x = 9;				//테스트 코드
-	EventObject[3].y = 10;				//테스트 코드
-	EventObject[3].EventLoop = 0;		//테스트 코드
-	EventObject[3].EventPage = 4;		//테스트 코드
-	EventObject[3].LineCount = 0;		//테스트 코드
-	EventObject[3].MoveType = 0;		//정지상태
-	*/
+	//음식점
+	EventObject[7].graphic = 1;		//테스트 코드
+	EventObject[7].map = 5;				//테스트 코드
+	EventObject[7].x = 15;				//테스트 코드
+	EventObject[7].y = 16;				//테스트 코드
+	EventObject[7].EventLoop = 0;		//테스트 코드
+	EventObject[7].EventPage = 4;		//테스트 코드
+	EventObject[7].LineCount = 0;		//테스트 코드
+	EventObject[7].MoveType = 0;		//정지상태
+
+	//술집
+	EventObject[8].graphic = 1;		//테스트 코드
+	EventObject[8].map = 5;				//테스트 코드
+	EventObject[8].x = 11;				//테스트 코드
+	EventObject[8].y = 5;				//테스트 코드
+	EventObject[8].EventLoop = 0;		//테스트 코드
+	EventObject[8].EventPage = 37;		//테스트 코드
+	EventObject[8].LineCount = 0;		//테스트 코드
+	EventObject[8].MoveType = 0;		//정지상태
+
+	//찻집
+	EventObject[9].graphic = 1;		//테스트 코드
+	EventObject[9].map = 5;				//테스트 코드
+	EventObject[9].x = 11;				//테스트 코드
+	EventObject[9].y = 13;				//테스트 코드
+	EventObject[9].EventLoop = 0;		//테스트 코드
+	EventObject[9].EventPage = 56;		//테스트 코드
+	EventObject[9].LineCount = 0;		//테스트 코드
+	EventObject[9].MoveType = 0;		//정지상태
+	
+	//회사
+	EventObject[10].graphic = 1;		//테스트 코드
+	EventObject[10].map = 5;			//테스트 코드
+	EventObject[10].x = 2;				//테스트 코드
+	EventObject[10].y = 13;				//테스트 코드
+	EventObject[10].EventLoop = 0;		//테스트 코드
+	EventObject[10].EventPage = 99;		//테스트 코드
+	EventObject[10].LineCount = 0;		//테스트 코드
+	EventObject[10].MoveType = 0;		//정지상태
 
 	ApplyEventOnMap();
 }

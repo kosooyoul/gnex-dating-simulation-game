@@ -3,7 +3,12 @@ struct Point{
 	int Y;
 };
 
-#define MAX_EVENT_COUNT		7		//이벤트 수 현재 3 개다. 최대 카운터 + 1
+#define MAX_EYE_FRAME		50		//아이캐치, 챕터표시 최대 프레임 수
+#define MAX_CHAPTER_FRAME	100
+
+#define	NV_SIZE				16		//세이브용 테스트
+
+#define MAX_EVENT_COUNT		12		//이벤트 수 현재 3 개다. 최대 카운터 + 1
 
 //맵표시관련 모듈에 대해서
 #define _TopSize	32							//상단의 인터페이스 구성
@@ -34,7 +39,7 @@ struct Point{
 #define _PlayerPosition 7				//주인공 화면위치 조절
 #define _SubChipMoveable 99				//이동 가능한 하위칩 마지막 번호
 #define _SupChipMoveable 19				//이동 가능한 상위칩 마지막 번호
-#define _SupChipWall 119				//장애물에 대한 상위칩 마지막 번호
+#define _SupChipWall 250//119				//장애물에 대한 상위칩 마지막 번호
 
 //EVENT MAP
 #define T1X		148		//도쿄

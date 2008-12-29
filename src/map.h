@@ -7,6 +7,7 @@ struct Map{
 	int x_start, y_start;
 	int x_size, y_size;
 	int backchip;				//배경 맵칩
+	int BGM;					//배경음
 }Area[6];
 
 const string AreaName[6] = {"도쿄", "오사카", "교토", "후쿠오카", "오키나와", "서울"};
@@ -81,6 +82,7 @@ void SetArea(){
 	Area[0].x_size = 20;
 	Area[0].y_size = 20;
 	Area[0].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[0].BGM = 2;
 	
 	//서울
 	Area[5].name = 5;
@@ -89,6 +91,7 @@ void SetArea(){
 	Area[5].x_size = 20;//9;
 	Area[5].y_size = 20;//11;
 	Area[5].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[5].BGM = 3;
 
 	//오사카
 	Area[1].name = 1;
@@ -97,6 +100,7 @@ void SetArea(){
 	Area[1].x_size = 20;//9;
 	Area[1].y_size = 20;//11;
 	Area[1].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[1].BGM = 4;
 	
 	//쿄토
 	Area[2].name = 2;
@@ -105,6 +109,7 @@ void SetArea(){
 	Area[2].x_size = 20;//9;
 	Area[2].y_size = 20;//11;
 	Area[2].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[2].BGM = 5;
 
 	//후쿠오카
 	Area[3].name = 3;
@@ -113,6 +118,7 @@ void SetArea(){
 	Area[3].x_size = 20;//9;
 	Area[3].y_size = 20;//11;
 	Area[3].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[3].BGM = 6;
 
 	//오키나와
 	Area[4].name = 4;
@@ -121,6 +127,7 @@ void SetArea(){
 	Area[4].x_size = 20;//9;
 	Area[4].y_size = 20;//11;
 	Area[4].backchip = 249;		//풀밭142 검정85 자갈바닥58
+	Area[4].BGM = 7;
 
 	SetSubwayStation();			//지하철 위치 설정
 
