@@ -20,6 +20,21 @@ Begin VB.Form Event6
       TabIndex        =   2
       Top             =   120
       Width           =   3975
+      Begin VB.CommandButton Command1 
+         Height          =   255
+         Left            =   3240
+         TabIndex        =   7
+         Top             =   840
+         Width           =   255
+      End
+      Begin VB.TextBox EventChara 
+         Height          =   270
+         Left            =   1560
+         TabIndex        =   6
+         Text            =   "Text1"
+         Top             =   840
+         Width           =   1695
+      End
       Begin VB.ComboBox EffectList 
          Enabled         =   0   'False
          Height          =   300
@@ -27,25 +42,15 @@ Begin VB.Form Event6
          Left            =   1560
          List            =   "Event6.frx":0597
          Style           =   2  '드롭다운 목록
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   1200
-         Width           =   1950
-      End
-      Begin VB.ComboBox EventChara 
-         Height          =   300
-         ItemData        =   "Event6.frx":05C7
-         Left            =   1560
-         List            =   "Event6.frx":05F2
-         Style           =   2  '드롭다운 목록
-         TabIndex        =   4
-         Top             =   840
          Width           =   1950
       End
       Begin VB.ComboBox EventCharaPos 
          Height          =   300
-         ItemData        =   "Event6.frx":0620
+         ItemData        =   "Event6.frx":05C7
          Left            =   1560
-         List            =   "Event6.frx":064B
+         List            =   "Event6.frx":05F2
          Style           =   2  '드롭다운 목록
          TabIndex        =   3
          Top             =   480
@@ -54,10 +59,10 @@ Begin VB.Form Event6
       Begin VB.Label Label9 
          Alignment       =   1  '오른쪽 맞춤
          AutoSize        =   -1  'True
-         Caption         =   $"Event6.frx":0679
+         Caption         =   $"Event6.frx":0620
          Height          =   900
          Left            =   240
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   525
          Width           =   1140
       End
@@ -88,16 +93,21 @@ Private Sub CANCEL_Click()
     Unload Me
 End Sub
 
+Private Sub Command1_Click()
+    Form2.Show vbModal
+End Sub
+
 Private Sub Form_Load()
+    AlwaysOnTop Me, True
     EventCharaPos.ListIndex = 0
-    EventChara.ListIndex = 0
+    'EventChara.ListIndex = 0
     EffectList.ListIndex = 0
 End Sub
 
 Private Sub OK_Click()
     Dim Cmd As String
     Cmd = EventHead(6) + Evp + Trim(Str(EventCharaPos.ListIndex))
-    Cmd = Cmd + Evp + Trim(Str(EventChara.ListIndex))
+    Cmd = Cmd + Evp + Trim(Str(EventChara.Text))
     'Cmd = Cmd + Evp + Trim(Str(EffectList.ListIndex))
     Cmd = Cmd + Eve + Eve + Nts + "주석 없음" + Nte
     AddEvent (Cmd)

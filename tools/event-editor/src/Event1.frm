@@ -145,7 +145,7 @@ Private Sub Form_Load()
     Dim filename As String '파일이름
     Dim ftemp As String '파일내용
     Dim i As Integer
-    
+        AlwaysOnTop Me, True
     EventSelectValue.ListIndex = 0
     For i = 0 To 3
         On Error GoTo Err:

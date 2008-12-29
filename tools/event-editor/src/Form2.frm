@@ -88,11 +88,11 @@ Private Sub Command2_Click()
 End Sub
 
 Private Sub Command3_Click()
-    Dim temp As Integer
+    Dim Temp As Integer
     On Error Resume Next
-    temp = List1.ListIndex
-    List1.RemoveItem temp
-    List1.ListIndex = temp - 1
+    Temp = List1.ListIndex
+    List1.RemoveItem Temp
+    List1.ListIndex = Temp - 1
 End Sub
 
 Private Sub Command4_Click()
@@ -101,17 +101,17 @@ End Sub
 
 Private Sub Command5_Click()
     Dim i As Integer
-    Dim temp As String
+    Dim Temp As String
     
-    temp = ""
+    Temp = ""
     
     For i = 0 To List1.ListCount
     
-        temp = temp & """" & List1.List(i) & """," & vbCrLf
+        Temp = Temp & """" & List1.List(i) & """," & vbCrLf
     
     Next i
     
-    Clipboard.SetText temp
+    Clipboard.SetText Temp
     
     MsgBox "클립보드에 복사하였습니다."
     
@@ -122,7 +122,7 @@ Private Sub Form_Load()
     Dim filename As String '파일이름
     Dim ftemp As String '파일내용
     On Error GoTo Err:
-    
+        AlwaysOnTop Me, True
     List1.Clear
     
     filename = App.Path & "\message.txt"
@@ -156,13 +156,13 @@ End Sub
 Function MSGSave()
     Dim filenumber As Integer '파일번호를 위한 변수
     Dim filename As String '파일이름을 위한 변수
-    Dim temp As String
+    Dim Temp As String
     Dim i As Integer
     
-    temp = List1.List(0)
+    Temp = List1.List(0)
     
     For i = 1 To List1.ListCount
-        temp = temp & vbCrLf & List1.List(i)
+        Temp = Temp & vbCrLf & List1.List(i)
     Next i
    
     filename = App.Path & "\message.txt"
@@ -170,6 +170,6 @@ Function MSGSave()
     '저장 모드로 파일을 읽어 온다.
     Open filename For Output As filenumber
     '텍스트 박스의 내용으로 파일을 덮어씌운다.
-    Print #filenumber, temp
+    Print #filenumber, Temp
     Close filenumber '파일을 닫는다.
 End Function

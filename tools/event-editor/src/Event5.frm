@@ -88,6 +88,7 @@ Private Sub CANCEL_Click()
 End Sub
 
 Private Sub Form_Load()
+    AlwaysOnTop Me, True
     EventBackLayer.ListIndex = 0
     EventBack.ListIndex = 0
     EffectList.ListIndex = 0

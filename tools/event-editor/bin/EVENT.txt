@@ -1,190 +1,471 @@
-DrawMessage,0		/*바람이 불어오는 계절*/
-//<STEP 01>
-DrawMessage,1		/*2008년 가을 부평 중앙 공원*/
-//검은 화면, 달리는 소리와 숨을 몰아쉬는 소리
-SetName,0,0		/*[???]-[좌측]*/
-DrawMessage,2		/*탁 탁 탁...*/
-SetName,1,1		/*[!!!]-[우측]*/
-DrawMessage,3		/*헉, 헉....*/
-SetName,0,0		/*[???]-[좌측]*/
-DrawMessage,4		/*탁 탁 탁...*/
-SetName,1,1		/*[!!!]-[우측]*/
-DrawMessage,5		/*자, 잠깐만....*/
-SetName,0,0		/*[???]-[좌측]*/
-DrawMessage,6		/*응?*/
-//남자1(주인공), 여조1(혜선) => 넓은 공원의 이미지
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,7		/*힘든가 보네?*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,8		/*네, 네가 빠른 거야! (헉헉...)*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,9		/*그만두라니까....*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,10		/*시끄럿! 오늘은 여기까지만 해!*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,11		/*네, 네 (작은 소리로) 순 자기 멋대로야.*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,12		/*거기, 뭐라고?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,13		/*아~춥다. (후다닥)*/
-//<STEP 02>
-//남자1(승준), 여조1(혜선) => 집안의 거실 이미지
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,14		/*아~ 다리아퍼.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,15		/*무리해서 따라오니까 그렇지.*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,16		/*흥.*/
-//한심해 하는 표정
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,17		/*휴~~(소귀에 경 읽기군.)*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,18		/*아! 내일 시간 있지?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,19		/*모르지, 왜?*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,20		/*겨울 옷 좀 사려고. 같이 갈꺼지?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,21		/*혹시 조깅을 시작한건 그것 때문?*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,22		/*시, 시끄럿! 아무튼 내일 옷이라도 사러 가자.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,23		/*알았다. 회사에 일이 없다면 갈게, 그럼.*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,24		/*벌써가?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,25		/*빨리 씻는 게 좋을 꺼야. 벌써 8시니깐.*/
-SetName,3,1		/*[혜선]-[우측]*/
-DrawMessage,26		/*진짜?*/
-//<STEP 03>
-//남자1(승준), 남조1(태호) => 회사
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,27		/*아, 어서와.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,28		/*안녕, 일찍 왔네.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,29		/*내일 계약이 있어서. 부장도 나왔는데 뭐.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,30		/*벌써?*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,31		/*내일 통역할 사람이 교통사고를 당했거든. 덕분에 부장은 어제 저녁부터 저러고 있지.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,32		/*통역? 아, 그 일본회사.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,33		/*회사 내에서 대타를 찾는다는데, 우리 회사에서 일본어를 통역할 수 있는 사람이 있겠냐? 하여튼 막무가네 라니까.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,34		/*혹시?*/
-SetName,6,1		/*[여직원]-[우측]*/
-DrawMessage,35		/*과장님, 부장님이 찾으십니다.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,36		/*역시.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,37		/*어?*/
-//<STEP 04>
-//남자1(승준), 남조2(부장) => 회사
-//[똑똑]
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,38		/*부장님 찾으셨습니까?*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,39		/*아, 이리 앉게나.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,40		/*감사합니다. 부장님.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,41		/*아침부터 미안하네. 실은 내일 공장 매각문제로 회의가 열리는데 자네도 참석시킬까 하네.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,42		/*제가 말입니까?*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,43		/*저쪽 부사장이 직접 오는 관계로 우리 지부장님도 참석하기로 했다네.*/
-DrawMessage,44		/*회사 간부들도 다수 참석하니까 자네에게도 도움이 좋은 경험이 되겠지.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,45		/*아, 감사합니다.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,46		/*하하하. 요즘 내가 자네를 많이 부려 먹었지 않았나? 이 정도야 당연하지.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,47		/*감사합니다. 저는 부장님이 통역을 부탁하시는 줄만 알았습니다.*/
-DrawMessage,48		/*그럼 제가 굳이 통역을 할 필요는 없겠군요.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,49		/*아니, 뭐. 하하하......*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,50		/*하하하*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,51		/*...........*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,52		/*...........*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,53		/*어떻게 알았나?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,54		/*내일은 약속이 있어서 이만.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,55		/*자, 잠깐. 기다리게.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,56		/*안 속습니다.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,57		/*진짜 마지막이네. 이제 와서 사람을 구할 수가 없단 말일세. 제발 부탁하네.*/
-//<SELECT>
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,58		/*정말이지. 한 두번도 아니고....*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,59		/*해, 해주겠나?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,60		/*이번이 마지막입니다.*/
-SetName,5,1		/*[김부장]-[우측]*/
-DrawMessage,61		/*물론이지. 다음에 한번 크게 쏘지.*/
-//<STEP 03>
-//남자1(승준), 남조1(태호) => 회사
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,62		/*뭐야, 그래서 네가 가는 거야?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,63		/*그렇게 됐어.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,64		/*일본에서 오래 있었나 보지?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,65		/*뭐 그냥.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,66		/*그래? 뭐 나야 네 쪽이 편하지. 하여간 잘 해보자.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,67		/*그래.*/
-//[다음날] MAIN BLOCK
-//<STEP 05>
-//남자1(승준), 남조1(태호) => 사람이 많이 보이는 장소
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,68		/*승준아, 여기야.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,69		/*미안, 좀 늦었지?*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,70		/*괜찮아, 부장도 아직이고.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,71		/*회의는?*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,72		/*준비는 끝났어. 저쪽도 30분 안에 온다더군.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,73		/*그럼 저쪽 사람은?*/
-//<IMAGE 01> 양복을 입은 사람들 가운데 클로즈업된 사람
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,74		/*아, 저쪽 간부들인 모양이야. 부사장에게 갑자기 일이 생겼다나봐.*/
-DrawMessage,75		/*어차피 우리 쪽 사람들도 아직 도착하지 않았으니까 잘됐지.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,76		/*!!!*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,77		/*승준아, 왜 그래?*/
-//<IMAGE 01-1> 얼굴만 클로즈 업
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,78		/*저 사람은?*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,79		/*저쪽 이사. '사나다상' 이라고 하던데.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,80		/*사나다? 그런가.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,81		/*아는 사람이야?*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,82		/*미안. 착각했나봐. 이름이 다르네.*/
-SetName,4,1		/*[태호]-[우측]*/
-DrawMessage,83		/*뭐야, 놀래키기는.*/
-SetName,2,0		/*[승준]-[좌측]*/
-DrawMessage,84		/*미안해.*/
-DrawMessage,85		/*[아니라고 믿고 싶지만 그는 분명 내가 알고 있는 사람일 것이다.]*/
-DrawMessage,86		/*[일본에 두고 온 내 친구.]*/
-DrawMessage,87		/*[한편으로는 반가웠지만 한편으론 두려웠다.]*/
-DrawMessage,88		/*['혹시 나를 찾아온 것은 아닐까?']*/
-//<프롤로그(완)>
+Music,-1			/**/
+DrawChapter,0		/*에필로그표시*/
+////공원을 배경으로 여자와 남자의 실루엣
+Music,1			/**/
+ChangeBack,0,4,0		/*서서히 전환*/
+ChangeChara,0,3		/*주석 없음*/
+SetName,0,0		/*[여자]-[좌측]*/
+DrawMessage,0		/*변하지 않는 사랑을 믿어요?*/
+ChangeChara,0,-1		/*주석 없음*/
+ChangeBack,0,4,0		/*서서히 전환*/
+ChangeChara,1,4		/*주석 없음*/
+SetName,1,1		/*[남자]-[우측]*/
+DrawMessage,1		/*아니, 믿지 않아.*/
+ChangeChara,1,-1		/*주석 없음*/
+ChangeBack,0,4,0		/*서서히 전환*/
+ChangeChara,0,3		/*주석 없음*/
+SetName,0,0		/*[여자]-[좌측]*/
+DrawMessage,2		/*어째서죠?*/
+ChangeChara,0,-1		/*주석 없음*/
+ChangeBack,0,4,0		/*서서히 전환*/
+ChangeChara,1,4		/*주석 없음*/
+SetName,1,1		/*[남자]-[우측]*/
+DrawMessage,3		/*세상에 변하지 않는 것은 없으니까.*/
+ChangeChara,1,-1		/*주석 없음*/
+Music,-1			/**/
+ChangeBack,0,0,0		/*페이드인/아웃*/
+Eye,99			/*EYE*/
+////
+SetName,2,0		/*[???]-[좌측]*/
+DrawMessage,4		/*[탁 탁 탁…….]*/
+SetName,1,1		/*[남자]-[우측]*/
+DrawMessage,5		/*[헉, 헉…….]*/
+SetName,2,0		/*[???]-[좌측]*/
+DrawMessage,6		/*[탁 탁 탁…….]*/
+SetName,1,1		/*[남자]-[우측]*/
+DrawMessage,7		/*[자, 잠깐만…….]*/
+SetName,2,0		/*[???]-[좌측]*/
+DrawMessage,8		/*[응?]*/
+Eye,99			/*EYE*/
+////
+ChangeBack,0,2,0		/*서서히 전환*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,9		/*힘든가 보네?*/
+ChangeChara,1,10		/*혜선-오른쪽(1)*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,10		/*네, 네가 빠른 거야! (헉헉…….)*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,11		/*그러게 그만 두라니까…….*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,12		/*시끄럿! 오늘은 여기까지만 해!*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,13		/*네, 네. (작은 소리로) 순 자기 멋대로야.*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,14		/*거기, 뭐라고?*/
+////
+DrawSelect,0,2,0,1,-1,-1	/*V[0] = [임시 선택 2][임시 선택 3]*/
+IfEqual,0,1,2		/*IF(V[0]==1) GOTO(CURRENT+2)*/
+DrawMessage,908		/*죽을래?*/
+IfEqual,0,0,-17		/*IF(V[0]==0) GOTO(CURRENT-17)*/
+DrawMessage,911		/*빨리 가자 춥다.*/
+ChangeChara,1,-1		/*오른쪽(1)-지움*/
+ChangeBack,0,0,0		/*페이드인/아웃*/
+Eye,99			/*EYE*/
+////
+ChangeBack,0,8,0		/*페이드인/아웃*/
+ChangeChara,1,10		/*혜선-오른쪽(1)*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,16		/*아~ 다리아퍼.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,17		/*무리해서 따라오니까 그렇지. */
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,18		/*흥. */
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,19		/*휴~~(소귀에 경 읽기군.)*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,20		/*아! 내일 시간 있지?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,21		/*모르지, 왜?*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,22		/*옷 좀 사려고. 같이 갈 거지?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,23		/*혹시 조깅을 시작한 게 혹시 사이즈 때문에?*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,24		/*시, 시끄럿! 아무튼 내일 옷이라도 사러 가자.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,25		/*알았다. 회사에 일이 없다면 갈게, 그럼.*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,26		/*벌써가?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,27		/*벌써는 아니지. 빨리 씻는 게 좋을 거야. 벌써 8시니까.*/
+SetName,5,1		/*[혜선]-[우측]*/
+DrawMessage,28		/*진짜?*/
+ChangeChara,1,-1		/*오른쪽(1)-지움*/
+ChangeBack,0,0,0		/*페이드인/아웃*/
+Eye,99			/*EYE*/
+////
+////
+////
+////
+////
+////
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,29		/*아, 좋은 아침.*/
+ChangeChara,1,0		/*주석 없음*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,30		/*어서와. 기다리고 있었어.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,31		/* ?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,32		/*가자, 실장님이 기다리고 있어.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,33		/*무슨 일인데?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,34		/*실장님에게 직접 듣는 게 낳을 거야.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,35		/*(안 좋은 예감이 드는데…….)*/
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,1,2		/*주석 없음*/
+ChangeChara,0,0		/*주석 없음*/
+SetName,6,0		/*[유진아]-[좌측]*/
+DrawMessage,36		/*실장님, 안 팀장을 데려 왔습니다. */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,37		/*아, 들어와요.*/
+SetName,6,0		/*[유진아]-[좌측]*/
+DrawMessage,38		/*그럼, 전 이만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,39		/*수고 했어요. 안 팀장은 이쪽으로…….*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,40		/*실례하겠습니다. */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,41		/*프로젝트가 끝났다고 들었는데 맞나요?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,42		/*네, 지난 목요일에 최종 테스트를 끝냈습니다. */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,43		/*역시 유능하시군요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,44		/*과찬이십니다. 일본에 가신일은 잘 되셨나요?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,45		/*물론이죠, 제가 직접 갔으니까.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,46		/*그렇습니까? */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,47		/*실은 그 때문에 오늘 오후에 회의가 있답니다. 3시간 후에 출발하니까, 준비하도록 하세요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,48		/*네?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,49		/*못 들었나요?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,50		/*아닙니다. 하지만 제가 왜…….*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,51		/*이번에 뽑은 통역사는 그다지 유능하지 않더군요. 안 팀장이 대신 해줘야 갰어요. 할 수 있겠죠?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,52		/*무슨 근거로…….*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,53		/*유학 경험이 있지 않나요? */
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,54		/*고작 일 년입니다만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,55		/*걱정하지 말아요. 잘 할 수 있을 거예요. 게다가 안 팀장은 장차 회사에 주요 인사가 될 테니, 이 정도는 해주지 않으면 곤란해요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,56		/*매번 말씀드리지만, 저는 그렇게 대단한 사람이 못됩니다.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,57		/*아무튼 준비하도록 해요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,58		/*괜찮다면 거절하고 싶습니다만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,59		/*그럼 3시간 후에 오도록 해요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,60		/*제 의사는 상관없는 겁니까?*/
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,0,1		/*주석 없음*/
+ChangeChara,1,0		/*주석 없음*/
+DrawMessage,61		/*살았다, 수고 했어.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,62		/*어떻게 된 거야?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,63		/*여왕님 심기가 나빠 보여서 말이야. 출장 때문에 못 만나서 그런 것이  아닐까 해서 말이야.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,64		/*이번에도 네 짓이야?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,65		/*나쁘게 생각하지는 말아줘. 다들 네가 실장님이랑 잘되길 바라니까.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,66		/*매번 하는 애기지만 우린 아무 사이도 아니라니까.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,67		/*흐~음. 뭐, 아무튼 잘 부탁해.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,68		/*어쩌다가 이렇게 된 건지…….*/
+////
+ChangeBack,0,10,0		/*페이드인/아웃*/
+ChangeChara,1,2		/*주석 없음*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,69		/*회의라곤 하지만 세세한 세부 항목을 결정하는 것뿐이니 그렇게 긴장할 필요는 업어요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,70		/*저는 무슨 회의인지도 모릅니다만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,71		/*이사님들이 오셨군요. 잠깐 실례.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,72		/*(대체 왜 데리고 온 건지…….) 응?*/
+////
+DrawMessage,73		/*준 :　설마 애오이? 설마…….*/
+////
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,74		/*10분전이니 우리도 들어가죠.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,75		/*.........*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,76		/*안 팀장?*/
+DrawMessage,77		/*.........*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,78		/*아얏!*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,79		/*누가 한눈팔고 있어도 좋다고 했죠?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,80		/*준   :　시, 실장님?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,81		/*당.장.들.어.와.요!*/
+////
+ChangeBack,0,0,0		/*페이드인/아웃*/
+//고수열
+ChangeBack,0,10,0		/*페이드인/아웃*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,82		/*수고 했어요. 저는 임원들과 미팅이 있으니 먼저 회사로 돌아가도록 해요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,83		/*알겠습니다. 그럼.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,84		/*안 팀장?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,85		/*네?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,86		/*바.로.돌.아.가.도.록.하.세.요!*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,87		/*네, 알겠습니다.*/
+////
+DrawMessage,88		/*(또 뭐가 불만인지…….)*/
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,1,0		/*주석 없음*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,89		/*어머, 어떻게 회사에…….*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,90		/*먼저 돌아가 있으라더군.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,91		/*너, 여왕님 심기를 건드린 건 아니겠지? 그런 거라면 여왕님 심기가 풀릴 때가지 실장과 극장에 가두어 둘 테니 각오해. */
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,92		/*그거 고맙군요.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,93		/*깍! 시, 실장님.*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,94		/*안 팀장, 할 말이 있으니 따라 오도록 해요. 그리고 진아양.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,95		/*네, 실장님.*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,96		/*만약, 내 귀에 여왕님 소리가 또 들리면 시말서 정도로 끝나지는 않을 겁니다. */
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,97		/*(작은 목소리로) 네, 알겠습니다.*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,98		/*따라 오세요.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,99		/*아, 네. */
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,1,2		/*주석 없음*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,100		/*왜 하필이면 여왕님이야? (투덜투덜)*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,101		/*잘 어울리는 것 같습니다만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,102		/*뭐에요!*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,103		/*아닙니다. 그보다 무슨 일이시죠?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,104		/*상을 주려고 했는데 필요 없나 보군요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,105		/*상말입니까?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,106		/*오늘부터 3일간 휴가를 줄 테니 쉬도록 하세요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,107		/*네? 갑자기 왜?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,108		/*역시, 필요 없나요?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,109		/*아닙니다. 감사합니다.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,110		/*이례적이긴 하지만 해외에서 지내려면 나름대로 준비가 필요 할 테니 할 수 없죠.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,111		/*해외? 그건 또 무슨?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,112		/*회의 때 듣지 못했나요?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,113		/*혹시 일본으로 시스템 테스트를 할 사람을 보낸다는…….*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,114		/*그럼 누가 갈 줄 알았나요?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,115		/*전 비자도 여권도 없습니다만…….*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,116		/*그건 제가 준비해 두었으니, 걱정 말아요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,117		/*(그게 본인 동의 없이 가능하단 말이야?)*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,118		/*비행기 표는 관련 자료와 함께 집으로 보내 두었으니 나중에 확인하도록 하세요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,119		/*그런데 출발은 언제입니까?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,120		/*휴가가 끝나면 바로 출발해야겠죠?*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,121		/*........*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,122		/*걱정하지 말아요. 잘 할 수 있을 거예요. 이사급이 되려면 해외근무 경력도 필요하니까 미리 준비해둔다고 생각하도록 해요.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,123		/*거절하고 싶습니다만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,124		/*그만 나가보도록 해요. 오늘은 바로 퇴근해도 좋습니다.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,125		/*제 의사는 상관없는 거군요. */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,126		/*아참, 나가면서 진아씨를 불러 주시겠어요? */
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,127		/*알겠습니다.*/
+////
+ChangeBack,0,8,2		/*서서히 전환*/
+ChangeChara,1,1		/*주석 없음*/
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,128		/*일본출장?*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,129		/*3일후에 출발이야.*/
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,130		/*왜 하필 일본이야?*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,131		/*준 :　이번에 계약한 회사가 일본 회사거든.*/
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,132		/*그래도…….*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,133		/*걱정할 필요 없어. */
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,134		/*선 :　나도 갈 거야.*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,135		/*준 :　학교는 어떻게 하려고?*/
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,136		/*하지만 일본이라니……. 혹시나 그 여자라도 만나면 어떻게 하려고?*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,137		/*준 :　또, 그 애기야? 그렇게 생각하지 말라니까. */
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,138		/*그래도…….*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,139		/*이미 끝난 일이야. 만나고 싶다고 만날 수 있는 사람ㄷ 아니고……. */
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,140		/*너 혹시 아직도…….*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,141		/*말이 그렇다는 거지. 괜한 걱정하지 말고 쇼핑이나 하러 가자. 옷 사고 싶다고 했지?*/
+SetName,5,0		/*[혜선]-[좌측]*/
+DrawMessage,142		/*으, 응.*/
+SetName,4,1		/*[승준]-[우측]*/
+DrawMessage,143		/*( 만난다고 해도 이제 와서 뭘 할 수 있겠어. 이미 다 지난 일인걸.)*/
+////
+ChangeBack,0,11,0		/*페이드인/아웃*/
+ChangeChara,0,1		/*주석 없음*/
+ChangeChara,1,0		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,144		/*너도 가는 거야?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,145		/*응, 잘 부탁해.*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,146		/*나야말로. */
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,147		/*(작은 소리로) 잠시뿐이겠지만…….*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,148		/*유나 :　준비는 다 됐나요?*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,149		/*실장님! 여긴 어떻게?*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,150		/*조금 신경이 쓰이는 부분이 있어서. 신경 쓰지 말아요.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,151		/*(작은 소리로)거짓말, 떠나는 낭군님 배웅 왔겠지. */
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,152		/*거기 뭐라고 했나요?*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,153		/*전 아무 말도 안했답니다.*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,154		/*흐, 흠. 그보다 안 팀장?*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,155		/*네.*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,156		/*일본은 의외로 위험한 곳이니까 조심하도록 하세요.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,157		/*걱정해주셔서 감사합니다.*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,158		/*무슨 일이 있거든 회사로 연락하도록 해요. 바로 갈 테니.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,159		/*네, 알겠습니다.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,160		/*실장님, 저도 가거든요?*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,161		/*진아씨는 그 일이나 잘 처리하도록 하세요.*/
+SetName,6,1		/*[유진아]-[우측]*/
+DrawMessage,162		/*네, 네. 걱정 마세요.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,163		/*그 일?*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,164		/*슬슬 출발 시간 아닌가요?*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,165		/*아, 그렇군요. 그럼 이만.*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,166		/*승준씨.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,167		/*네?*/
+ChangeChara,0,2		/*주석 없음*/
+SetName,7,0		/*[성유나]-[좌측]*/
+DrawMessage,168		/*잘 다녀오세요.*/
+ChangeChara,0,1		/*주석 없음*/
+SetName,4,0		/*[승준]-[좌측]*/
+DrawMessage,169		/*네. 그럼.*/
+////
+ChangeBack,0,9,0		/*페이드인/아웃*/
+ChangeChara,1,2		/*주석 없음*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,170		/*오늘 떠났어요.*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,171		/*협력해 주셔서 감사합니다.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,172		/*당신, 정말 그게 그를 위한 일이라고 생각하나요?*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,173		/*당신도 동의한 것 아닌가요?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,174		/*동의한 적 없습니다. 다른 방법이 없었을 뿐이지.*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,175		/*그런가요?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,176		/*그는 나에게도 소중한 사람이란 걸 알아 줬으면 좋겠군요.*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,177		/*기억해 두죠.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,178		/*그런데 당신 만약 그를 다치게 만든다면,*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,179		/*? */
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,180		/*반드시 복수하겠어.*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,181		/*협박인가요?*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,182		/*협박이 될지 충고가 될지는 당신에게 달린 것 아닌가요?*/
+SetName,8,0		/*[의문의여성]-[좌측]*/
+DrawMessage,183		/*그렇군요. 그럼 이쪽도 준비를 해야 하니 이만.*/
+SetName,7,1		/*[성유나]-[우측]*/
+DrawMessage,184		/*.......*/
+DrawMessage,185		/*난 잘한 걸까?*/
 

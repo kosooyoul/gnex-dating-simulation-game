@@ -127,6 +127,7 @@ Private Sub EventNextCount_LostFocus()
 End Sub
 
 Private Sub Form_Load()
+    AlwaysOnTop Me, True
     EventEqualValue1.ListIndex = 0
 End Sub
 

@@ -96,7 +96,7 @@ Private Sub Form_Load()
     Dim filename As String '파일이름
     Dim ftemp As String '파일내용
     On Error GoTo Err:
-    
+        AlwaysOnTop Me, True
     List1.Clear
     
     filename = App.Path & "\select.txt"
