@@ -11,27 +11,27 @@ void RunTitle(){
 //타이틀 화면 출력
 void DrawTitle(){
 	CopyImage(0, 0, title_back_title);
-	CopyImage(0, 89, title_back_menu);
+	CopyImage(0, 99, title_back_menu);
 
 	switch(SelectedTitleMenu){
 		case 0:
-			CopyImage(100, 136, title_menu[SelectedTitleMenu]);
+			CopyImage(100, 146, title_menu[SelectedTitleMenu]);
 			break;
 
 		case 1:
-			CopyImage(100, 166, title_menu[SelectedTitleMenu]);
+			CopyImage(100, 176, title_menu[SelectedTitleMenu]);
 			break;
 
 		case 2:
-			CopyImage(100, 197, title_menu[SelectedTitleMenu]);
+			CopyImage(100, 207, title_menu[SelectedTitleMenu]);
 			break;
 
 		case 3:
-			CopyImage(100, 226, title_menu[SelectedTitleMenu]);
+			CopyImage(100, 236, title_menu[SelectedTitleMenu]);
 			break;
 
 		case 4:
-			CopyImage(100, 255, title_menu[SelectedTitleMenu]);
+			CopyImage(100, 265, title_menu[SelectedTitleMenu]);
 			break;
 		
 		default:
@@ -187,9 +187,13 @@ void ShowTitleOption(){
 void ShowTitleGameInfo(){
 	CopyImage(71, 61, title_label_info);
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_CENTER);
-	DrawStr(120, 115, "4조");
-	DrawStr(120, 130, "(연애 시뮬레이션)");
+	DrawStr(120, 110, "<사랑한 후에 오는것...(프롤로그)>");
+	DrawStr(120, 130, "제작년도 : 2009");
 	SetFontType(S_FONT_LARGE, S_WHITE, S_BLACK, S_ALIGN_LEFT);
-	DrawStr(20, 155, "조장 : 이진중");
-	DrawStr(20, 170, "조원 : 차지웅, 최영민, 고수열");
+	DrawStr(40, 150, "프로그램제작 : 고수열");
+	//DrawStr(40, 170, "  디자인협조 : 차지웅");
+	DrawStr(40, 165, "    시나리오 : 최영민");
+	DrawStr(10, 185, " 일부이미지출처 : RPGMK2K, 동급생 등");
+	DrawStr(10, 200, "     배경음출처 : 인터넷");
+
 }

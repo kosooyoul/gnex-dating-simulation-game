@@ -22,6 +22,7 @@ void RunEventLine(int EventNumber){
 			EventObject[EventNumber].LineCount = 0;
 			EventObject[EventNumber].EventLoop = 0;
 			RunningEventNumber = -1;
+			
 			break;
 
 		case 0:		//대화 							 :: 매개변수 1개
@@ -599,11 +600,11 @@ int Subway(int EventNumber){
 	switch(SelectedAnswer){
 		case 2:
 			switch(SelectedStation){
-				case 0:		MoveMap(0, 7, 16);break;	//도쿄
-				case 1:		MoveMap(1, 15, 4);break;	//오사카
-				case 2:		MoveMap(2, 16, 14);break;	//교토
-				case 3:		MoveMap(3, 10, 10);break;	//후쿠오카
-				case 4:		MoveMap(4, 3, 6);break;		//오키나와
+				case 0:		MoveMap(0, 4, 13);break;	//도쿄
+				case 1:		MoveMap(1, 6, 8);break;	//오사카
+				case 2:		MoveMap(2, 17, 9);break;	//교토
+				case 3:		MoveMap(3, 6, 5);break;	//후쿠오카
+				case 4:		MoveMap(4, 15, 2);break;		//오키나와
 				default:
 					SecondSelect++;
 
@@ -870,19 +871,24 @@ int DrawEyeCatch(int Type){
 		case 1:
 			SecondSelect--;
 
-			SetColor(S_WHITE);
-			FillRect(0, 20, 240, 210);
+			SetColor(S_BLACK);
+			FillRect(0, 20, 240, 220);
 
 			SetFontType(S_FONT_HUGE, S_PINK, S_BLACK, S_ALIGN_CENTER);
-			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
-			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			DrawStr(100+Rand(0,50), 90+Rand(0,50), "★");
+			DrawStr(100+Rand(0,50), 90+Rand(0,50), "★");
 			SetFontType(S_FONT_HUGE, S_VIOLET, S_BLACK, S_ALIGN_CENTER);
-			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
-			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			DrawStr(100+Rand(0,50), 90+Rand(0,50), "★");
+			DrawStr(100+Rand(0,50), 90+Rand(0,50), "★");
 			SetFontType(S_FONT_HUGE, S_RED, S_BLACK, S_ALIGN_CENTER);
-			DrawStr(100+Rand(0,30), 90+Rand(0,30), "♥");
+			DrawStr(100+Rand(0,50), 90+Rand(0,50), "★");
 
-			SetFontType(S_FONT_LARGE, S_JADE, S_BLACK, S_ALIGN_CENTER);
+			SetColor(S_DGRAY);
+			DrawHLine((MAX_EYE_FRAME - SecondSelect) * 5 + 10, (MAX_EYE_FRAME - SecondSelect) * 5 + 15, 179);
+			DrawHLine((MAX_EYE_FRAME - SecondSelect) * 5 -  5, (MAX_EYE_FRAME - SecondSelect) * 5 + 16, 180);
+			DrawHLine((MAX_EYE_FRAME - SecondSelect) * 5 + 10, (MAX_EYE_FRAME - SecondSelect) * 5 + 15, 181);
+	
+		/*	
 			switch(SelectedAnswer){
 				case 1:
 					DrawStr(120, 150, "- LOVE -");
@@ -891,9 +897,10 @@ int DrawEyeCatch(int Type){
 					DrawStr(120, 150, "- FOREVER -");
 					break;
 				case 3:
-					DrawStr(120, 150, "Coutinue...");
+					
 					break;
 			}
+		*/SetFontType(S_FONT_LARGE, S_JADE, S_BLACK, S_ALIGN_CENTER);DrawStr(120, 160, "Coutinue...");
 			SetColor(S_BLACK);
 			if(SecondSelect + 10 > MAX_EYE_FRAME)
 				FillRectEx(0, 20, 240, 210, (MAX_EYE_FRAME - SecondSelect) / 3);

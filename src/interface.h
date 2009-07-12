@@ -8,7 +8,8 @@ void DrawBackground(){
 	//이벤트 배경
 	for(i = 0; i < 2; i++){
 		if(Background[i] > 0){
-			CopyImage(0, 20, bg[Background[i]]);
+			DrawImage(0, 20, Background[i]);
+			//CopyImage(0, 20, bg[Background[i]]);
 		}
 	}
 
@@ -26,13 +27,20 @@ void DrawBackground(){
 
 //인터페이스 그리기
 void DrawInterface(){
-
-	//이동모드 기본 인터페이스 배경출력
-	CopyImage(0, 0, int_top);
-	//CopyImage(0, 245, int_foot);
 	SetColor(S_BLACK);
-	FillRect(0,245,240,298);
-
+	FillRect(0, 0, swWidth - 1, 40);
+	FillRect(0, 245, swWidth - 1, swHeight - 1);
+	SetFontType(S_FONT_LARGE, S_WHITE, S_TRANSPARENT, S_ALIGN_CENTER);
+	DrawStr(swWidth / 2, 20, AreaName[Area[Player.map].name]);
+	//이동모드 기본 인터페이스 배경출력
+	//CopyImage(0, 0, int_top);
+	//CopyImage(0, 245, int_foot);
+	//CopyImage(0, 267, int_foottile);
+	//CopyImage(0, 288, int_foottile);
+	//CopyImage(0, 309, int_foottile);
+	//SetColor(S_BLACK);
+	//FillRect(0,245,240,298);
+/*
 	//날짜 출력
 	CopyImage(26, 21, int_num_3[Now.Today.Year % 10]);
 	CopyImage(43, 21, int_num_3[Now.Today.Month / 10]);
@@ -48,7 +56,7 @@ void DrawInterface(){
 
 	//AM/PM 출력
 	CopyImage(207, 18, int_apm[(Now.Today.Hour / 12)]);
-
+*/
 	DrawBackground();
 	
 }

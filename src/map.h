@@ -136,11 +136,11 @@ void SetArea(){
 //맵 스크롤
 void MapScroll(){
 	if(ScrollMapX){
-		if(ScrollMapX>0)ScrollMapX-=3;
-		else ScrollMapX+=3;
+		if(ScrollMapX>0)ScrollMapX-=5;
+		else ScrollMapX+=5;
 	}else if(ScrollMapY){
-		if(ScrollMapY>0)ScrollMapY-=3;
-		else ScrollMapY+=3;
+		if(ScrollMapY>0)ScrollMapY-=5;
+		else ScrollMapY+=5;
 	}
 }
 

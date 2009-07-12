@@ -44,9 +44,9 @@ void ChangeOption(int Selected){
 		case 1:
 			OptionPlayBGM = !OptionPlayBGM;
 			if(OptionPlayBGM){
-				PlayMusic(PlayingBGM);
+				if(noplay == 0)PlayMusic(PlayingBGM);
 			}else{
-				PlayMusic(-1);
+				StopSound();//PlayMusic(-1);
 			}
 			break;
 	}

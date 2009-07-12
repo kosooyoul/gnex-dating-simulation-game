@@ -18,9 +18,9 @@
 	#DEFINE IMAGETYPE	
 	#DEFINE AUDIOTYPE	255
 	#DEFINE APPTYPE		1
-	#DEFINE APPCPID		19732			//테스트 고유번호
-	#DEFINE APPID		10455			//프로그램 ID
-	#DEFINE APPNAME		"AHYANET 10155"	//프로그램 이름
+	#DEFINE APPCPID		19732							//테스트 고유번호
+	#DEFINE APPID		10457							//프로그램 ID
+	#DEFINE APPNAME		"사랑한 후에 오는 것(프롤로그)"	//프로그램 이름
 	#DEFINE COMPTYPE	2
 	#DEFINE AGENTTYPE	0
 	#DEFINE VALIDCOUNT	255
@@ -52,35 +52,37 @@
 int RunningEventNumber = -1;					//실행중인 이벤트번호, -1은 아무것도 수행안함
 int NextKey = -1;								//입력받은 키
 int GameMode = 0;								//게임 모드
-
+/*
 void TEST(){
 	string Temp;
-/*
+
 	//SetColor(S_BLACK);
 	//FillRectEx(0,230,240,280,2);
-	SetFontType(S_FONT_MEDIUM, S_YELLOW, S_BLACK, S_ALIGN_LEFT);
-	MakeStr1(Temp,"Frame = %d",Player.frame%4);
-	DrawStr(20,245,Temp);
-	MakeStr2(Temp,"Scroll = %d, %d",ScrollMapX,ScrollMapY);
-	DrawStr(20,255,Temp);
-	MakeStr1(Temp,"Direction = %d",Player.direction);
-	DrawStr(20,265,Temp);
-	MakeStr2(Temp,"Position = %d, %d",1,1);
-	DrawStr(20,275,Temp);*/
+	//SetFontType(S_FONT_MEDIUM, S_YELLOW, S_BLACK, S_ALIGN_LEFT);
+	//MakeStr1(Temp,"Frame = %d",Player.frame%4);
+	//DrawStr(20,245,Temp);
+	//MakeStr2(Temp,"Scroll = %d, %d",ScrollMapX,ScrollMapY);
+	//DrawStr(20,255,Temp);
+	//MakeStr1(Temp,"Direction = %d",Player.direction);
+	//DrawStr(20,265,Temp);
+	//MakeStr2(Temp,"Position = %d, %d",1,1);
+	//DrawStr(20,275,Temp);
 	SetFontType(S_FONT_MEDIUM, S_YELLOW, S_BLACK, S_ALIGN_LEFT);
 	MakeStr1(Temp,"EVE %d",PrologueEventPointer);
 	DrawStr(100,2,Temp);
 
 }
-
+*/
 //Main
 void main(){
+	int ret;
+	ret = SetSystemOperation(3, 0, &ret);
 	ReadOption();								//옵션 초기화 혹은 로드
 	InitNature();								//시간초기화
 	InitPlayer();								//주인공 초기화
 	SetArea();									//지역 초기화
 	SetEvent();									//이벤트 초기화
-	SetTimer(30, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
+	SetTimer(50, 1);							//이동 및 맵 출력 시간 간격, 이벤트 수행 속도
 	ChangeMode(0);								//타이틀 모드
 	//SetTimer1(500, 1);						//이벤트 이동 빈도
 }
@@ -96,7 +98,7 @@ void EVENT_TIMEOUT(){
 
 		case 1:									//프롤로그
 			ClearBlack();							//재출력
-			TEST();
+			//TEST();
 			RunPrologue();							//프롤로그 실행
 			break;
 
@@ -110,7 +112,9 @@ void EVENT_TIMEOUT(){
 			DrawSupLayer(1);					//상위맵 1단계 출력
 
 			DrawInterface();					//인터페이스 출력
-
+			for(i = 0; i < 11; i++){
+				MoveEventRandom(i);
+			}
 			if(RunningEventNumber >= 0){		//이벤트 수행중이면 이벤트 수행
 				EventObject[RunningEventNumber].EventLoop = 1;
 				RunEventLine(RunningEventNumber);
@@ -132,8 +136,27 @@ void EVENT_TIMEOUT(){
 			break;
 
 		case 4:									//이벤트수행 모드
-			//RestoreLCD();							//버퍼 로드
-			ClearBlack();
+			
+			if(RunningEventNumber < 0) {
+				SetDirection(0, MovingDirection);	//자연스러운 이동 #1
+				MovePosition(0, MovingDirection);	//자연스러운 이동 #2
+				MapScroll();						//맵 스크롤
+				DrawSubLayer();						//하위맵 출력
+				DrawSupLayer(0);					//상위맵 0단계 출력
+				DrawEventLayer();					//주인공 및 이벤트 출력
+				DrawSupLayer(1);					//상위맵 1단계 출력
+				SetColor(S_BLACK);
+				FillRectEx(swWidth / 2 - 100, swHeight / 2 - 40, swWidth / 2 + 100, swHeight / 2 + 20, 2);
+				SetColor(S_WHITE);
+				DrawRect(swWidth / 2 - 100, swHeight / 2 - 40, swWidth / 2 + 100, swHeight / 2 + 20);
+				SetFontType(S_FONT_LARGE, S_WHITE, S_TRANSPARENT, S_ALIGN_CENTER);
+				DrawStr(swWidth / 2, swHeight / 2 - 25, "방향키를 이용하여          ");
+				DrawStr(swWidth / 2, swHeight / 2 -  5, "          이동할 수 있습니다.");
+
+			}else{
+				//RestoreLCD();							//버퍼 로드
+				ClearBlack();
+			}
 			DrawInterface();						//인터페이스 출력
 			EventObject[RunningEventNumber].EventLoop = 1;
 			RunEventLine(RunningEventNumber);		//이벤트 수행
@@ -165,7 +188,7 @@ void EVENT_KEYPRESS(){
 					break;
 
 				case SWAP_KEY_CLR:				//메뉴 출력
-					ChangeMode(3);
+					//ChangeMode(3);
 					break;
 				
 				//자연스러운 이동 #1
@@ -243,4 +266,9 @@ void ChangeMode(int Mode){
 		default:
 			break;
 	}//END SWITCH[Mode]
+}
+
+void EVENT_END(){
+	StopSound();
+
 }

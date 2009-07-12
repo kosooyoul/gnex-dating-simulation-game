@@ -1,18 +1,18 @@
 /*****************************************************************************/
 /* GNEX Image Master v3.20 Map Output for Mobile C						 */
 /*                                                                           */
-/* Output file : C:\Users\Ahyane\Desktop\AISIMUL_RPG_14\bg.smc					*/
-/*    IDF file  : C:\Users\Ahyane\Desktop\AISIMUL_RPG_14\bg.idf					*/
+/* Output file : C:\Documents and Settings\master\바탕 화면\GNEX_연애시뮬레이션\AISIMUL_RPG_18_0X9A5F67C_081110\bg.smc					*/
+/*    IDF file  : C:\Documents and Settings\master\바탕 화면\GNEX_연애시뮬레이션\AISIMUL_RPG_18_0X9A5F67C_081110\bg.idf					*/
 /*                                                                           */
 /* First written : Sunday, January 27, 2008 12:46:16			     */
-/* Last modified : Friday, October 31, 2008 03:48:37			     */
+/* Last modified : Friday, July 11, 2008 00:21:20			     */
 /*                                                                           */
 /* Copyright(c) 2000~2007 Sinjisoft Corporation.  All rights reserved.       */
 /*****************************************************************************/
 
 // 전체 블럭에 대해 지정한 속성 배열 저장
-binary bg_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-int bg_BlockName[12]; // 전체 블럭에 대한 블럭 포인터 배열 저장
+binary bg_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int bg_BlockName[58]; // 전체 블럭에 대한 블럭 포인터 배열 저장
 void bg_BlockNameInit()
 {
 	bg_BlockName[0]=bg[0];
@@ -27,4 +27,50 @@ void bg_BlockNameInit()
 	bg_BlockName[9]=bg[9];
 	bg_BlockName[10]=bg[10];
 	bg_BlockName[11]=bg[11];
+	bg_BlockName[12]=bg[12];
+	bg_BlockName[13]=bg[13];
+	bg_BlockName[14]=bg[14];
+	bg_BlockName[15]=bg[15];
+	bg_BlockName[16]=bg[16];
+	bg_BlockName[17]=bg[17];
+	bg_BlockName[18]=EveChara[0];
+	bg_BlockName[19]=EveChara[1];
+	bg_BlockName[20]=EveChara[2];
+	bg_BlockName[21]=EveChara[3];
+	bg_BlockName[22]=EveChara[4];
+	bg_BlockName[23]=EveChara[5];
+	bg_BlockName[24]=EveChara[6];
+	bg_BlockName[25]=EveChara[7];
+	bg_BlockName[26]=EveChara[8];
+	bg_BlockName[27]=EveChara[9];
+	bg_BlockName[28]=EveChara[10];
+	bg_BlockName[29]=EveChara[11];
+	bg_BlockName[30]=EveChara[12];
+	bg_BlockName[31]=EveChara[13];
+	bg_BlockName[32]=EveChara[14];
+	bg_BlockName[33]=EveChara[15];
+	bg_BlockName[34]=EveChara[16];
+	bg_BlockName[35]=EveChara[17];
+	bg_BlockName[36]=EveChara[18];
+	bg_BlockName[37]=EveChara[19];
+	bg_BlockName[38]=EveChara[20];
+	bg_BlockName[39]=EveChara[21];
+	bg_BlockName[40]=EveChara[22];
+	bg_BlockName[41]=EveChara[23];
+	bg_BlockName[42]=EveChara[24];
+	bg_BlockName[43]=EveChara[25];
+	bg_BlockName[44]=EveChara[26];
+	bg_BlockName[45]=EveChara[27];
+	bg_BlockName[46]=EveChara[28];
+	bg_BlockName[47]=EveChara[29];
+	bg_BlockName[48]=EveChara[30];
+	bg_BlockName[49]=EveChara[31];
+	bg_BlockName[50]=EveChara[32];
+	bg_BlockName[51]=EveChara[33];
+	bg_BlockName[52]=EveChara[34];
+	bg_BlockName[53]=EveChara[35];
+	bg_BlockName[54]=EveChara[36];
+	bg_BlockName[55]=EveChara[37];
+	bg_BlockName[56]=EveChara[38];
+	bg_BlockName[57]=EveChara[39];
 }

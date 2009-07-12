@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Users\Ahyane\Desktop\PRJT\AISIMUL_RPG_18_0X9A5F67C_081110\main.sal
+C:\Documents and Settings\master\바탕 화면\GNEX_연애시뮬레이션\AISIMUL_RPG_18_0X9A5F67C_081110\main.sal
 
 Generating code...
 
@@ -12,16 +12,16 @@ HEADER_COMPTYPE is 2
 
 Script profile : 
 
-	Script size       : 831522 Byte(s)
-	Code size         : 26698 Byte(s)
-	Symbol count      : 176
-	Total media count : 941
-	Total media size  : 751490 Byte(s)
-		String count  : 236
-		String size   : 6014 Byte(s)
-		Image count   : 702
-		Image size    : 644788 Byte(s)
-		Sound count   : 3
-		Sound size    : 100688 Byte(s)
+	Script size       : 765642 Byte(s)
+	Code size         : 29214 Byte(s)
+	Symbol count      : 196
+	Total media count : 1653
+	Total media size  : 673562 Byte(s)
+		String count  : 1001
+		String size   : 33626 Byte(s)
+		Image count   : 646
+		Image size    : 354584 Byte(s)
+		Sound count   : 6
+		Sound size    : 285352 Byte(s)
 
 ahyane.sgs - 0 error(s), 0 warning(s)

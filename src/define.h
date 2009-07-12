@@ -46,3 +46,47 @@ struct Point{
 #define T1Y		195
 #define T6X		12		//서울
 #define T6Y		87
+
+//이미지 불러오기
+image srcImage;
+image decodeImage;
+
+void DrawImage(int x, int y, int imgIndex){
+	int ret;
+	string temp;
+
+	MakeStr1(temp, "bg%d", imgIndex);
+
+	ret = ReadImage(temp);
+	ret = GNEX_LoadImage(decodeImage, srcImage);
+
+	if(ret == 1){
+		GNEX_CopyImage2(x, y, decodeImage);
+		//ret = GNEX_ReleaseImage(decodeImage);
+	}else{
+		SetFontType(S_FONT_LARGE, S_BLACK, S_WHITE, S_ALIGN_CENTER);
+		DrawStr(x, y, temp);
+		DrawStr(x, y + 20, "image draw fail");
+	}
+}
+
+int ReadImage(int *fname){
+	int ret;
+	int hdl;
+	int fileInfo[4];
+
+	ret = FileTest(fname);
+	if (ret==-1)
+		return 1; // NO FILE
+	hdl = FileOpen(fname, S_FILE_OPENMODE_READ);
+	if (hdl==-1)
+		return 1; // OPEN ERROR
+
+	ret = FileGetInfo(fname, fileInfo);
+	ret = SetMediaSize(srcImage, 0);
+	ret = SetMediaSize(srcImage,  fileInfo[0]);
+	ret = FileReadMedia (hdl, srcImage, 0, fileInfo[0]);
+	ret = FileClose(hdl);
+
+	return 0; // 성공
+}

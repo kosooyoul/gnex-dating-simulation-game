@@ -6,12 +6,17 @@
 #include "bgm3.ssd"
 
 int PlayingBGM = -1;
-
+int noplay;
 void PlayMusic(int MusicNumber){
 	
 	if(MusicNumber != -1){
 		PlayingBGM = MusicNumber;
+		noplay = 0;
+	}else{
+		noplay = 1;
 	}
+
+	if(OptionPlayBGM == 0)return;
 
 	switch(MusicNumber){
 		case -1:
@@ -42,10 +47,12 @@ void PlayMusic(int MusicNumber){
 			break;
 
 		case 6:
+			PlaySound(bgm2);
 			//PlaySound(후쿠오카);
 			break;
 
 		case 7:
+			PlaySound(bgm1);
 			//PlaySound(오키나와);
 			break;
 

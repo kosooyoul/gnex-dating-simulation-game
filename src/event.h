@@ -40,7 +40,7 @@ void SetEvent(){
 	EventObject[0].EventLoop = 0;		//테스트 코드
 	EventObject[0].EventPage = 0;		//테스트 코드
 	EventObject[0].LineCount = 0;		//테스트 코드
-	EventObject[0].MoveType = 0;		//정지상태
+	EventObject[0].MoveType = 1;		//정지상태
 
 	//도쿄.공항
 	EventObject[1].graphic = 1;		//테스트 코드
@@ -50,57 +50,57 @@ void SetEvent(){
 	EventObject[1].EventLoop = 0;		//테스트 코드
 	EventObject[1].EventPage = 0;		//테스트 코드
 	EventObject[1].LineCount = 0;		//테스트 코드
-	EventObject[1].MoveType = 0;		//정지상태
+	EventObject[1].MoveType = 1;		//정지상태
 
 	//도쿄.지하철
-	EventObject[2].graphic = -1;		//테스트 코드
+	EventObject[2].graphic = 1;		//테스트 코드
 	EventObject[2].map = 0;				//테스트 코드
-	EventObject[2].x = 7;				//테스트 코드
-	EventObject[2].y = 15;				//테스트 코드
+	EventObject[2].x = 4;				//테스트 코드
+	EventObject[2].y = 12;				//테스트 코드
 	EventObject[2].EventLoop = 0;		//테스트 코드
 	EventObject[2].EventPage = 2;		//테스트 코드
 	EventObject[2].LineCount = 0;		//테스트 코드
-	EventObject[2].MoveType = 0;		//정지상태
+	EventObject[2].MoveType = 1;		//정지상태
 
 	//오사카.지하철
-	EventObject[3].graphic = -1;		//테스트 코드
+	EventObject[3].graphic = 1;		//테스트 코드
 	EventObject[3].map = 1;				//테스트 코드
-	EventObject[3].x = 15;				//테스트 코드
-	EventObject[3].y = 3;				//테스트 코드
+	EventObject[3].x = 6;				//테스트 코드
+	EventObject[3].y = 7;				//테스트 코드
 	EventObject[3].EventLoop = 0;		//테스트 코드
 	EventObject[3].EventPage = 2;		//테스트 코드
 	EventObject[3].LineCount = 0;		//테스트 코드
-	EventObject[3].MoveType = 0;		//정지상태
+	EventObject[3].MoveType = 1;		//정지상태
 
 	//쿄토.지하철
-	EventObject[4].graphic = -1;		//테스트 코드
+	EventObject[4].graphic = 1;		//테스트 코드
 	EventObject[4].map = 2;				//테스트 코드
-	EventObject[4].x = 16;				//테스트 코드
-	EventObject[4].y = 13;				//테스트 코드
+	EventObject[4].x = 17;				//테스트 코드
+	EventObject[4].y = 8;				//테스트 코드
 	EventObject[4].EventLoop = 0;		//테스트 코드
 	EventObject[4].EventPage = 2;		//테스트 코드
 	EventObject[4].LineCount = 0;		//테스트 코드
-	EventObject[4].MoveType = 0;		//정지상태
+	EventObject[4].MoveType = 1;		//정지상태
 
 	//후쿠오카.지하철
-	EventObject[5].graphic = -1;		//테스트 코드
+	EventObject[5].graphic = 1;		//테스트 코드
 	EventObject[5].map = 3;				//테스트 코드
-	EventObject[5].x = 10;				//테스트 코드
-	EventObject[5].y = 9;				//테스트 코드
+	EventObject[5].x = 6;				//테스트 코드
+	EventObject[5].y = 4;				//테스트 코드
 	EventObject[5].EventLoop = 0;		//테스트 코드
 	EventObject[5].EventPage = 2;		//테스트 코드
 	EventObject[5].LineCount = 0;		//테스트 코드
-	EventObject[5].MoveType = 0;		//정지상태
+	EventObject[5].MoveType = 1;		//정지상태
 
 	//오키나와.지하철
-	EventObject[6].graphic = -1;		//테스트 코드
+	EventObject[6].graphic = 1;		//테스트 코드
 	EventObject[6].map = 4;				//테스트 코드
-	EventObject[6].x = 3;				//테스트 코드
-	EventObject[6].y = 5;				//테스트 코드
+	EventObject[6].x = 15;				//테스트 코드
+	EventObject[6].y = 1;				//테스트 코드
 	EventObject[6].EventLoop = 0;		//테스트 코드
 	EventObject[6].EventPage = 2;		//테스트 코드
 	EventObject[6].LineCount = 0;		//테스트 코드
-	EventObject[6].MoveType = 0;		//정지상태
+	EventObject[6].MoveType = 1;		//정지상태
 
 	//음식점
 	EventObject[7].graphic = 1;		//테스트 코드
@@ -110,7 +110,7 @@ void SetEvent(){
 	EventObject[7].EventLoop = 0;		//테스트 코드
 	EventObject[7].EventPage = 4;		//테스트 코드
 	EventObject[7].LineCount = 0;		//테스트 코드
-	EventObject[7].MoveType = 0;		//정지상태
+	EventObject[7].MoveType = 1;		//정지상태
 
 	//술집
 	EventObject[8].graphic = 1;		//테스트 코드
@@ -120,7 +120,7 @@ void SetEvent(){
 	EventObject[8].EventLoop = 0;		//테스트 코드
 	EventObject[8].EventPage = 37;		//테스트 코드
 	EventObject[8].LineCount = 0;		//테스트 코드
-	EventObject[8].MoveType = 0;		//정지상태
+	EventObject[8].MoveType = 1;		//정지상태
 
 	//찻집
 	EventObject[9].graphic = 1;		//테스트 코드
@@ -130,7 +130,7 @@ void SetEvent(){
 	EventObject[9].EventLoop = 0;		//테스트 코드
 	EventObject[9].EventPage = 56;		//테스트 코드
 	EventObject[9].LineCount = 0;		//테스트 코드
-	EventObject[9].MoveType = 0;		//정지상태
+	EventObject[9].MoveType = 1;		//정지상태
 	
 	//회사
 	EventObject[10].graphic = 1;		//테스트 코드
@@ -140,7 +140,7 @@ void SetEvent(){
 	EventObject[10].EventLoop = 0;		//테스트 코드
 	EventObject[10].EventPage = 99;		//테스트 코드
 	EventObject[10].LineCount = 0;		//테스트 코드
-	EventObject[10].MoveType = 0;		//정지상태
+	EventObject[10].MoveType = 1;		//정지상태
 
 	ApplyEventOnMap();
 }
@@ -157,7 +157,7 @@ void ApplyEventOnMap(){
 
 void MoveEventRandom(int EventNumber)
 {
-	if(EventObject[EventNumber].map == Player.map){
+	/*if(EventObject[EventNumber].map == Player.map){
 		switch(Rand(0, 20))
 		{
 			case 0:
@@ -173,7 +173,8 @@ void MoveEventRandom(int EventNumber)
 				SetDirection(EventNumber + 1, SWAP_KEY_DOWN);
 				MovePosition(EventNumber + 1, SWAP_KEY_DOWN);			
 		}
-	}
+	}*/EventObject[EventNumber].frame = (EventObject[EventNumber].frame + 1) % 16;
+
 }
 
 //맵 스크롤
